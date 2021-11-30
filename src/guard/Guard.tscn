@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://da2cq7xi0y6g1"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_giqij"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vgf5r"]
+points = PackedVector3Array(0, 1, 1, 1, -1, 1, 0, 1, -1, -1, -1, 1, 1, -1, -1, -1, -1, -1)
+
+[node name="Guard" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource( "PrismMesh_giqij" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource( "ConvexPolygonShape3D_vgf5r" )
