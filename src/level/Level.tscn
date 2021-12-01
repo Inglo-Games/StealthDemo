@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvxy73scdyfr6"]
+
+[ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="1_gdag3"]
+[ext_resource type="Environment" uid="uid://bxgph302vgkb6" path="res://default_env.tres" id="2_qv3on"]
+[ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="3_cpqiy"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hy2ih"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5eqp"]
+albedo_color = Color(0.0392157, 0, 0.203922, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_edrkf"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( "2_qv3on" )
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource( "PlaneMesh_hy2ih" )
+surface_material_override/0 = SubResource( "StandardMaterial3D_l5eqp" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource( "ConcavePolygonShape3D_edrkf" )
+
+[node name="Player" parent="." instance=ExtResource( "1_gdag3" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00966, 0)
+
+[node name="Guards" type="Node3D" parent="."]
+
+[node name="Guard01" parent="Guards" instance=ExtResource( "3_cpqiy" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38894, 13.4637)
+
+[node name="Guard02" parent="Guards" instance=ExtResource( "3_cpqiy" )]
+transform = Transform3D(0.100796, 0, 0.994907, 0, 1, 0, -0.994907, 0, 0.100796, 16.8575, 1.14236, -10.6383)
