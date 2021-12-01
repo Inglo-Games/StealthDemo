@@ -1,4 +1,6 @@
 extends CharacterBody3D
+class_name Player
+
 
 enum MOVE_STATE {
 	STATE_STILL,

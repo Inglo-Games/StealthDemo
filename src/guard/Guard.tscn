@@ -1,14 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://da2cq7xi0y6g1"]
+[gd_scene load_steps=6 format=3 uid="uid://da2cq7xi0y6g1"]
+
+[ext_resource type="Script" path="res://src/guard/Guard.gd" id="1_ck1ss"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_giqij"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vgf5r"]
 points = PackedVector3Array(0, 1, 1, 1, -1, 1, 0, 1, -1, -1, -1, 1, 1, -1, -1, -1, -1, -1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq6l8"]
+size = Vector3(18.5, 2, 10.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3pwhq"]
+size = Vector3(3, 2, 3)
+
 [node name="Guard" type="CharacterBody3D"]
+script = ExtResource( "1_ck1ss" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource( "PrismMesh_giqij" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource( "ConvexPolygonShape3D_vgf5r" )
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417921, -1.10569)
+light_color = Color(1, 0.933333, 0.396078, 1)
+light_energy = 15.0
+light_indirect_energy = 1.75
+spot_range = 17.0
+
+[node name="SightArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SightArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.25)
+shape = SubResource( "BoxShape3D_aq6l8" )
+
+[node name="CatchArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CatchArea"]
+shape = SubResource( "BoxShape3D_3pwhq" )

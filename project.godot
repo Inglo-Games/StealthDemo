@@ -8,6 +8,22 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "CharacterBody3D",
+"class": &"Guard",
+"language": &"GDScript",
+"path": "res://src/guard/Guard.gd"
+}, {
+"base": "CharacterBody3D",
+"class": &"Player",
+"language": &"GDScript",
+"path": "res://src/player/Player.gd"
+}]
+_global_script_class_icons={
+"Guard": "",
+"Player": ""
+}
+
 [application]
 
 config/name="Stealth Demo"
