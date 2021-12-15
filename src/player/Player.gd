@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name Player
 
-
 enum MOVE_STATE {
 	STATE_STILL,
 	STATE_SNEAK,
@@ -13,10 +12,19 @@ const DASH_SPEED : int = 9
 const JUMP_SPEED : int = 7
 const GRAV : float = 9.8
 
+signal interact
 var state : int = MOVE_STATE.STATE_STILL
 
-func _ready():
-	pass # Replace with function body.
+
+func _init():
+	interact = Signal(self, "interact")
+
+func _process(_delta):
+	
+	# Handle player interacting with objects
+	if Input.is_action_just_pressed("interact"):
+		interact.emit()
+		print("Emitted interact signal")
 
 func _physics_process(delta):
 	

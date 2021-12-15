@@ -1,16 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvxy73scdyfr6"]
+[gd_scene load_steps=12 format=3 uid="uid://dvxy73scdyfr6"]
 
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="1_gdag3"]
 [ext_resource type="Environment" uid="uid://bxgph302vgkb6" path="res://default_env.tres" id="2_qv3on"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="3_cpqiy"]
+[ext_resource type="PackedScene" uid="uid://312drldcobx3" path="res://src/items/Safe.tscn" id="4_8x86o"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hy2ih"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l5eqp"]
 albedo_color = Color(0.0392157, 0, 0.203922, 1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_edrkf"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rj82r"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ddgxk"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dfhtx"]
+data = PackedVector3Array(-0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ukfvn"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ug2a5"]
+data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
 
 [node name="Level" type="Node3D"]
 
@@ -20,21 +31,482 @@ environment = ExtResource( "2_qv3on" )
 [node name="Floor" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 mesh = SubResource( "PlaneMesh_hy2ih" )
 surface_material_override/0 = SubResource( "StandardMaterial3D_l5eqp" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-shape = SubResource( "ConcavePolygonShape3D_edrkf" )
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
+shape = SubResource( "ConcavePolygonShape3D_rj82r" )
 
 [node name="Player" parent="." instance=ExtResource( "1_gdag3" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.00966, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 2, 36)
 
 [node name="Guards" type="Node3D" parent="."]
 
 [node name="Guard01" parent="Guards" instance=ExtResource( "3_cpqiy" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38894, 13.4637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6744, 1.38894, 39.3909)
 
 [node name="Guard02" parent="Guards" instance=ExtResource( "3_cpqiy" )]
-transform = Transform3D(0.100796, 0, 0.994907, 0, 1, 0, -0.994907, 0, 0.100796, 16.8575, 1.14236, -10.6383)
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 40, 1, -30)
+
+[node name="Structures" type="Node3D" parent="."]
+
+[node name="WallN" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 1, 0, 5, -50)
+mesh = SubResource( "QuadMesh_ddgxk" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/WallN"]
+
+[node name="@@33012" type="CollisionShape3D" parent="Structures/WallN/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_dfhtx" )
+
+[node name="WallS" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(-100, 0, -8.74228e-08, 0, 10, 0, 8.74228e-06, 0, -1, 0, 5, 50)
+mesh = SubResource( "QuadMesh_ddgxk" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/WallS"]
+
+[node name="33012" type="CollisionShape3D" parent="Structures/WallS/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_dfhtx" )
+
+[node name="WallE" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0, 0, -1, 0, 10, 0, 100, 0, 0, 50, 5, 0)
+mesh = SubResource( "QuadMesh_ddgxk" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/WallE"]
+
+[node name="33012" type="CollisionShape3D" parent="Structures/WallE/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_dfhtx" )
+
+[node name="WallW" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0, 0, 1, 0, 10, 0, -100, 0, 0, -50, 5, 0)
+mesh = SubResource( "QuadMesh_ddgxk" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/WallW"]
+
+[node name="33012" type="CollisionShape3D" parent="Structures/WallW/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_dfhtx" )
+
+[node name="Wall01" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 1, 30, 2, -36)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall01"]
+
+[node name="@@38786" type="CollisionShape3D" parent="Structures/Wall01/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall01"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall01"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall01"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall01"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall01"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall01"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="Wall05" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 1, 12, 2, -23)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall05"]
+
+[node name="38786" type="CollisionShape3D" parent="Structures/Wall05/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall05"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall05"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall05"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall05"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall05"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall05"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="Wall02" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 1, -30, 2, -36)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall02"]
+
+[node name="38786" type="CollisionShape3D" parent="Structures/Wall02/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall02"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall02"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall02"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall02"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall02"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall02"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="Wall08" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(20, 0, 0, 0, 2, 0, 0, 0, 1, -29.9962, 1.9717, 22.0052)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall08"]
+
+[node name="38786" type="CollisionShape3D" parent="Structures/Wall08/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall08"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall08"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall08"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall08"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall08"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall08"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="Wall03" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0, 0, 1, 0, 2, 0, -20, 0, 0, -9, 2, -17)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall03"]
+
+[node name="38786" type="CollisionShape3D" parent="Structures/Wall03/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall03"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall03"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall03"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall03"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall03"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall03"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="Wall04" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0, 0, 1, 0, 2, 0, -20, 0, 0, -31.2175, 2, -6.10032)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall04"]
+
+[node name="38786" type="CollisionShape3D" parent="Structures/Wall04/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall04"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall04"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall04"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall04"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall04"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall04"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="Wall06" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0, 0, 1, 0, 2, 0, -20, 0, 0, 32.774, 2, 3.97266)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall06"]
+
+[node name="38786" type="CollisionShape3D" parent="Structures/Wall06/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall06"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall06"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall06"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall06"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall06"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall06"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="Wall07" type="MeshInstance3D" parent="Structures"]
+transform = Transform3D(0, 0, 1, 0, 2, 0, -20, 0, 0, 6.70794, 2, 3.97266)
+mesh = SubResource( "BoxMesh_ukfvn" )
+surface_material_override/0 = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Structures/Wall07"]
+
+[node name="38786" type="CollisionShape3D" parent="Structures/Wall07/StaticBody3D"]
+shape = SubResource( "ConcavePolygonShape3D_ug2a5" )
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Structures/Wall07"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.779549, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Structures/Wall07"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00542307, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Structures/Wall07"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, -1.2635)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Structures/Wall07"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, -0.901469, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Structures/Wall07"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.00815535, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="Structures/Wall07"]
+transform = Transform3D(0.05, 0, 0, 0, 0.5, 0, 0, 0, 1, 0.767971, 0, 1.97816)
+light_color = Color(0.882353, 0.505882, 0, 1)
+light_energy = 7.15
+light_indirect_energy = 9.81
+light_size = 0.29
+
+[node name="safe" parent="Structures" instance=ExtResource( "4_8x86o" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05665, 31.8404)
