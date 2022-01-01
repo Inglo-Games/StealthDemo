@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://da2cq7xi0y6g1"]
+[gd_scene load_steps=7 format=3 uid="uid://da2cq7xi0y6g1"]
 
 [ext_resource type="Script" path="res://src/guard/Guard.gd" id="1_ck1ss"]
 
@@ -13,11 +13,14 @@ size = Vector3(18.5, 2, 10.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3pwhq"]
 size = Vector3(3, 2, 3)
 
+[sub_resource type="Curve3D" id="Curve3D_pngbv"]
+
 [node name="Guard" type="CharacterBody3D"]
 script = ExtResource( "1_ck1ss" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource( "PrismMesh_giqij" )
+surface_material_override/0 = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource( "ConvexPolygonShape3D_vgf5r" )
@@ -39,3 +42,6 @@ shape = SubResource( "BoxShape3D_aq6l8" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CatchArea"]
 shape = SubResource( "BoxShape3D_3pwhq" )
+
+[node name="PatrolPath" type="Path3D" parent="."]
+curve = SubResource( "Curve3D_pngbv" )
