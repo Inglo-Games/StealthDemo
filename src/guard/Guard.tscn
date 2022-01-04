@@ -45,3 +45,8 @@ shape = SubResource( "BoxShape3D_3pwhq" )
 
 [node name="PatrolPath" type="Path3D" parent="."]
 curve = SubResource( "Curve3D_pngbv" )
+
+[node name="AlertCooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="AlertCooldown" to="." method="_on_AlertCooldown_timeout"]

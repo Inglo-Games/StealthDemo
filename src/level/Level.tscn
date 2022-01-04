@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvxy73scdyfr6"]
+[gd_scene load_steps=10 format=3 uid="uid://dvxy73scdyfr6"]
 
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="1_gdag3"]
 [ext_resource type="Environment" uid="uid://bxgph302vgkb6" path="res://default_env.tres" id="2_qv3on"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="3_cpqiy"]
+[ext_resource type="PackedScene" uid="uid://312drldcobx3" path="res://src/items/Safe.tscn" id="4_y1iuk"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hy2ih"]
 
@@ -58,3 +59,6 @@ patrol_path = NodePath("../Guard02Path")
 
 [node name="Guard02Path" type="Path3D" parent="Guards"]
 curve = SubResource( "Curve3D_o6n3w" )
+
+[node name="safe" parent="." instance=ExtResource( "4_y1iuk" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02483, -18.4235)

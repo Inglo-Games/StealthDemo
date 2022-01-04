@@ -12,6 +12,7 @@ enum GUARD_STATE {
 const BASE_SPEED : int = 6               # "Normal" movement speed
 const CHASE_SPEED : int = 8              # Chase movement speed
 const CHASE_THRESHOLD : int = 30         # Distance at which guard stops chase
+const COOLDOWN_TIME : int = 20           # Seconds until Guard loses "alert" state
 const GRAV : float = 9.8
 
 @export_node_path(Path3D) var patrol_path
@@ -50,7 +51,7 @@ func _physics_process(delta):
 			_move_toward_target(target.get_transform().origin, CHASE_SPEED, delta)
 			# Stop chasing if player is too far away
 			if position.distance_to(target.get_transform().origin) > CHASE_THRESHOLD:
-				state = GUARD_STATE.STATE_ALERT
+				_enter_state_alert()
 				target = patrol_points[patrol_index]
 		_:
 			print("Guard process error: invalid GUARD_STATE")
@@ -58,10 +59,17 @@ func _physics_process(delta):
 
 # Function triggered when any object enters the "SightArea" Area3D
 func _on_object_spotted(body):
+	# If Player is spotted, enter chase state
 	if body is Player:
 		print("Spotted player!")
 		state = GUARD_STATE.STATE_CHASE
 		target = body
+	# Else if interactable object is spotted and it's been interacted with,
+	# become suspicious
+	elif body is Interactable:
+		if body.is_interacted():
+			print("Spotted interacted object!")
+			_enter_state_alert()
 
 # Function triggered when any object enters the "CatchArea" Area3D
 func _on_object_caught(body):
@@ -83,3 +91,13 @@ func _move_toward_target(target, velocity, delta):
 	motion_velocity.z = dir.z
 	motion_velocity.y -= delta * GRAV
 	move_and_slide()
+
+
+func _enter_state_alert():
+	state = GUARD_STATE.STATE_ALERT
+	$AlertCooldown.start(COOLDOWN_TIME)
+
+# Callback function for AlertCooldown timer finished
+func _on_AlertCooldown_timeout():
+	if state == GUARD_STATE.STATE_ALERT:
+		state = GUARD_STATE.STATE_PATROL
