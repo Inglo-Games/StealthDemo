@@ -1,9 +1,6 @@
 extends Interactable
 
-func _ready():
-	interact_area = $InteractArea
-
-func _interact():
+func interact():
 	print("Triggering interact function...")
 	# Don't do anything if previous interaction is still resolving
 	if not $AnimationPlayer.is_playing():

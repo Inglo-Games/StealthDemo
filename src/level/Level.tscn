@@ -42,12 +42,12 @@ transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 shape = SubResource( "ConcavePolygonShape3D_rj82r" )
 
 [node name="Player" parent="." instance=ExtResource( "1_gdag3" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 2, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06342, 0)
 
 [node name="Guards" type="Node3D" parent="."]
 
 [node name="Guard01" parent="Guards" instance=ExtResource( "3_cpqiy" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6744, 1.38894, 39.3909)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6744, 1, 39.3909)
 patrol_path = NodePath("../Guard01Path")
 
 [node name="Guard01Path" type="Path3D" parent="Guards"]
