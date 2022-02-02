@@ -42,7 +42,7 @@ transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0)
 shape = SubResource( "ConcavePolygonShape3D_rj82r" )
 
 [node name="Player" parent="." instance=ExtResource( "1_gdag3" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06342, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Guards" type="Node3D" parent="."]
 
@@ -62,3 +62,4 @@ curve = SubResource( "Curve3D_o6n3w" )
 
 [node name="safe" parent="." instance=ExtResource( "4_y1iuk" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02483, -18.4235)
+open_time = 3.0

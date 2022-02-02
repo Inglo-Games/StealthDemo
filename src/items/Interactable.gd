@@ -1,7 +1,14 @@
 extends Node3D
 class_name Interactable
 
+@export var locked := false
+@export var open_time := 1.0
+
 var interacted := false
+var open_timer := Timer.new()
+
+func _init():
+	add_child(open_timer)
 
 # Empty "virtual" function to be overridden by inherited 
 func interact():
@@ -12,3 +19,9 @@ func is_interacted():
 
 func set_interacted(val:bool):
 	interacted = val
+
+# Cancel any ongoing interaction like unlocking or lockpicking
+func cancel_interaction():
+	print("Cancelling interaction...")
+	if not open_timer.is_stopped():
+		open_timer.stop()

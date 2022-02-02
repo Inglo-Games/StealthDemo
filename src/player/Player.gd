@@ -66,6 +66,7 @@ func _connect_body_interact_signal(body):
 
 func _disconnect_player_interact_signal(body):
 	if body is Interactable:
+		body.cancel_interaction()
 		interact_a.disconnect(body.interact)
 		interact_b.disconnect(body.interact)
 		print("Disconnected player's interact signal from object")
