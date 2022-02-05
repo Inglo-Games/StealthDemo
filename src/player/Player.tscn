@@ -3,11 +3,13 @@
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_xq3hb"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7quhc"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgh86"]
+size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3yoe"]
-size = Vector3(1.86873, 1.84033, 3.13116)
+size = Vector3(2.60424, 1.97939, 2.07832)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource( "1_xq3hb" )
@@ -21,14 +23,14 @@ shape = SubResource( "BoxShape3D_mgh86" )
 [node name="CameraTarget" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraTarget"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 20, 20)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 15, 15)
 current = true
 
 [node name="InteractArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.22779)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.601425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00259525, 0.12382)
 shape = SubResource( "BoxShape3D_r3yoe" )
 
 [node name="ActionProgBarContainer" type="VBoxContainer" parent="."]
@@ -48,7 +50,7 @@ text = "Actioning...."
 [node name="ProgressBar" type="ProgressBar" parent="ActionProgBarContainer"]
 offset_top = 30.0
 offset_right = 160.0
-offset_bottom = 57.0
+offset_bottom = 34.0
 value = 50.0
 percent_visible = false
 
