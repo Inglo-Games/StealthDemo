@@ -60,6 +60,12 @@ patrol_path = NodePath("../Guard02Path")
 [node name="Guard02Path" type="Path3D" parent="Guards"]
 curve = SubResource( "Curve3D_o6n3w" )
 
-[node name="safe" parent="." instance=ExtResource( "4_y1iuk" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02483, -18.4235)
+[node name="safe00" parent="." instance=ExtResource( "4_y1iuk" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -18.4235)
 open_time = 3.0
+
+[node name="safe01" parent="." instance=ExtResource( "4_y1iuk" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5255, 1, -26.1296)
+locked = true
+unlock_time = 5.0
+key_id = "safe01_test_key"

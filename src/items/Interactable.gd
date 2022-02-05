@@ -3,6 +3,9 @@ class_name Interactable
 
 @export var locked := false
 @export var open_time := 1.0
+@export var unlock_time := 1.0
+@export var break_time := 1.0
+@export var key_id := ""
 
 signal action_started
 

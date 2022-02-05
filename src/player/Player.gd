@@ -15,8 +15,9 @@ const CAM_ROT_SPEED := 2.50
 
 signal interact_a
 signal interact_b
-var state : int = MOVE_STATE.STATE_STILL
 
+var state : int = MOVE_STATE.STATE_STILL
+var keyring := []
 
 func _init():
 	interact_a = Signal(self, "interact_a")
@@ -35,7 +36,7 @@ func _process(delta):
 	
 	# Handle player interacting with objects
 	if Input.is_action_just_pressed("interact_a"):
-		interact_a.emit()
+		interact_a.emit(self)
 		print("Emitted interact_a signal")
 	
 	if Input.is_action_just_pressed("interact_b"):
@@ -91,3 +92,9 @@ func setup_prog_bar(label, time):
 	$ActionProgBarContainer/Label.text = label
 	$ActionProgBarContainer/ProgressBar.value = 0.0
 	$ActionProgBarContainer/ProgressBar.max_value = time
+
+# Remove a given key ID from player keyring, if it exists
+func remove_key_id(id):
+	var index = keyring.find(id)
+	if index != -1:
+		keyring.remove_at(index)
