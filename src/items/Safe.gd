@@ -16,8 +16,8 @@ func _open_box():
 	# Only open if not locked and not already opening
 	if not locked and open_timer.is_stopped():
 		if open_time > 0:
-			print("Starting open timer...")
 			open_timer.start(open_time)
+			emit_signal("action_started", "Opening...", open_time)
 			await open_timer.timeout
 		
 		print("Opening safe!")

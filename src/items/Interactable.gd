@@ -4,11 +4,14 @@ class_name Interactable
 @export var locked := false
 @export var open_time := 1.0
 
+signal action_started
+
 var interacted := false
 var open_timer := Timer.new()
 
 func _init():
 	add_child(open_timer)
+	action_started = Signal(self, "action_started")
 
 # Empty "virtual" function to be overridden by inherited 
 func interact():

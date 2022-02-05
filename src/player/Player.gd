@@ -23,7 +23,16 @@ func _init():
 	interact_a = Signal(self, "interact_a")
 	interact_b = Signal(self, "interact_b")
 
+func _ready():
+	_clear_prog_bar()
+
 func _process(delta):
+	
+	# Update progress bar if it's visible
+	if $ActionProgBarContainer.visible:
+		$ActionProgBarContainer/ProgressBar.value += delta
+		if $ActionProgBarContainer/ProgressBar.value >= $ActionProgBarContainer/ProgressBar.max_value:
+			_clear_prog_bar()
 	
 	# Handle player interacting with objects
 	if Input.is_action_just_pressed("interact_a"):
@@ -62,11 +71,27 @@ func _connect_body_interact_signal(body):
 	if body is Interactable:
 		interact_a.connect(body.interact)
 		interact_b.connect(body.interact)
+		body.action_started.connect(setup_prog_bar)
 		print("Connected player's interact signal to object")
 
 func _disconnect_player_interact_signal(body):
+	# Disconnect signals and cancel any ongoing actions (unlocking, open, etc)
 	if body is Interactable:
 		body.cancel_interaction()
+		body.action_started.disconnect(setup_prog_bar)
 		interact_a.disconnect(body.interact)
 		interact_b.disconnect(body.interact)
 		print("Disconnected player's interact signal from object")
+	_clear_prog_bar()
+
+# Reset action progress bar
+func _clear_prog_bar():
+	$ActionProgBarContainer.visible = false
+	$ActionProgBarContainer/ProgressBar.value = 0.0
+	$ActionProgBarContainer/Label.text = ""
+
+func setup_prog_bar(label, time):
+	$ActionProgBarContainer.visible = true
+	$ActionProgBarContainer/Label.text = label
+	$ActionProgBarContainer/ProgressBar.value = 0.0
+	$ActionProgBarContainer/ProgressBar.max_value = time
