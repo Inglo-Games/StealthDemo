@@ -13,7 +13,6 @@ const BASE_SPEED : int = 6               # "Normal" movement speed
 const CHASE_SPEED : int = 8              # Chase movement speed
 const CHASE_THRESHOLD : int = 30         # Distance at which guard stops chase
 const COOLDOWN_TIME : int = 20           # Seconds until Guard loses "alert" state
-const GRAV : float = 9.8
 
 @export_node_path(Path3D) var patrol_path
 
@@ -89,7 +88,6 @@ func _move_toward_target(target, velocity, delta):
 	
 	motion_velocity.x = dir.x
 	motion_velocity.z = dir.z
-	motion_velocity.y -= delta * GRAV
 	move_and_slide()
 
 

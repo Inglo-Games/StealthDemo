@@ -10,7 +10,6 @@ enum MOVE_STATE {
 const BASE_SPEED := 6
 const DASH_SPEED := 9
 const JUMP_SPEED := 7
-const GRAV := 9.8
 
 const CAM_ROT_SPEED := 2.50
 
@@ -60,9 +59,6 @@ func _physics_process(delta):
 	dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
 	motion_velocity.x = dir.x
 	motion_velocity.z = dir.z
-	
-	# Apply gravity
-	motion_velocity.y -= delta * GRAV
 	
 	# Move character
 	move_and_slide()
