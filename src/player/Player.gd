@@ -13,15 +13,13 @@ const JUMP_SPEED := 7
 
 const CAM_ROT_SPEED := 2.50
 
-signal interact_a
-signal interact_b
+signal interact
 
 var state : int = MOVE_STATE.STATE_STILL
-var keyring := []
+var keyring := ["safe01_test_key"]
 
 func _init():
-	interact_a = Signal(self, "interact_a")
-	interact_b = Signal(self, "interact_b")
+	interact = Signal(self, "interact")
 
 func _ready():
 	_clear_prog_bar()
@@ -36,18 +34,14 @@ func _process(delta):
 	
 	# Handle player interacting with objects
 	if Input.is_action_just_pressed("interact_a"):
-		interact_a.emit(self)
-		print("Emitted interact_a signal")
-	
-	if Input.is_action_just_pressed("interact_b"):
-		interact_b.emit()
-		print("Emitted interact_b signal")
+		print("Emitting interact signal...")
+		interact.emit(self)
 	
 	# Handle camera rotations
 	var rot_dir = Input.get_action_strength("cam_rot_ccw") - Input.get_action_strength("cam_rot_cw")
 	$CameraTarget.rotation.y += rot_dir * delta * CAM_ROT_SPEED
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	# Determine horizontal movement direction and scale down to max of 1
 	var dir = Vector3.ZERO
@@ -66,8 +60,7 @@ func _physics_process(delta):
 
 func _connect_body_interact_signal(body):
 	if body is Interactable:
-		interact_a.connect(body.interact)
-		interact_b.connect(body.interact)
+		interact.connect(body.interact)
 		body.action_started.connect(setup_prog_bar)
 		print("Connected player's interact signal to object")
 
@@ -76,8 +69,7 @@ func _disconnect_player_interact_signal(body):
 	if body is Interactable:
 		body.cancel_interaction()
 		body.action_started.disconnect(setup_prog_bar)
-		interact_a.disconnect(body.interact)
-		interact_b.disconnect(body.interact)
+		interact.disconnect(body.interact)
 		print("Disconnected player's interact signal from object")
 	_clear_prog_bar()
 

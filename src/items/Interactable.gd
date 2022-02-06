@@ -28,6 +28,6 @@ func set_interacted(val:bool):
 
 # Cancel any ongoing interaction like unlocking or lockpicking
 func cancel_interaction():
-	print("Cancelling interaction...")
 	if not open_timer.is_stopped():
+		print("Cancelling interaction...")
 		open_timer.stop()
