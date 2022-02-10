@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvxy73scdyfr6"]
+[gd_scene load_steps=11 format=3 uid="uid://dvxy73scdyfr6"]
 
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="1_gdag3"]
 [ext_resource type="Environment" uid="uid://bxgph302vgkb6" path="res://default_env.tres" id="2_qv3on"]
@@ -23,6 +23,12 @@ _data = {
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 36.5461, 0.95788, -30.588, 0, 0, 0, 0, 0, 0, 27.1775, 1.18525, -36.466, 0, 0, 0, 0, 0, 0, 4.40023, 1.18631, -18.5701, 0, 0, 0, 0, 0, 0, 29.7851, 1.06381, -13.5127, 0, 0, 0, 0, 0, 0, 36.5461, 0.95788, -30.588),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+
+[sub_resource type="Curve3D" id="Curve3D_a28og"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -37.2918, 0.958107, -29.008),
+"tilts": PackedFloat32Array(0)
 }
 
 [node name="Level" type="Node3D"]
@@ -59,6 +65,13 @@ patrol_path = NodePath("../Guard02Path")
 
 [node name="Guard02Path" type="Path3D" parent="Guards"]
 curve = SubResource( "Curve3D_o6n3w" )
+
+[node name="Guard03" parent="Guards" instance=ExtResource( "3_cpqiy" )]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -26.4175, 1, -36.6747)
+patrol_path = NodePath("../Guard03Path")
+
+[node name="Guard03Path" type="Path3D" parent="Guards"]
+curve = SubResource( "Curve3D_a28og" )
 
 [node name="safe00" parent="." instance=ExtResource( "4_y1iuk" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -18.4235)

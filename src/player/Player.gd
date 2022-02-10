@@ -2,9 +2,10 @@ extends CharacterBody3D
 class_name Player
 
 enum MOVE_STATE {
-	STATE_STILL,
-	STATE_SNEAK,
-	STATE_DASH
+	STILL,
+	SNEAKING,
+	DASHING,
+	HIDING
 }
 
 const BASE_SPEED := 6
@@ -15,7 +16,7 @@ const CAM_ROT_SPEED := 2.50
 
 signal interact
 
-var state : int = MOVE_STATE.STATE_STILL
+var state : int = MOVE_STATE.STILL
 var keyring := ["safe01_test_key"]
 
 func _init():
