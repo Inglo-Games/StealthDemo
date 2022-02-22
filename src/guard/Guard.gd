@@ -66,7 +66,7 @@ func _physics_process(_delta):
 # Function triggered when any object enters the "SightArea" Area3D
 func _on_object_spotted(body):
 	# If Player is spotted, enter chase state
-	if body is Player:
+	if body is Player and body.state != body.MOVE_STATE.HIDING:
 		state = GUARD_STATE.CHASE
 		target = body
 	# Else if interactable object is spotted and it's been interacted with,

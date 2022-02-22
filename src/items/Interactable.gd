@@ -16,7 +16,7 @@ func _init():
 	add_child(open_timer)
 	action_started = Signal(self, "action_started")
 
-# Empty "virtual" function to be overridden by inherited 
+# Empty "virtual" function to be overridden by inheritor
 func interact():
 	pass
 

@@ -91,3 +91,11 @@ func remove_key_id(id):
 	var index = keyring.find(id)
 	if index != -1:
 		keyring.remove_at(index)
+
+func hide_player():
+	visible = false
+	state = MOVE_STATE.HIDING
+
+func unhide_player():
+	visible = true
+	state = MOVE_STATE.STILL
