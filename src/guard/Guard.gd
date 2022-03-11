@@ -82,17 +82,17 @@ func _on_object_caught(body):
 		get_tree().quit()
 
 
-func _move_toward_target(target, velocity):
+func _move_toward_target(target, speed):
 	# Look toward target
 	look_at(target)
 	
 	# Calculate direction to target, ignoring vertical difference
 	var dir : Vector3 = target - self.get_transform().origin
 	dir.y = 0
-	dir = dir.normalized() * velocity
+	dir = dir.normalized() * speed
 	
-	motion_velocity.x = dir.x
-	motion_velocity.z = dir.z
+	velocity.x = dir.x
+	velocity.z = dir.z
 	move_and_slide()
 
 

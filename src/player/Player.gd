@@ -53,8 +53,8 @@ func _physics_process(_delta):
 	
 	# Scale movement based on sprinting
 	dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
-	motion_velocity.x = dir.x
-	motion_velocity.z = dir.z
+	velocity.x = dir.x
+	velocity.z = dir.z
 	
 	# Move character
 	move_and_slide()
