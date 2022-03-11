@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvxy73scdyfr6"]
+[gd_scene load_steps=13 format=3 uid="uid://dvxy73scdyfr6"]
 
+[ext_resource type="Script" path="res://src/level/Level.gd" id="1_bay1s"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="1_gdag3"]
 [ext_resource type="Environment" uid="uid://cue5xqdi1y32n" path="res://default_env.tres" id="2_qv3on"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="3_cpqiy"]
@@ -33,6 +34,7 @@ _data = {
 }
 
 [node name="Level" type="Node3D"]
+script = ExtResource( "1_bay1s" )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( "2_qv3on" )

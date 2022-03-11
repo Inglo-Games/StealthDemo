@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Control",
+"class": &"DialogueWindow",
+"language": &"GDScript",
+"path": "res://src/dialog/DialogueWindow.gd"
+}, {
 "base": "CharacterBody3D",
 "class": &"Guard",
 "language": &"GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[{
 "path": "res://src/player/Player.gd"
 }]
 _global_script_class_icons={
+"DialogueWindow": "",
 "Guard": "",
 "HidingPlace": "",
 "Interactable": "",

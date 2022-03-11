@@ -1,0 +1,12 @@
+{"lines": [
+	{
+		"name": "Narrator",
+		"text": "This is an example of some dialogue.  Press 'Enter' to continue.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Narrator",
+		"text": "You have reached the end of this conversation.",
+		"pic": "res://assets/portraits/icon.png"
+	}
+]}
