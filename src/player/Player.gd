@@ -20,11 +20,14 @@ signal interact
 var state : int = MOVE_STATE.STILL
 var keyring := ["safe01_test_key"]
 
+
 func _init():
 	interact = Signal(self, "interact")
 
+
 func _ready():
 	_clear_prog_bar()
+
 
 func _process(delta):
 	
@@ -38,17 +41,33 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact_a"):
 		print("Emitting interact signal...")
 		interact.emit(self)
-	
-	# Handle camera rotations
-	var rot_dir = Input.get_action_strength("cam_rot_ccw") - Input.get_action_strength("cam_rot_cw")
-	camera.rotation.y += rot_dir * delta * CAM_ROT_SPEED
 
-func _physics_process(_delta):
+
+func _physics_process(delta):
 	
 	# Determine horizontal movement direction and scale down to max of 1
 	var dir = Vector3.ZERO
-	dir += camera.transform.basis.x.normalized() * (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))
-	dir += camera.transform.basis.z.normalized() * (Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
+	
+	# Handle camera rotations
+	var rot_dir = Input.get_action_strength("cam_rot_ccw") - Input.get_action_strength("cam_rot_cw")
+	if rot_dir != 0:
+		var rot_delta = rot_dir * delta * CAM_ROT_SPEED
+		# If moving, rotate player; otherwise only rotate camera
+		if velocity != Vector3.ZERO:
+			self.rotation.y += rot_delta
+		else:
+			camera.rotation.y += rot_delta
+	
+	# If moving and camera rotation is non-zero, correct player rotation
+	if camera.rotation.y != 0 and \
+				(Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_back") or \
+				Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
+		self.rotation.y += camera.rotation.y
+		camera.rotation.y = 0
+	
+	# Determine movement direction
+	dir += transform.basis.x.normalized() * (Input.get_action_strength("move_left") - Input.get_action_strength("move_right"))
+	dir += transform.basis.z.normalized() * (Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"))
 	if dir.length_squared() > 1:
 		dir = dir.normalized()
 	
@@ -60,11 +79,13 @@ func _physics_process(_delta):
 	# Move character
 	move_and_slide()
 
+
 func _connect_body_interact_signal(body):
 	if body is Interactable:
 		interact.connect(body.interact)
 		body.action_started.connect(setup_prog_bar)
 		print("Connected player's interact signal to object")
+
 
 func _disconnect_player_interact_signal(body):
 	# Disconnect signals and cancel any ongoing actions (unlocking, open, etc)
@@ -75,11 +96,13 @@ func _disconnect_player_interact_signal(body):
 		print("Disconnected player's interact signal from object")
 	_clear_prog_bar()
 
+
 # Reset action progress bar
 func _clear_prog_bar():
 	$ActionProgBarContainer.visible = false
 	$ActionProgBarContainer/ProgressBar.value = 0.0
 	$ActionProgBarContainer/Label.text = ""
+
 
 func setup_prog_bar(label, time):
 	$ActionProgBarContainer.visible = true
@@ -87,15 +110,18 @@ func setup_prog_bar(label, time):
 	$ActionProgBarContainer/ProgressBar.value = 0.0
 	$ActionProgBarContainer/ProgressBar.max_value = time
 
+
 # Remove a given key ID from player keyring, if it exists
 func remove_key_id(id):
 	var index = keyring.find(id)
 	if index != -1:
 		keyring.remove_at(index)
 
+
 func hide_player():
 	visible = false
 	state = MOVE_STATE.HIDING
+
 
 func unhide_player():
 	visible = true

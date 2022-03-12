@@ -23,11 +23,11 @@ shape = SubResource( "BoxShape3D_mgh86" )
 [node name="CameraTarget" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CameraTarget"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 15, 15)
+transform = Transform3D(-1, -4.37114e-08, 7.57103e-08, 0, 0.866025, 0.5, -8.74228e-08, 0.5, -0.866025, 0, 15, -15)
 current = true
 
 [node name="InteractArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.22779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.987284)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00259525, 0.12382)
@@ -41,8 +41,8 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="ActionProgBarContainer"]
-offset_left = 36.0
-offset_right = 124.0
+offset_left = 34.0
+offset_right = 125.0
 offset_bottom = 26.0
 size_flags_horizontal = 4
 text = "Actioning...."
