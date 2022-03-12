@@ -29,6 +29,9 @@ func initialize_conversation(path):
 	var f = File.new()
 	var parser = JSON.new()
 	
+	# Pause game during dialogue
+	get_tree().paused = true
+	
 	if f.file_exists(path):
 		# Attempt to parse JSON contents of file
 		f.open(path, File.READ)
@@ -76,6 +79,7 @@ func load_next_line():
 # Alert parent node that the dialogue has ended and clear the window from the
 # player's view
 func clear_dialogue_window():
+	get_tree().paused = false
 	dialogue_ended.emit()
 	self.visible = false
 	self.queue_free()
