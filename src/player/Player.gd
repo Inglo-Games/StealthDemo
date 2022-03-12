@@ -11,8 +11,9 @@ enum MOVE_STATE {
 const BASE_SPEED := 6
 const DASH_SPEED := 9
 const JUMP_SPEED := 7
-
 const CAM_ROT_SPEED := 2.50
+
+@onready var camera = $CameraTarget
 
 signal interact
 
@@ -40,14 +41,14 @@ func _process(delta):
 	
 	# Handle camera rotations
 	var rot_dir = Input.get_action_strength("cam_rot_ccw") - Input.get_action_strength("cam_rot_cw")
-	$CameraTarget.rotation.y += rot_dir * delta * CAM_ROT_SPEED
+	camera.rotation.y += rot_dir * delta * CAM_ROT_SPEED
 
 func _physics_process(_delta):
 	
 	# Determine horizontal movement direction and scale down to max of 1
 	var dir = Vector3.ZERO
-	dir += get_transform().basis.x.normalized() * (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))
-	dir += get_transform().basis.z.normalized() * (Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
+	dir += camera.transform.basis.x.normalized() * (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))
+	dir += camera.transform.basis.z.normalized() * (Input.get_action_strength("move_back") - Input.get_action_strength("move_forward"))
 	if dir.length_squared() > 1:
 		dir = dir.normalized()
 	
