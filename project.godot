@@ -29,6 +29,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://src/items/Interactable.gd"
 }, {
+"base": "Control",
+"class": &"PauseMenu",
+"language": &"GDScript",
+"path": "res://src/menus/PauseMenu.gd"
+}, {
 "base": "CharacterBody3D",
 "class": &"Player",
 "language": &"GDScript",
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "Guard": "",
 "HidingPlace": "",
 "Interactable": "",
+"PauseMenu": "",
 "Player": ""
 }
 

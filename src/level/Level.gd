@@ -10,5 +10,13 @@ func _ready():
 	d.initialize_conversation("res://assets/dialogues/tutorial_00.json")
 	d.dialogue_ended.connect(resume_from_dialogue)
 
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		var pause_menu = load("res://src/menus/PauseMenu.tscn").instantiate()
+		add_child(pause_menu)
+		get_tree().paused = true
+
+
 func resume_from_dialogue():
 	pass
