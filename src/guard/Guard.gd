@@ -79,7 +79,7 @@ func _on_object_spotted(body):
 func _on_object_caught(body):
 	if body is Player:
 		print("Caught player!")
-		get_tree().quit()
+		get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
 
 
 func _move_toward_target(target, speed):

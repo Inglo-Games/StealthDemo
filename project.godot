@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Stealth Demo"
-run/main_scene="res://src/level/Level.tscn"
+run/main_scene="res://src/menus/MainMenu.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
