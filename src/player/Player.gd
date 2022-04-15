@@ -12,10 +12,12 @@ const BASE_SPEED := 6
 const DASH_SPEED := 9
 const JUMP_SPEED := 7
 const CAM_ROT_SPEED := 2.50
+const NOISE_MAGNITUDE := 25
 
 @onready var camera = $CameraTarget
 
 signal interact
+signal emit_noise
 
 var state : int = MOVE_STATE.STILL
 var keyring := ["safe01_test_key"]
@@ -23,6 +25,7 @@ var keyring := ["safe01_test_key"]
 
 func _init():
 	interact = Signal(self, "interact")
+	emit_noise = Signal(self, "emit_noise")
 
 
 func _ready():
@@ -41,6 +44,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("interact_a"):
 		print("Emitting interact signal...")
 		interact.emit(self)
+	
+	# Handle emitting noise
+	if Input.is_action_just_pressed("make_noise"):
+		print("Emitting noise signal...")
+		emit_noise.emit(position, NOISE_MAGNITUDE)
 
 
 func _physics_process(delta):

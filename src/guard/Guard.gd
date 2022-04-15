@@ -96,10 +96,18 @@ func _move_toward_target(target, speed):
 	move_and_slide()
 
 
+func on_hear_noise(noise_origin, noise_magnitude):
+	# Check distance to noise against magnitude
+	if self.position.distance_to(noise_origin) <= noise_magnitude:
+		print("This guard heard a noise!")
+		_enter_state_alert()
+
+
 func _enter_state_alert():
 	print("Entering alert state...")
 	state = GUARD_STATE.ALERT
 	$AlertCooldown.start(COOLDOWN_TIME)
+
 
 # Callback function for AlertCooldown timer finished
 func _on_AlertCooldown_timeout():

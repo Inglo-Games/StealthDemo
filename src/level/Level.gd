@@ -9,6 +9,11 @@ func _ready():
 	add_child(d)
 	d.initialize_conversation("res://assets/dialogues/tutorial_00.json")
 	d.dialogue_ended.connect(resume_from_dialogue)
+	
+	# Connect player's noise signal to guards
+	for guard in $Guards.get_children():
+		if guard is Guard:
+			$Player.emit_noise.connect(guard.on_hear_noise)
 
 
 func _process(delta):
