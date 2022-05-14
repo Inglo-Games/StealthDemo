@@ -1,5 +1,7 @@
 extends Interactable
 
+@onready var label3d = $Label3D
+
 func interact(player):
 	print("Triggering interact function...")
 	# Don't do anything if previous interaction is still resolving
@@ -17,6 +19,7 @@ func _open_box(player):
 			await _wait_for_timer(unlock_time, "Unlocking...")
 			locked = false
 			player.remove_key_id(key_id)
+			label3d.visible = false
 		else:
 			_display_message("Locked!")
 	
@@ -24,6 +27,7 @@ func _open_box(player):
 	if not locked and open_timer.is_stopped():
 		if open_time > 0:
 			await _wait_for_timer(unlock_time, "Opening...")
+			label3d.visible = false
 		
 		print("Opening safe!")
 		set_interacted(true)
@@ -32,6 +36,7 @@ func _open_box(player):
 
 func _wait_for_timer(time, label):
 	open_timer.start(time)
+	_display_message(label)
 	emit_signal("action_started", label, time)
 	await open_timer.timeout
 
@@ -41,6 +46,6 @@ func _close_box():
 	$AnimationPlayer.play_backwards("DoorAction002")
 
 
-# TODO: convert to UI message
 func _display_message(label):
-	print(label)
+	label3d.text = label
+	label3d.visible = true

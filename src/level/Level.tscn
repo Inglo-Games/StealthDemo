@@ -81,6 +81,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -44.0974)
 
 [node name="safe01" parent="." instance=ExtResource( "4_y1iuk" )]
 transform = Transform3D(-0.00209443, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00209443, -15.8752, 1, 10.1581)
+locked = true
+open_time = 3.0
+unlock_time = 5.0
+key_id = "safe01_test_key"
 
 [node name="wardrobe" parent="." instance=ExtResource( "5_rck8f" )]
 transform = Transform3D(0, 0, 2, 0, 2, 0, -2, 0, 0, 47.975, 2.41805, 0)

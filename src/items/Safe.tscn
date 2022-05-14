@@ -185,8 +185,8 @@ libraries = {
 }
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38318, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51015, 0)
 visible = false
 billboard = 1
 text = "Opening..."
-font_size = 48
+font_size = 92
