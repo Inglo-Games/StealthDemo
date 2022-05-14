@@ -9,6 +9,7 @@ func interact(player):
 		else:
 			_open_box(player)
 
+
 func _open_box(player):
 	# First check if box is locked
 	if locked:
@@ -28,14 +29,17 @@ func _open_box(player):
 		set_interacted(true)
 		$AnimationPlayer.play("DoorAction002")
 
+
 func _wait_for_timer(time, label):
 	open_timer.start(time)
 	emit_signal("action_started", label, time)
 	await open_timer.timeout
 
+
 func _close_box():
 	set_interacted(false)
 	$AnimationPlayer.play_backwards("DoorAction002")
+
 
 # TODO: convert to UI message
 func _display_message(label):

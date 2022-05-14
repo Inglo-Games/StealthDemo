@@ -36,9 +36,6 @@ shape = SubResource( "BoxShape3D_r3yoe" )
 [node name="ActionProgBarContainer" type="VBoxContainer" parent="."]
 offset_right = 160.0
 offset_bottom = 57.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="ActionProgBarContainer"]
 offset_left = 34.0
