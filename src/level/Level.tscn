@@ -77,7 +77,7 @@ patrol_path = NodePath("../Guard03Path")
 curve = SubResource( "Curve3D_a28og" )
 
 [node name="safe00" parent="." instance=ExtResource( "4_y1iuk" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -44.0974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23141, 1, -23.8578)
 
 [node name="safe01" parent="." instance=ExtResource( "4_y1iuk" )]
 transform = Transform3D(-0.00209443, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00209443, -15.8752, 1, 10.1581)
