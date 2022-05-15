@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://da2cq7xi0y6g1"]
+[gd_scene load_steps=8 format=3 uid="uid://da2cq7xi0y6g1"]
 
 [ext_resource type="Script" path="res://src/guard/Guard.gd" id="1_ck1ss"]
+[ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_w70b2"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_giqij"]
 
@@ -43,17 +44,13 @@ shape = SubResource( "BoxShape3D_aq6l8" )
 shape = SubResource( "BoxShape3D_3pwhq" )
 
 [node name="PatrolPath" type="Path3D" parent="."]
+visible = false
 curve = SubResource( "Curve3D_pngbv" )
 
 [node name="AlertCooldown" type="Timer" parent="."]
 one_shot = true
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02911, 0)
-visible = false
-billboard = 1
-modulate = Color(1, 0.67451, 0, 1)
-text = "?"
-font_size = 96
+[node name="TempLabel" parent="." instance=ExtResource( "2_w70b2" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40856, 0)
 
 [connection signal="timeout" from="AlertCooldown" to="." method="_on_AlertCooldown_timeout"]

@@ -22,17 +22,11 @@ var patrol_index := 0
 var state := GUARD_STATE.PATROL
 var target
 
-@onready var label = $Label3D
-@onready var timer = Timer.new()
-
 
 func _ready():
 	# Set up detection areas
 	$SightArea.connect("body_entered", _on_object_spotted)
 	$CatchArea.connect("body_entered", _on_object_caught)
-	
-	add_child(timer)
-	timer.timeout.connect(_clear_temp_label)
 	
 	# Set initial target point
 	if patrol_path:
@@ -75,7 +69,7 @@ func _on_object_spotted(body):
 	if body is Player and body.state != body.MOVE_STATE.HIDING:
 		state = GUARD_STATE.CHASE
 		target = body
-		_show_label_temp("!", 3)
+		$TempLabel.show_label_temp(3, "!")
 	# Else if interactable object is spotted and it's been interacted with,
 	# become suspicious
 	elif body is Interactable:
@@ -112,7 +106,7 @@ func on_hear_noise(noise_origin, noise_magnitude):
 
 func _enter_state_alert():
 	print("Entering alert state...")
-	_show_label_temp("?", 3)
+	$TempLabel.show_label_temp(3, "?")
 	state = GUARD_STATE.ALERT
 	$AlertCooldown.start(COOLDOWN_TIME)
 
@@ -123,12 +117,3 @@ func _on_AlertCooldown_timeout():
 		print("Entering patrol state...")
 		state = GUARD_STATE.PATROL
 
-
-func _show_label_temp(text:String, time:int):
-	timer.start(time)
-	label.text = text
-	label.visible = true
-
-
-func _clear_temp_label():
-	label.visible = false

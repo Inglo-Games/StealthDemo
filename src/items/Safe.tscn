@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://c22mw26omjkxx"]
+[gd_scene load_steps=18 format=3 uid="uid://c22mw26omjkxx"]
 
+[ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_pwek7"]
 [ext_resource type="Script" path="res://src/items/Safe.gd" id="2_sso34"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_116qa"]
@@ -184,9 +185,5 @@ libraries = {
 "": SubResource( "AnimationLibrary_0le23" )
 }
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51015, 0)
-visible = false
-billboard = 1
-text = "Opening..."
-font_size = 92
+[node name="TempLabel" parent="." instance=ExtResource( "2_pwek7" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.66945, 0)
