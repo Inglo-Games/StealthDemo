@@ -20,6 +20,7 @@ size = Vector3(3, 2, 3)
 script = ExtResource( "1_ck1ss" )
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource( "PrismMesh_giqij" )
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
