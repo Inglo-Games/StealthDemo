@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvxy73scdyfr6"]
+[gd_scene load_steps=13 format=3 uid="uid://dvxy73scdyfr6"]
 
 [ext_resource type="Script" path="res://src/level/Level.gd" id="1_bay1s"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="1_gdag3"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="3_cpqiy"]
 [ext_resource type="PackedScene" uid="uid://c22mw26omjkxx" path="res://src/items/Safe.tscn" id="4_y1iuk"]
 [ext_resource type="PackedScene" uid="uid://blnbydlheje1n" path="res://src/items/Wardrobe.tscn" id="5_rck8f"]
-[ext_resource type="PackedScene" uid="uid://bd4vc2il6byjd" path="res://src/items/Noisemaker.tscn" id="7_dlvto"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hy2ih"]
 
@@ -89,6 +88,3 @@ key_id = "safe01_test_key"
 
 [node name="wardrobe" parent="." instance=ExtResource( "5_rck8f" )]
 transform = Transform3D(0, 0, 2, 0, 2, 0, -2, 0, 0, 47.975, 2.41805, 0)
-
-[node name="Noisemaker" parent="." instance=ExtResource( "7_dlvto" )]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0044632, -30.6892)
