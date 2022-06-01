@@ -55,8 +55,8 @@ one_shot = true
 
 [node name="TempLabel" parent="." instance=ExtResource( "2_w70b2" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40856, 0)
-visible = false
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [connection signal="timeout" from="AlertCooldown" to="." method="_on_AlertCooldown_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_nav_velocity_computed"]
