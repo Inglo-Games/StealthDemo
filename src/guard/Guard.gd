@@ -17,6 +17,7 @@ const COOLDOWN_TIME : int = 20           # Seconds until Guard loses "alert" sta
 
 @export_node_path(Path3D) var patrol_path
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
+@onready var raycast : RayCast3D = $RayCast3D
 
 var patrol_points
 var patrol_index := 0
@@ -84,22 +85,36 @@ func _on_nav_velocity_computed(safe_velocity : Vector3):
 
 # Function triggered when any object enters the "SightArea" Area3D
 func _on_object_spotted(body):
-	# If Player is spotted, enter chase state
+	# If Player is spotted...
 	if body is Player and body.state != body.MOVE_STATE.HIDING:
-		state = GUARD_STATE.CHASE
-		target_player = body
-		$TempLabel.show_label_temp(3, "!")
+		# Ensure the guard can actually see the player with a raycast
+		if _check_raycast_hits_target(body):
+			# Guard starts to chase!
+			state = GUARD_STATE.CHASE
+			target_player = body
+			$TempLabel.show_label_temp(3, "!")
 	# Else if interactable object is spotted and it's been interacted with,
 	# become suspicious
 	elif body is Interactable:
 		if body.is_interacted():
 			_enter_state_alert()
 
+
 # Function triggered when any object enters the "CatchArea" Area3D
 func _on_object_caught(body):
-	if body is Player:
+	if body is Player and _check_raycast_hits_target(body):
 		print("Caught player!")
 		get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
+
+
+# Check if the raycast actually hits the body it's targeting, useful to check 
+# sightlines from guard to target object
+func _check_raycast_hits_target(body):
+	# Set raycast target to body's position, which we have to calculate the pos
+	# relative to this object
+	raycast.target_position = self.global_transform.origin - body.global_transform.origin
+	raycast.force_raycast_update()
+	return raycast.get_collider() == body
 
 
 func on_hear_noise(noise_origin, noise_magnitude):
