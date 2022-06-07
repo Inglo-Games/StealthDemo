@@ -14,10 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.211765, 0.211765, 0.211765, 0.862745)
-__meta__ = {
-"_edit_layout_mode": 1,
-"_edit_use_custom_anchors": false
-}
 
 [node name="Panel" type="Panel" parent="."]
 anchor_left = 0.5
@@ -30,10 +26,6 @@ offset_right = 60.0
 offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
-__meta__ = {
-"_edit_layout_mode": 1,
-"_edit_use_custom_anchors": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 anchor_left = 0.5
@@ -46,10 +38,6 @@ offset_right = 53.0
 offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
-__meta__ = {
-"_edit_layout_mode": 1,
-"_edit_use_custom_anchors": false
-}
 
 [node name="MenuLabel" type="Label" parent="Panel/VBoxContainer"]
 offset_right = 106.0

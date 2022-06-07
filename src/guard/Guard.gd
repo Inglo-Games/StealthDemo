@@ -17,10 +17,11 @@ const COOLDOWN_TIME : int = 20           # Seconds until Guard loses "alert" sta
 
 @export_node_path(Path3D) var patrol_path
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
-@onready var raycast : RayCast3D = $RayCast3D
+@onready var ray_params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 
 var patrol_points
 var patrol_index := 0
+var phys_space : PhysicsDirectSpaceState3D
 var state := GUARD_STATE.PATROL
 var target_player : Player
 
@@ -39,6 +40,8 @@ func _ready():
 
 
 func _physics_process(_delta):
+	
+	phys_space = get_world_3d().direct_space_state
 	
 	match state:
 		GUARD_STATE.PATROL, GUARD_STATE.ALERT:
@@ -110,11 +113,12 @@ func _on_object_caught(body):
 # Check if the raycast actually hits the body it's targeting, useful to check 
 # sightlines from guard to target object
 func _check_raycast_hits_target(body):
-	# Set raycast target to body's position, which we have to calculate the pos
-	# relative to this object
-	raycast.target_position = self.global_transform.origin - body.global_transform.origin
-	raycast.force_raycast_update()
-	return raycast.get_collider() == body
+	# Set the locations for the start and end of the ray
+	ray_params.from = self.global_transform.origin
+	ray_params.to = body.global_transform.origin
+	# Intersect the ray and check if the collision object matches the target
+	var res = phys_space.intersect_ray(ray_params)
+	return res["collider"] == body
 
 
 func on_hear_noise(noise_origin, noise_magnitude):
