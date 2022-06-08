@@ -56,6 +56,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="safe01" parent="NavigationRegion3D/Items" instance=ExtResource( "3_ygiq4" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6166, 1, 11.8493)
+locked = true
+unlock_time = 2.0
+break_time = 3.0
+key_id = "start_safe"
 
 [node name="safe02" parent="NavigationRegion3D/Items" instance=ExtResource( "3_ygiq4" )]
 transform = Transform3D(-1, 0, 6.97692e-05, 0, 1, 0, -6.97692e-05, 0, -1, 27.5272, 1, 0)

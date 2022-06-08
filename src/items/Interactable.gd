@@ -20,6 +20,9 @@ func _init():
 func interact(variant):
 	pass
 
+func pick_lock(variant):
+	pass
+
 func is_interacted():
 	return interacted
 

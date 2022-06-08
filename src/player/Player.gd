@@ -16,20 +16,27 @@ const NOISE_MAGNITUDE := 25
 
 @onready var camera = $CameraTarget
 
-signal interact
 signal emit_noise
+signal interact
+signal pick_lock
 
 var state : int = MOVE_STATE.STILL
+var inventory : Dictionary = {
+	"lockpicks": 1,
+	"noisemakers": 0
+}
 var keyring := ["safe01_test_key"]
 
 
 func _init():
-	interact = Signal(self, "interact")
 	emit_noise = Signal(self, "emit_noise")
+	interact = Signal(self, "interact")
+	pick_lock = Signal(self, "pick_lock")
 
 
 func _ready():
 	_clear_prog_bar()
+	$ItemMenu.visible = false
 
 
 func _process(delta):
@@ -49,6 +56,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("make_noise"):
 		print("Emitting noise signal...")
 		emit_noise.emit(position, NOISE_MAGNITUDE)
+		
+	# Handle showing items menu
+	if Input.is_action_just_pressed("use_item"):
+		$ItemMenu.update_items()
+		$ItemMenu.visible = true
 
 
 func _physics_process(delta):
@@ -91,6 +103,7 @@ func _physics_process(delta):
 func _connect_body_interact_signal(body):
 	if body is Interactable:
 		interact.connect(body.interact)
+		pick_lock.connect(body.pick_lock)
 		body.action_started.connect(setup_prog_bar)
 		print("Connected player's interact signal to object")
 
@@ -101,6 +114,7 @@ func _disconnect_player_interact_signal(body):
 		body.cancel_interaction()
 		body.action_started.disconnect(setup_prog_bar)
 		interact.disconnect(body.interact)
+		pick_lock.disconnect(body.pick_lock)
 		print("Disconnected player's interact signal from object")
 	_clear_prog_bar()
 

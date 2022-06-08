@@ -31,11 +31,19 @@ func _open_box(player):
 		$AnimationPlayer.play("DoorAction002")
 
 
+func pick_lock(player):
+	await _wait_for_timer(break_time, "Picking lock...")
+	locked = false
+	_open_box(player)
+	player.inventory["lockpicks"] -= 1
+
+
 func _wait_for_timer(time, label):
 	open_timer.start(time)
 	$TempLabel.show_label_temp(time, label)
 	emit_signal("action_started", label, time)
 	await open_timer.timeout
+	open_timer.stop()
 
 
 func _close_box():
