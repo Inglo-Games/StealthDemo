@@ -65,7 +65,7 @@ key_id = "start_safe"
 transform = Transform3D(-1, 0, 6.97692e-05, 0, 1, 0, -6.97692e-05, 0, -1, 27.5272, 1, 0)
 
 [node name="wardrobe01" parent="NavigationRegion3D/Items" instance=ExtResource( "4_xnh68" )]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.6242, 2.41805, 9.00676)
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -24.6242, 2.41805, 9.00676)
 
 [node name="wardrobe02" parent="NavigationRegion3D/Items" instance=ExtResource( "4_xnh68" )]
 transform = Transform3D(0, 0, -2, 0, 2, 0, 2, 0, 0, 7.24176, 2.41805, 25.9414)

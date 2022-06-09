@@ -5,7 +5,8 @@ enum MOVE_STATE {
 	STILL,
 	SNEAKING,
 	DASHING,
-	HIDING
+	HIDING,
+	TRAPPED
 }
 
 const BASE_SPEED := 6
@@ -85,19 +86,21 @@ func _physics_process(delta):
 		self.rotation.y += camera.rotation.y
 		camera.rotation.y = 0
 	
-	# Determine movement direction
-	dir += transform.basis.x.normalized() * (Input.get_action_strength("move_left") - Input.get_action_strength("move_right"))
-	dir += transform.basis.z.normalized() * (Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"))
-	if dir.length_squared() > 1:
-		dir = dir.normalized()
+	# Only move if player is allowed to
+	if state != MOVE_STATE.TRAPPED and state != MOVE_STATE.HIDING:
+		# Determine movement direction
+		dir += transform.basis.x.normalized() * (Input.get_action_strength("move_left") - Input.get_action_strength("move_right"))
+		dir += transform.basis.z.normalized() * (Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"))
+		if dir.length_squared() > 1:
+			dir = dir.normalized()
 	
-	# Scale movement based on sprinting
-	dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
-	velocity.x = dir.x
-	velocity.z = dir.z
+		# Scale movement based on sprinting
+		dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
+		velocity.x = dir.x
+		velocity.z = dir.z
 	
-	# Move character
-	move_and_slide()
+		# Move character
+		move_and_slide()
 
 
 func _connect_body_interact_signal(body):
