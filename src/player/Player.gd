@@ -70,7 +70,7 @@ func _physics_process(delta):
 	var dir = Vector3.ZERO
 	
 	# Handle camera rotations
-	var rot_dir = Input.get_action_strength("cam_rot_ccw") - Input.get_action_strength("cam_rot_cw")
+	var rot_dir = Input.get_axis("cam_rot_cw", "cam_rot_ccw")
 	if rot_dir != 0:
 		var rot_delta = rot_dir * delta * CAM_ROT_SPEED
 		# If moving, rotate player; otherwise only rotate camera
@@ -89,8 +89,8 @@ func _physics_process(delta):
 	# Only move if player is allowed to
 	if state != MOVE_STATE.TRAPPED and state != MOVE_STATE.HIDING:
 		# Determine movement direction
-		dir += transform.basis.x.normalized() * (Input.get_action_strength("move_left") - Input.get_action_strength("move_right"))
-		dir += transform.basis.z.normalized() * (Input.get_action_strength("move_forward") - Input.get_action_strength("move_back"))
+		dir += transform.basis.x.normalized() * Input.get_axis("move_right", "move_left")
+		dir += transform.basis.z.normalized() * Input.get_axis("move_back", "move_forward")
 		if dir.length_squared() > 1:
 			dir = dir.normalized()
 	
