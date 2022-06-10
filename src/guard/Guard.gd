@@ -15,11 +15,11 @@ const CHASE_SPEED : int = 8              # Chase movement speed
 const CHASE_THRESHOLD : int = 30         # Distance at which guard stops chase
 const COOLDOWN_TIME : int = 20           # Seconds until Guard loses "alert" state
 
-@export_node_path(Path3D) var patrol_path
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var ray_params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 
-var patrol_points
+@export var patrol_points := [Vector3.ZERO]
+
 var patrol_index := 0
 var phys_space : PhysicsDirectSpaceState3D
 var state := GUARD_STATE.PATROL
@@ -32,9 +32,9 @@ func _ready():
 	$CatchArea.connect("body_entered", _on_object_caught)
 	
 	# Set initial target point
-	if patrol_path:
-		patrol_points = get_node(patrol_path).curve.get_baked_points()
+	if patrol_points:
 		nav_agent.set_target_location(patrol_points[0])
+		look_at(nav_agent.get_target_location())
 	else:
 		print("Warning: Guard has no path to patrol!")
 
@@ -46,15 +46,8 @@ func _physics_process(_delta):
 	match state:
 		GUARD_STATE.PATROL, GUARD_STATE.ALERT:
 			# Set speed based on state
-			var current_speed = BASE_SPEED if state == GUARD_STATE.PATROL else CHASE_SPEED
-			# Move toward next point if not already there
-			if position.distance_squared_to(nav_agent.get_target_location()) >= 1:
-				_move_toward_target(current_speed)
-			# If close to target and patrol_points isn't just one point, 
-			# change to next point in patrol_points
-			elif patrol_points.size() > 1:
-				patrol_index = (patrol_index + 1) % len(patrol_points)
-				nav_agent.set_target_location(patrol_points[patrol_index])
+			var cur_speed = (BASE_SPEED if state == GUARD_STATE.PATROL else CHASE_SPEED)
+			_move_toward_target(cur_speed)
 		
 		GUARD_STATE.SEARCHING:
 			# TODO: Implement searching func
@@ -65,7 +58,7 @@ func _physics_process(_delta):
 			nav_agent.set_target_location(target_player.global_transform.origin)
 			_move_toward_target(CHASE_SPEED)
 			# Stop chasing if player is too far away
-			if position.distance_to(nav_agent.get_target_location()) > CHASE_THRESHOLD:
+			if nav_agent.distance_to_target() > CHASE_THRESHOLD:
 				_enter_state_alert()
 				nav_agent.set_target_location(patrol_points[patrol_index])
 		
@@ -74,16 +67,29 @@ func _physics_process(_delta):
 
 
 func _move_toward_target(speed : float):
-	var next_pos : Vector3 = nav_agent.get_next_location()
-	var curr_pos : Vector3 = global_transform.origin
-	var new_vec : Vector3 = (next_pos - curr_pos).normalized() * speed
-	nav_agent.set_velocity(new_vec)
+	if nav_agent.is_target_reachable():
+		var next_pos : Vector3 = nav_agent.get_next_location()
+		var new_vec : Vector3 = global_transform.origin.direction_to(next_pos).normalized() * speed
+		nav_agent.set_velocity(new_vec)
 
 
 # Function moves guard using vector to target point using NavigationServer
 func _on_nav_velocity_computed(safe_velocity : Vector3):
 	velocity = safe_velocity
 	move_and_slide()
+
+
+# Function called when guard reaches current navigation target point
+func _on_nav_target_reached():
+	match state:
+		# If guard is patrolling, set target to next point in patrol path
+		GUARD_STATE.PATROL, GUARD_STATE.ALERT:
+			if patrol_points.size() > 1:
+				patrol_index = (patrol_index + 1) % len(patrol_points)
+				nav_agent.set_target_location(patrol_points[patrol_index])
+				look_at(nav_agent.get_target_location())
+		_:
+			print("Reached navigation target in unsupported state!")
 
 
 # Function triggered when any object enters the "SightArea" Area3D
@@ -140,4 +146,3 @@ func _on_AlertCooldown_timeout():
 	if state == GUARD_STATE.ALERT:
 		print("Entering patrol state...")
 		state = GUARD_STATE.PATROL
-

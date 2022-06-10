@@ -10,13 +10,14 @@ albedo_texture = ExtResource( "2_yo336" )
 [sub_resource type="PrismMesh" id="PrismMesh_giqij"]
 material = SubResource( "StandardMaterial3D_7778k" )
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4xjlc"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.0146517, 0.470697, 0.470697, 0.0735213, 0.352957, 0.47061, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.0146517, 0.470697, -0.470697, 0.5, -0.5, 0.5, -0.0146517, 0.470697, 0.470697, 0.0146517, 0.470697, -0.470697)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_aq6l8"]
 size = Vector3(18.5, 2, 10.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3pwhq"]
 size = Vector3(3, 2, 3)
-
-[sub_resource type="Curve3D" id="Curve3D_pngbv"]
 
 [node name="Guard" type="CharacterBody3D"]
 axis_lock_linear_y = true
@@ -27,6 +28,10 @@ script = ExtResource( "1_ck1ss" )
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource( "PrismMesh_giqij" )
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource( "ConvexPolygonShape3D_4xjlc" )
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417921, -1.10569)
@@ -46,10 +51,6 @@ shape = SubResource( "BoxShape3D_aq6l8" )
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CatchArea"]
 shape = SubResource( "BoxShape3D_3pwhq" )
 
-[node name="PatrolPath" type="Path3D" parent="."]
-visible = false
-curve = SubResource( "Curve3D_pngbv" )
-
 [node name="AlertCooldown" type="Timer" parent="."]
 one_shot = true
 
@@ -57,6 +58,8 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40856, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
 
 [connection signal="timeout" from="AlertCooldown" to="." method="_on_AlertCooldown_timeout"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_nav_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_nav_velocity_computed"]

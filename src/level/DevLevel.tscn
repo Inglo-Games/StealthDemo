@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdw87atpmj2c5"]
+[gd_scene load_steps=8 format=3 uid="uid://cdw87atpmj2c5"]
 
 [ext_resource type="PackedScene" uid="uid://b31vo3pvmegc5" path="res://src/level/DevLevelMesh.tscn" id="1_owef3"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="2_uoqqr"]
@@ -19,27 +19,6 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 cell/size = 0.5
 cell/height = 0.5
 agent/radius = 1.0
-
-[sub_resource type="Curve3D" id="Curve3D_o0mke"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 10, 1, 20, 0, 0, 0, 0, 0, 0, 10, 1, 30, 0, 0, 0, 0, 0, 0, 25, 1, 35, 0, 0, 0, 0, 0, 0, 35, 1, 30, 0, 0, 0, 0, 0, 0, 30, 1, 10, 0, 0, 0, 0, 0, 0, 20, 1, 10, 0, 0, 0, 0, 0, 0, 10, 1, 20),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
-
-[sub_resource type="Curve3D" id="Curve3D_nevfr"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4, 1, 38, 0, 0, 0, 0, 0, 0, -4, 1, 10),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_7p88k"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 22.5, 1, -28),
-"tilts": PackedFloat32Array(0)
-}
-point_count = 1
 
 [node name="DevLevel" type="Node3D"]
 
@@ -81,17 +60,11 @@ curve = SubResource( "Curve3D_o0mke" )
 
 [node name="Guard02" parent="Guards" instance=ExtResource( "2_uoqqr" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5474, 1, 13.3785)
-patrol_path = NodePath("../GuardPath02")
-
-[node name="GuardPath02" type="Path3D" parent="Guards"]
-curve = SubResource( "Curve3D_nevfr" )
+patrol_points = [Vector3(-4, 1, 38), Vector3(-4, 1, 15)]
 
 [node name="Guard03" parent="Guards" instance=ExtResource( "2_uoqqr" )]
 transform = Transform3D(-0.000575944, 0, 1, 0, 1, 0, -1, 0, -0.000575944, 22.5, 1, -28)
-patrol_path = NodePath("../GuardPath03")
-
-[node name="GuardPath03" type="Path3D" parent="Guards"]
-curve = SubResource( "Curve3D_7p88k" )
+patrol_points = [Vector3(22.5, 1, -28)]
 
 [node name="Player" parent="." instance=ExtResource( "3_n6nr7" )]
 transform = Transform3D(-1, 0, 0.000436219, 0, 1, 0, -0.000436219, 0, -1, -35.5312, 1, 36.5774)
