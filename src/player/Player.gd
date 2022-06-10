@@ -13,6 +13,8 @@ const BASE_SPEED := 6
 const DASH_SPEED := 9
 const JUMP_SPEED := 7
 const CAM_ROT_SPEED := 2.50
+const CAM_ZOOM_INNER_LIMIT := 5.0
+const CAM_ZOOM_OUTER_LIMIT := 20.0
 const NOISE_MAGNITUDE := 25
 
 @onready var camera = $CameraTarget
@@ -86,6 +88,12 @@ func _physics_process(delta):
 		self.rotation.y += camera.rotation.y
 		camera.rotation.y = 0
 	
+	# Handle camera zooms
+	if Input.is_action_pressed("cam_zoom_in"):
+		_move_camera(true)
+	if Input.is_action_pressed("cam_zoom_out"):
+		_move_camera(false)
+	
 	# Only move if player is allowed to
 	if state != MOVE_STATE.TRAPPED and state != MOVE_STATE.HIDING:
 		# Determine movement direction
@@ -101,6 +109,18 @@ func _physics_process(delta):
 	
 		# Move character
 		move_and_slide()
+
+
+# Function to shift the camera toward player or away from player
+func _move_camera(move_in : bool):
+	var cam = $CameraTarget/Camera3D
+	
+	if move_in and cam.position.y > CAM_ZOOM_INNER_LIMIT:
+		cam.position.y -= 1.0
+	elif not move_in and cam.position.y < CAM_ZOOM_OUTER_LIMIT:
+		cam.position.y += 1.0
+		
+	cam.position.z = -cam.position.y
 
 
 func _connect_body_interact_signal(body):
