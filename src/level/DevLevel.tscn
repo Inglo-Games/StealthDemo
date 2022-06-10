@@ -53,10 +53,7 @@ transform = Transform3D(0, 0, -2, 0, 2, 0, 2, 0, 0, 7.24176, 2.41805, 25.9414)
 
 [node name="Guard01" parent="Guards" instance=ExtResource( "2_uoqqr" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5344, 1, 37.0928)
-patrol_path = NodePath("../GuardPath01")
-
-[node name="GuardPath01" type="Path3D" parent="Guards"]
-curve = SubResource( "Curve3D_o0mke" )
+patrol_points = [Vector3(10, 1, 20), Vector3(10, 1, 30), Vector3(25, 1, 35), Vector3(35, 1, 30), Vector3(30, 1, 10), Vector3(20, 1, 10)]
 
 [node name="Guard02" parent="Guards" instance=ExtResource( "2_uoqqr" )]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5474, 1, 13.3785)
