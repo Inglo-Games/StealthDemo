@@ -12,7 +12,7 @@ enum MOVE_STATE {
 const BASE_SPEED := 6
 const DASH_SPEED := 9
 const JUMP_SPEED := 7
-const CAM_ROT_SPEED := 2.50
+const CAM_SENSITIVITY := 0.0002
 const CAM_ZOOM_INNER_LIMIT := 5.0
 const CAM_ZOOM_OUTER_LIMIT := 20.0
 const NOISE_MAGNITUDE := 25
@@ -66,20 +66,20 @@ func _process(delta):
 		$ItemMenu.visible = true
 
 
-func _physics_process(delta):
-	
-	# Determine horizontal movement direction and scale down to max of 1
-	var dir = Vector3.ZERO
-	
-	# Handle camera rotations
-	var rot_dir = Input.get_axis("cam_rot_cw", "cam_rot_ccw")
-	if rot_dir != 0:
-		var rot_delta = rot_dir * delta * CAM_ROT_SPEED
+func _input(event):
+	if event is InputEventMouseButton:
+		# Mouse scroll wheel zooms camera in and out
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			_move_camera(true)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			_move_camera(false)
+	elif event is InputEventMouseMotion:
+		# Mouse motion rotates camera
 		# If moving, rotate player; otherwise only rotate camera
 		if velocity != Vector3.ZERO:
-			self.rotation.y += rot_delta
+			self.rotation.y -= event.velocity.x * CAM_SENSITIVITY
 		else:
-			camera.rotation.y += rot_delta
+			camera.rotation.y -= event.velocity.x * CAM_SENSITIVITY
 	
 	# If moving and camera rotation is non-zero, correct player rotation
 	if camera.rotation.y != 0 and \
@@ -87,12 +87,12 @@ func _physics_process(delta):
 				Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
 		self.rotation.y += camera.rotation.y
 		camera.rotation.y = 0
+
+
+func _physics_process(delta):
 	
-	# Handle camera zooms
-	if Input.is_action_pressed("cam_zoom_in"):
-		_move_camera(true)
-	if Input.is_action_pressed("cam_zoom_out"):
-		_move_camera(false)
+	# Determine horizontal movement direction and scale down to max of 1
+	var dir = Vector3.ZERO
 	
 	# Only move if player is allowed to
 	if state != MOVE_STATE.TRAPPED and state != MOVE_STATE.HIDING:
