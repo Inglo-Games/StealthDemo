@@ -111,7 +111,7 @@ func _on_object_spotted(body):
 
 # Function triggered when any object enters the "CatchArea" Area3D
 func _on_object_caught(body):
-	if body is Player and _check_raycast_hits_target(body):
+	if body is Player and _check_raycast_hits_target(body) and body.state != body.MOVE_STATE.HIDING:
 		print("Caught player!")
 		get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
 
