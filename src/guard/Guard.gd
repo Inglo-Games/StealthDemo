@@ -6,7 +6,8 @@ signal player_spotted
 enum GUARD_STATE {
 	PATROL,
 	ALERT,
-	SEARCHING,
+	SEARCH,
+	INVESTIGATE,
 	CHASE
 }
 
@@ -24,6 +25,7 @@ var patrol_index := 0
 var phys_space : PhysicsDirectSpaceState3D
 var state := GUARD_STATE.PATROL
 var target_player : Player
+var target_investigate
 
 
 func _ready():
@@ -49,7 +51,10 @@ func _physics_process(_delta):
 			var cur_speed = (BASE_SPEED if state == GUARD_STATE.PATROL else CHASE_SPEED)
 			_move_toward_target(cur_speed)
 		
-		GUARD_STATE.SEARCHING:
+		GUARD_STATE.INVESTIGATE:
+			_move_toward_target(BASE_SPEED)
+		
+		GUARD_STATE.SEARCH:
 			# TODO: Implement searching func
 			pass
 		
@@ -88,6 +93,17 @@ func _on_nav_target_reached():
 				patrol_index = (patrol_index + 1) % len(patrol_points)
 				nav_agent.set_target_location(patrol_points[patrol_index])
 				look_at(nav_agent.get_target_location())
+		
+		# If guard is investigating an item or a noise, check it out.
+		GUARD_STATE.INVESTIGATE:
+			print("Reached investigation target...")
+			if target_investigate is Interactable:
+				_investigate_item(target_investigate)
+			# Noise sources are stored as a Vector3 point
+			elif target_investigate is Vector3:
+				# Search the area for anything else suspicious
+				_enter_state_search()
+		
 		_:
 			print("Reached navigation target in unsupported state!")
 
@@ -103,10 +119,11 @@ func _on_object_spotted(body):
 			target_player = body
 			$TempLabel.show_label_temp(3, "!")
 	# Else if interactable object is spotted and it's been interacted with,
-	# become suspicious
+	# become suspicious and move to investigate it
 	elif body is Interactable:
 		if body.is_interacted():
-			_enter_state_alert()
+			_enter_state_investigate(body)
+			nav_agent.set_target_location(body.global_transform.origin)
 
 
 # Function triggered when any object enters the "CatchArea" Area3D
@@ -130,15 +147,45 @@ func _check_raycast_hits_target(body):
 func on_hear_noise(noise_origin, noise_magnitude):
 	# Check distance to noise against magnitude
 	if self.position.distance_to(noise_origin) <= noise_magnitude:
-		print("This guard heard a noise!")
-		_enter_state_alert()
+		print("This guard heard a noise, investigating...")
+		_enter_state_investigate(noise_origin)
+		nav_agent.set_target_location(noise_origin)
 
 
+# Guard checks item to see if player is hiding in it and resets it's interacted
+# status
+func _investigate_item(target):
+	if target is HidingPlace and target.is_occupied:
+		# Guard found a hiding player!
+		# TODO: Pull player from HidingPlace
+		get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
+	elif target is Interactable:
+		# Reset it then go back to patrolling
+		target.interact(self)
+		state = GUARD_STATE.PATROL
+
+
+# Guard enters ALERT state, moves more quickly until cooldown timer expires
 func _enter_state_alert():
 	print("Entering alert state...")
-	$TempLabel.show_label_temp(3, "?")
+	$TempLabel.show_label_temp(3, "!")
 	state = GUARD_STATE.ALERT
 	$AlertCooldown.start(COOLDOWN_TIME)
+
+
+# Guard enters INVESTIGATE state, moves toward noise or suspicious item "target"
+func _enter_state_investigate(target):
+	print("Entering investigate state...")
+	$TempLabel.show_label_temp(3, "?")
+	state = GUARD_STATE.INVESTIGATE
+	target_investigate = target
+
+
+# Guard enters SEARCH state, looks around area and then returns to PATROL if
+# nothing is found
+func _enter_state_search():
+	# TODO
+	pass
 
 
 # Callback function for AlertCooldown timer finished

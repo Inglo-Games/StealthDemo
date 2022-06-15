@@ -58,6 +58,7 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40856, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.5
 avoidance_enabled = true
 
 [connection signal="timeout" from="AlertCooldown" to="." method="_on_AlertCooldown_timeout"]
