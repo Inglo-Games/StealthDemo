@@ -22,11 +22,13 @@ const NOISE_MAGNITUDE := 25
 signal emit_noise
 signal interact
 signal pick_lock
+signal break_trap
 
 var state : int = MOVE_STATE.STILL
 var inventory : Dictionary = {
 	"lockpicks": 1,
-	"noisemakers": 0
+	"noisemakers": 1,
+	"boltcutters": 1
 }
 var keyring := ["safe01_test_key"]
 
@@ -35,6 +37,7 @@ func _init():
 	emit_noise = Signal(self, "emit_noise")
 	interact = Signal(self, "interact")
 	pick_lock = Signal(self, "pick_lock")
+	break_trap = Signal(self, "break_trap")
 
 
 func _ready():

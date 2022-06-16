@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdw87atpmj2c5"]
+[gd_scene load_steps=9 format=3 uid="uid://cdw87atpmj2c5"]
 
 [ext_resource type="PackedScene" uid="uid://b31vo3pvmegc5" path="res://src/level/DevLevelMesh.tscn" id="1_owef3"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="2_uoqqr"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="3_n6nr7"]
 [ext_resource type="PackedScene" uid="uid://c22mw26omjkxx" path="res://src/items/Safe.tscn" id="3_ygiq4"]
 [ext_resource type="PackedScene" uid="uid://blnbydlheje1n" path="res://src/items/Wardrobe.tscn" id="4_xnh68"]
+[ext_resource type="PackedScene" uid="uid://b3ofo55hjbkv8" path="res://src/items/snare_trap.tscn" id="5_qsl08"]
 
 [sub_resource type="Environment" id="Environment_an1vi"]
 background_energy = 0.5
@@ -65,6 +66,11 @@ patrol_points = [Vector3(-4, 1, 38), Vector3(-4, 1, 15)]
 [node name="Guard03" parent="Guards" instance=ExtResource( "2_uoqqr" )]
 transform = Transform3D(-0.000575944, 0, 1, 0, 1, 0, -1, 0, -0.000575944, 22.5, 1, -28)
 patrol_points = [Vector3(22.5, 1, -28)]
+
+[node name="Traps" type="Node3D" parent="."]
+
+[node name="SnareTrap" parent="Traps" instance=ExtResource( "5_qsl08" )]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8879, 0.0879593, 30.1412)
 
 [node name="Player" parent="." instance=ExtResource( "3_n6nr7" )]
 transform = Transform3D(-1, 0, 0.000436219, 0, 1, 0, -0.000436219, 0, -1, -35.5312, 1, 36.5774)
