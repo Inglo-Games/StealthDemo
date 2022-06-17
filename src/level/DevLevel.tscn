@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdw87atpmj2c5"]
+[gd_scene load_steps=10 format=3 uid="uid://dua6kmqriqt8"]
 
+[ext_resource type="Script" path="res://src/level/DevLevel.gd" id="1_1y4vq"]
 [ext_resource type="PackedScene" uid="uid://b31vo3pvmegc5" path="res://src/level/DevLevelMesh.tscn" id="1_owef3"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="2_uoqqr"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="3_n6nr7"]
@@ -22,6 +23,7 @@ cell/height = 0.5
 agent/radius = 1.2
 
 [node name="DevLevel" type="Node3D"]
+script = ExtResource( "1_1y4vq" )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( "Environment_an1vi" )
