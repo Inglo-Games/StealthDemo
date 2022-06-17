@@ -37,22 +37,25 @@ func _on_body_entered(body):
 
 # Called when a trapped player emits the "interact" signal
 func _on_player_escaping_trap(player):
-	timer.start(ESCAPE_TIME)
-	action_started.emit("Escaping...", ESCAPE_TIME)
-	await timer.timeout
-	# After the timer finishes, free the player
-	player.state = Player.MOVE_STATE.STILL
-	occupant = null
+	if timer.is_stopped():
+		timer.start(ESCAPE_TIME)
+		action_started.emit("Escaping...", ESCAPE_TIME)
+		await timer.timeout
+		# After the timer finishes, free the player
+		player.state = Player.MOVE_STATE.STILL
+		occupant = null
 
 
 # Called when a trapped player uses a "boltcutter" item to break free
 func _on_player_breaking_trap(player):
-	timer.start(BREAK_TIME)
-	action_started.emit("Breaking free...", BREAK_TIME)
-	await timer.timeout
-	# After the timer finishes, free player and destroy this trap
-	player.state = Player.MOVE_STATE.STILL
-	self.queue_free()
+	if timer.is_stopped():
+		timer.start(BREAK_TIME)
+		action_started.emit("Breaking free...", BREAK_TIME)
+		await timer.timeout
+		# After the timer finishes, free player and destroy this trap
+		player.state = Player.MOVE_STATE.STILL
+		player.inventory["boltcutters"] -= 1
+		self.queue_free()
 
 
 # Resets the trap to empty, ready state
