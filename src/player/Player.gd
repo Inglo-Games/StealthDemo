@@ -52,7 +52,10 @@ func _process(delta):
 		$ActionProgBarContainer/ProgressBar.value += delta
 		if $ActionProgBarContainer/ProgressBar.value >= $ActionProgBarContainer/ProgressBar.max_value:
 			_clear_prog_bar()
-	
+
+
+func _input(event):
+		
 	# Handle player interacting with objects
 	if Input.is_action_just_pressed("interact_a"):
 		print("Emitting interact signal...")
@@ -67,22 +70,22 @@ func _process(delta):
 	if Input.is_action_just_pressed("use_item"):
 		$ItemMenu.update_items()
 		$ItemMenu.visible = true
-
-
-func _input(event):
-	if event is InputEventMouseButton:
-		# Mouse scroll wheel zooms camera in and out
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_move_camera(true)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_move_camera(false)
-	elif event is InputEventMouseMotion:
-		# Mouse motion rotates camera
-		# If moving, rotate player; otherwise only rotate camera
-		if velocity != Vector3.ZERO:
-			self.rotation.y -= event.velocity.x * CAM_SENSITIVITY
-		else:
-			camera.rotation.y -= event.velocity.x * CAM_SENSITIVITY
+	
+	# Only do camera movements if not paused or item is not opened
+	if not $ItemMenu.visible:
+		if event is InputEventMouseButton:
+			# Mouse scroll wheel zooms camera in and out
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				_move_camera(true)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				_move_camera(false)
+		elif event is InputEventMouseMotion:
+			# Mouse motion rotates camera
+			# If moving, rotate player; otherwise only rotate camera
+			if velocity != Vector3.ZERO:
+				self.rotation.y -= event.velocity.x * CAM_SENSITIVITY
+			else:
+				camera.rotation.y -= event.velocity.x * CAM_SENSITIVITY
 	
 	# If moving and camera rotation is non-zero, correct player rotation
 	if camera.rotation.y != 0 and \
