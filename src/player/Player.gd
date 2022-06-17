@@ -12,7 +12,7 @@ enum MOVE_STATE {
 const BASE_SPEED := 6
 const DASH_SPEED := 9
 const JUMP_SPEED := 7
-const CAM_SENSITIVITY := 0.0002
+const CAM_SENSITIVITY := 0.005
 const CAM_ZOOM_INNER_LIMIT := 5.0
 const CAM_ZOOM_OUTER_LIMIT := 20.0
 const NOISE_MAGNITUDE := 25
@@ -55,21 +55,20 @@ func _process(delta):
 
 
 func _input(event):
-		
+	
 	# Handle player interacting with objects
-	if Input.is_action_just_pressed("interact_a"):
+	if event.is_action_pressed("interact_a"):
 		print("Emitting interact signal...")
 		interact.emit(self)
 	
 	# Handle emitting noise
-	if Input.is_action_just_pressed("make_noise"):
+	if event.is_action_pressed("make_noise"):
 		print("Emitting noise signal...")
 		emit_noise.emit(position, NOISE_MAGNITUDE)
 		
 	# Handle showing items menu
-	if Input.is_action_just_pressed("use_item"):
-		$ItemMenu.update_items()
-		$ItemMenu.visible = true
+	if event.is_action_pressed("use_item"):
+		$ItemMenu.show_item_menu()
 	
 	# Only do camera movements if not paused or item is not opened
 	if not $ItemMenu.visible:
@@ -83,9 +82,9 @@ func _input(event):
 			# Mouse motion rotates camera
 			# If moving, rotate player; otherwise only rotate camera
 			if velocity != Vector3.ZERO:
-				self.rotation.y -= event.velocity.x * CAM_SENSITIVITY
+				self.rotation.y -= event.relative.x * CAM_SENSITIVITY
 			else:
-				camera.rotation.y -= event.velocity.x * CAM_SENSITIVITY
+				camera.rotation.y -= event.relative.x * CAM_SENSITIVITY
 	
 	# If moving and camera rotation is non-zero, correct player rotation
 	if camera.rotation.y != 0 and \

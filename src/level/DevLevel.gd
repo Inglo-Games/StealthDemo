@@ -5,6 +5,10 @@ var noisemaker = preload("res://src/items/Noisemaker.tscn")
 
 
 func _ready():
+	
+	# Lock mouse motion
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	# Connect player's noise signal to guards
 	for guard in $Guards.get_children():
 		if guard is Guard:
