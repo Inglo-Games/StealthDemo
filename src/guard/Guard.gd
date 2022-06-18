@@ -4,6 +4,7 @@ class_name Guard
 signal player_spotted
 
 enum GUARD_STATE {
+	STATION,
 	PATROL,
 	ALERT,
 	SEARCH,
@@ -15,11 +16,13 @@ const BASE_SPEED : int = 6               # "Normal" movement speed
 const CHASE_SPEED : int = 8              # Chase movement speed
 const CHASE_THRESHOLD : int = 30         # Distance at which guard stops chase
 const COOLDOWN_TIME : int = 20           # Seconds until Guard loses "alert" state
+const STATION_DIST_THRESHOLD : int = 10  # Distance a guard can be from "station" position
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var ray_params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 
 @export var patrol_points := [Vector3.ZERO]
+@export var focus_point := Vector3.ZERO
 
 var patrol_index := 0
 var phys_space : PhysicsDirectSpaceState3D
@@ -35,8 +38,16 @@ func _ready():
 	
 	# Set initial target point
 	if patrol_points:
-		nav_agent.set_target_location(patrol_points[0])
-		look_at(nav_agent.get_target_location())
+		
+		# If only one point, set to stationary mode
+		if patrol_points.size() == 1:
+			state = GUARD_STATE.STATION
+			look_at(focus_point)
+		# Otherwise set to patrol mode and start moving toward first point
+		else:
+			state = GUARD_STATE.PATROL
+			nav_agent.set_target_location(patrol_points[0])
+			look_at(patrol_points[0])
 	else:
 		print("Warning: Guard has no path to patrol!")
 
@@ -50,6 +61,14 @@ func _physics_process(_delta):
 			# Set speed based on state
 			var cur_speed = (BASE_SPEED if state == GUARD_STATE.PATROL else CHASE_SPEED)
 			_move_toward_target(cur_speed)
+		
+		GUARD_STATE.STATION:
+			# If not at station, reuturn there
+			if global_transform.origin.distance_to(patrol_points[0]) >= STATION_DIST_THRESHOLD:
+				nav_agent.set_target_location(patrol_points[0])
+				_move_toward_target(BASE_SPEED)
+			# Otherwise sit still and face the focus_point
+			look_at(focus_point)
 		
 		GUARD_STATE.INVESTIGATE:
 			_move_toward_target(BASE_SPEED)
@@ -184,8 +203,12 @@ func _enter_state_investigate(target):
 # Guard enters SEARCH state, looks around area and then returns to PATROL if
 # nothing is found
 func _enter_state_search():
-	# TODO
-	pass
+	# TODO: Add actual search logic.  Until then just return to PATROL/STATION.
+	if patrol_points.size() > 1:
+		state = GUARD_STATE.PATROL
+		nav_agent.set_target_location(patrol_points[patrol_index])
+	else:
+		state = GUARD_STATE.STATION
 
 
 # Callback function for AlertCooldown timer finished
