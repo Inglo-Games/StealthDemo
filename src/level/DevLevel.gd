@@ -13,6 +13,9 @@ func _ready():
 	for guard in $Guards.get_children():
 		if guard is Guard:
 			$Player.emit_noise.connect(guard.on_hear_noise)
+	
+	# Connect place_noisemaker signal to level
+	$Player.place_noisemaker.connect(place_noisemaker)
 
 
 func _process(_delta):

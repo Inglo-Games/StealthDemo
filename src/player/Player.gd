@@ -22,6 +22,7 @@ const NOISE_MAGNITUDE := 25
 signal emit_noise
 signal interact
 signal pick_lock
+signal place_noisemaker
 signal break_trap
 
 var state : int = MOVE_STATE.STILL
@@ -38,6 +39,7 @@ func _init():
 	interact = Signal(self, "interact")
 	pick_lock = Signal(self, "pick_lock")
 	break_trap = Signal(self, "break_trap")
+	place_noisemaker = Signal(self, "place_noisemaker")
 
 
 func _ready():

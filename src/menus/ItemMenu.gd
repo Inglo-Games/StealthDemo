@@ -1,5 +1,9 @@
 extends Control
 
+
+const DIST_ITEM_PLACEMENT := Vector3(0, 0, 10)
+const NOISEMAKER_VOLUME := 50.0
+
 @onready var player = get_parent()
 
 
@@ -37,6 +41,12 @@ func _on_lockpick_button_pressed():
 
 
 func _on_noise_button_pressed():
+	# Determine location of new noisemaker, a constant distance in front of
+	# player's current location, rotated to match player's current direction
+	var pos : Vector3 = player.global_transform.origin + \
+				DIST_ITEM_PLACEMENT * player.rotation
+	player.place_noisemaker.emit(pos, NOISEMAKER_VOLUME)
+	player.inventory["noisemakers"] -= 1
 	hide_item_menu()
 
 
