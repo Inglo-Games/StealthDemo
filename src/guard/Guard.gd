@@ -134,7 +134,7 @@ func _on_object_spotted(body):
 		# Ensure the guard can actually see the player with a raycast
 		if _check_raycast_hits_target(body):
 			# Guard starts to chase!
-			look_at(body)
+			look_at(body.global_transform.origin)
 			state = GUARD_STATE.CHASE
 			target_player = body
 			$TempLabel.show_label_temp(3, "!")
