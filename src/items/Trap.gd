@@ -27,6 +27,7 @@ func _on_body_entered(body):
 		is_triggered = true
 		occupant = body
 		body.state = Player.MOVE_STATE.TRAPPED
+		body.get_node("AnimationPlayer").play("SnareTrapped")
 		# Connect player signals to interact with trap object
 		body.interact.connect(_on_player_escaping_trap)
 		body.break_trap.connect(_on_player_breaking_trap)
@@ -42,6 +43,8 @@ func _on_player_escaping_trap(player):
 		action_started.emit("Escaping...", ESCAPE_TIME)
 		await timer.timeout
 		# After the timer finishes, free the player
+		player.get_node("AnimationPlayer").play("SnareRelease")
+		await player.get_node("AnimationPlayer").animation_finished
 		player.state = Player.MOVE_STATE.STILL
 		occupant = null
 
@@ -53,6 +56,8 @@ func _on_player_breaking_trap(player):
 		action_started.emit("Breaking free...", BREAK_TIME)
 		await timer.timeout
 		# After the timer finishes, free player and destroy this trap
+		player.get_node("AnimationPlayer").play("SnareRelease")
+		await player.get_node("AnimationPlayer").animation_finished
 		player.state = Player.MOVE_STATE.STILL
 		player.inventory["boltcutters"] -= 1
 		self.queue_free()
