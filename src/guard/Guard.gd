@@ -12,11 +12,11 @@ enum GUARD_STATE {
 	CHASE
 }
 
-const BASE_SPEED : int = 6               # "Normal" movement speed
-const CHASE_SPEED : int = 8              # Chase movement speed
-const CHASE_THRESHOLD : int = 30         # Distance at which guard stops chase
-const COOLDOWN_TIME : int = 20           # Seconds until Guard loses "alert" state
-const STATION_DIST_THRESHOLD : int = 10  # Distance a guard can be from "station" position
+const BASE_SPEED := 6               # "Normal" movement speed
+const CHASE_SPEED := 8              # Chase movement speed
+const CHASE_THRESHOLD := 30         # Distance at which guard stops chase
+const COOLDOWN_TIME := 20           # Seconds until Guard loses "alert" state
+const STATION_DIST_THRESHOLD := 5   # Distance a guard can be from "station" position
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var ray_params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
@@ -111,7 +111,7 @@ func _on_nav_target_reached():
 			if patrol_points.size() > 1:
 				patrol_index = (patrol_index + 1) % len(patrol_points)
 				nav_agent.set_target_location(patrol_points[patrol_index])
-				look_at(nav_agent.get_target_location())
+				look_at(patrol_points[patrol_index])
 		
 		# If guard is investigating an item or a noise, check it out.
 		GUARD_STATE.INVESTIGATE:
@@ -134,6 +134,7 @@ func _on_object_spotted(body):
 		# Ensure the guard can actually see the player with a raycast
 		if _check_raycast_hits_target(body):
 			# Guard starts to chase!
+			look_at(body)
 			state = GUARD_STATE.CHASE
 			target_player = body
 			$TempLabel.show_label_temp(3, "!")
@@ -184,6 +185,16 @@ func _investigate_item(target):
 		state = GUARD_STATE.PATROL
 
 
+# Guard enters PATROL or STATION mode and returns if not there already
+func _enter_state_patrol():
+	if patrol_points.size() > 1:
+		state = GUARD_STATE.PATROL
+		nav_agent.set_target_location(patrol_points[patrol_index])
+		look_at(patrol_points[patrol_index])
+	else:
+		state = GUARD_STATE.STATION
+
+
 # Guard enters ALERT state, moves more quickly until cooldown timer expires
 func _enter_state_alert():
 	print("Entering alert state...")
@@ -198,17 +209,14 @@ func _enter_state_investigate(target):
 	$TempLabel.show_label_temp(3, "?")
 	state = GUARD_STATE.INVESTIGATE
 	target_investigate = target
+	look_at(target)
 
 
 # Guard enters SEARCH state, looks around area and then returns to PATROL if
 # nothing is found
 func _enter_state_search():
 	# TODO: Add actual search logic.  Until then just return to PATROL/STATION.
-	if patrol_points.size() > 1:
-		state = GUARD_STATE.PATROL
-		nav_agent.set_target_location(patrol_points[patrol_index])
-	else:
-		state = GUARD_STATE.STATION
+	_enter_state_patrol()
 
 
 # Callback function for AlertCooldown timer finished
