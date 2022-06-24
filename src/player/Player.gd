@@ -31,7 +31,7 @@ var inventory : Dictionary = {
 	"noisemakers": 1,
 	"boltcutters": 1
 }
-var keyring := ["safe01_test_key"]
+var keyring := []
 
 
 func _init():
@@ -168,6 +168,12 @@ func remove_key_id(id):
 	var index = keyring.find(id)
 	if index != -1:
 		keyring.remove_at(index)
+
+
+# Add a given key ID to the player keyring, avoiding duplicates
+func give_key_id(id):
+	if not keyring.has(id):
+		keyring.push_back(id)
 
 
 func hide_player():

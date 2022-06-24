@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://b44fm6l8ra8im" path="res://assets/textures/devgreen.png" id="2_ql0ig"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2p64"]
-albedo_texture = ExtResource( "2_ql0ig" )
+albedo_texture = ExtResource("2_ql0ig")
 
 [sub_resource type="BoxMesh" id="BoxMesh_7quhc"]
-material = SubResource( "StandardMaterial3D_i2p64" )
+material = SubResource("StandardMaterial3D_i2p64")
 size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgh86"]
@@ -16,58 +16,6 @@ size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3yoe"]
 size = Vector3(2.60424, 1.97939, 2.07832)
-
-[sub_resource type="Animation" id="Animation_a3og5"]
-resource_name = "SnareTrapped"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 9.51365),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 7, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1, 11.7127),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-3.14159, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape3D:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 9.51365),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 7, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape3D:rotation")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1, 11.7127),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-3.14159, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_pmfhs"]
 length = 0.001
@@ -172,23 +120,75 @@ tracks/3/keys = {
 "values": [Vector3(0, 7, 0), Vector3(0, 0, 0), Vector3(0, 2, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_a3og5"]
+resource_name = "SnareTrapped"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 9.51365),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 7, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 11.7127),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-3.14159, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 9.51365),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 7, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 11.7127),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-3.14159, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i46m1"]
 _data = {
-"RESET": SubResource( "Animation_pmfhs" ),
-"SnareRelease": SubResource( "Animation_lva2j" ),
-"SnareTrapped": SubResource( "Animation_a3og5" )
+"RESET": SubResource("Animation_pmfhs"),
+"SnareRelease": SubResource("Animation_lva2j"),
+"SnareTrapped": SubResource("Animation_a3og5")
 }
 
 [node name="Player" type="CharacterBody3D"]
-script = ExtResource( "1_xq3hb" )
+script = ExtResource("1_xq3hb")
 
-[node name="ItemMenu" parent="." instance=ExtResource( "2_lddin" )]
+[node name="ItemMenu" parent="." instance=ExtResource("2_lddin")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource( "BoxMesh_7quhc" )
+mesh = SubResource("BoxMesh_7quhc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( "BoxShape3D_mgh86" )
+shape = SubResource("BoxShape3D_mgh86")
 
 [node name="CameraTarget" type="Node3D" parent="."]
 
@@ -201,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.987284)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00259525, 0.12382)
-shape = SubResource( "BoxShape3D_r3yoe" )
+shape = SubResource("BoxShape3D_r3yoe")
 
 [node name="ActionProgBarContainer" type="VBoxContainer" parent="."]
 offset_right = 160.0
@@ -223,7 +223,7 @@ percent_visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource( "AnimationLibrary_i46m1" )
+"": SubResource("AnimationLibrary_i46m1")
 }
 
 [connection signal="body_entered" from="InteractArea" to="." method="_connect_body_interact_signal"]
