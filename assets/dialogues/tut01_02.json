@@ -1,0 +1,12 @@
+{"lines": [
+	{
+		"name": "Emma",
+		"text": "Ha, you think a safe would be sitting unlocked?",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Emma",
+		"text": "You'll need the combination to open it.  Try something else.",
+		"pic": "res://assets/portraits/icon.png"
+	}
+]}

@@ -1,0 +1,12 @@
+{"lines": [
+	{
+		"name": "Emma",
+		"text": "Oooh, you found a lockpick!  You can use that to break into the desk next to it.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Emma",
+		"text": "Walk over to the desk and [b]use an item[/b] (the R key) to use the lockpick and unlock the desk.",
+		"pic": "res://assets/portraits/icon.png"
+	}
+]}

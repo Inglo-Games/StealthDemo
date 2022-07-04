@@ -1,0 +1,22 @@
+{"lines": [
+	{
+		"name": "Terry",
+		"text": "Now it is my turn!",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Terry",
+		"text": "I constructed these guard robots to assist you in training.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Terry",
+		"text": "If they catch up you, you will have to try the room again.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Terry",
+		"text": "Simply get to the door on the opposite side without letting a guard touch you!",
+		"pic": "res://assets/portraits/icon.png"
+	},
+]}

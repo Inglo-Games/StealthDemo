@@ -1,0 +1,17 @@
+{"lines": [
+	{
+		"name": "Benji",
+		"text": "Gotcha!  Not that you could really avoid it.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Frankie",
+		"text": "Yeah, real funny.  Can you let me down now?",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Benji",
+		"text": "A master thief has to be a master escape artist too.  [b]Interact[/b] with the trap (the F key) to start chewing yourself free.",
+		"pic": "res://assets/portraits/icon.png"
+	}
+]}

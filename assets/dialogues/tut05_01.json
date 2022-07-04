@@ -1,0 +1,42 @@
+{"lines": [
+	{
+		"name": "Emma",
+		"text": "Alright then, one final room to test your stuff!",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Terry",
+		"text": "And one final tool to help you accomplish your mission.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Terry",
+		"text": "I created these noisemakers to distract guards that are in your way.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Terry",
+		"text": "Face where you want to set one down and [b]use an item[/b] (the R key) and select noisemaker to place it on the ground.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Benji",
+		"text": "Five seconds aaaaaand..... BOOM!",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Terry",
+		"text": "The best part is, it completely disentigrates.  Not a trace left behind for guards to find!",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Benji",
+		"text": "Well, the [i]best[/i] part is the explosion, but whatever.",
+		"pic": "res://assets/portraits/icon.png"
+	},
+	{
+		"name": "Benji",
+		"text": "Now hurry up and get to the door so we can go eat lunch, alright?",
+		"pic": "res://assets/portraits/icon.png"
+	},
+]}
