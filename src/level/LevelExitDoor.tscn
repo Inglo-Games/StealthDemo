@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cf5061yye8rjx"]
+
+[ext_resource type="Script" path="res://src/level/LevelExit.gd" id="1_1hygx"]
+[ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="3_6ia75"]
+[ext_resource type="PackedScene" uid="uid://kavkbpdlsql0" path="res://src/menus/ExitPrompt.tscn" id="4_x1rmr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pmbey"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wr5pw"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="LevelExitDoor" type="StaticBody3D"]
+script = ExtResource("1_1hygx")
+
+[node name="TempLabel" parent="." instance=ExtResource("3_6ia75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.016, 0)
+
+[node name="ExitPromptPanel" parent="." instance=ExtResource("4_x1rmr")]
+offset_left = -100.0
+offset_top = -37.5
+offset_right = 100.0
+offset_bottom = 37.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 2.5, 0, 0, 0, 0.188, 0, 1.25, 0)
+mesh = SubResource("BoxMesh_pmbey")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 2.5, 0, 0, 0, 0.188, 0, 1.25, 0)
+shape = SubResource("ConvexPolygonShape3D_wr5pw")

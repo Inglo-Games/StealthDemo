@@ -34,6 +34,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://src/items/ItemBox.gd"
 }, {
+"base": "Interactable",
+"class": &"LevelExit",
+"language": &"GDScript",
+"path": "res://src/level/LevelExit.gd"
+}, {
 "base": "StaticBody3D",
 "class": &"NoiseMaker",
 "language": &"GDScript",
@@ -60,6 +65,7 @@ _global_script_class_icons={
 "HidingPlace": "",
 "Interactable": "",
 "ItemBox": "",
+"LevelExit": "",
 "NoiseMaker": "",
 "PauseMenu": "",
 "Player": "",
@@ -72,6 +78,10 @@ config/name="Stealth Demo"
 run/main_scene="res://src/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.png"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/bwhai/GitHub/StealthDemo/testvid.avi"
 
 [input]
 
