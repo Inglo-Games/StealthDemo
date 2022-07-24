@@ -6,14 +6,14 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_pmbey"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wr5pw"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fexxv"]
 points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="LevelExitDoor" type="StaticBody3D"]
 script = ExtResource("1_1hygx")
 
 [node name="TempLabel" parent="." instance=ExtResource("3_6ia75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.016, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.81146, 0)
 
 [node name="ExitPromptPanel" parent="." instance=ExtResource("4_x1rmr")]
 offset_left = -100.0
@@ -22,9 +22,9 @@ offset_right = 100.0
 offset_bottom = 37.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 2.5, 0, 0, 0, 0.188, 0, 1.25, 0)
+transform = Transform3D(3, 0, 0, 0, 5, 0, 0, 0, 0.25, 0, 2.5, 0)
 mesh = SubResource("BoxMesh_pmbey")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 2.5, 0, 0, 0, 0.188, 0, 1.25, 0)
-shape = SubResource("ConvexPolygonShape3D_wr5pw")
+transform = Transform3D(3, 0, 0, 0, 5, 0, 0, 0, 0.25, 0, 2.5, 0)
+shape = SubResource("ConvexPolygonShape3D_fexxv")
