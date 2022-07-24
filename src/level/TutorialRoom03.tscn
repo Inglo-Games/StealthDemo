@@ -1,110 +1,108 @@
-[gd_scene load_steps=16 format=3 uid="uid://bis2j4x36rtsl"]
+[gd_scene load_steps=15 format=3 uid="uid://d27db52alnahr"]
 
-[ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_3skeo"]
-[ext_resource type="Texture2D" uid="uid://bh5v3vursrfi7" path="res://assets/textures/Bricks059_1K_Color.jpg" id="2_i8ybf"]
-[ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_qw4cd"]
-[ext_resource type="Texture2D" uid="uid://613h0vnrcgl7" path="res://assets/textures/Bricks059_1K_NormalGL.jpg" id="3_1tm8k"]
-[ext_resource type="Texture2D" uid="uid://dkjrruiu2uht8" path="res://assets/textures/Bricks059_1K_Roughness.jpg" id="4_142qv"]
-[ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="6_41p1c"]
-[ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="6_cpumt"]
-[ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="7_5ydux"]
-[ext_resource type="PackedScene" uid="uid://d27db52alnahr" path="res://src/level/TutorialRoom03.tscn" id="7_phbhj"]
+[ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_dqfkc"]
+[ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_bfq1h"]
+[ext_resource type="Texture2D" uid="uid://bh5v3vursrfi7" path="res://assets/textures/Bricks059_1K_Color.jpg" id="3_33p03"]
+[ext_resource type="Texture2D" uid="uid://613h0vnrcgl7" path="res://assets/textures/Bricks059_1K_NormalGL.jpg" id="4_lgx32"]
+[ext_resource type="Texture2D" uid="uid://dkjrruiu2uht8" path="res://assets/textures/Bricks059_1K_Roughness.jpg" id="5_dm78o"]
+[ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="6_etbf1"]
+[ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="7_yausu"]
+[ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="8_fxuvm"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_lypat"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_xkwgb"]
 vertices = PackedVector3Array(14.245, 0.5, 9.745, 14.245, 0.5, 11.745, 19.245, 0.5, 11.745, 19.245, 0.5, 3.995, -0.00500107, 0.5, -19.255, -9.755, 0.5, -19.255, -19.255, 0.5, -9.755, 13.245, 0.5, 9.495, 14.245, 0.5, 9.745, 19.245, 0.5, 3.995, 19.245, 0.5, -3.755, 19.245, 0.5, -11.505, 19.245, 0.5, -19.255, 9.495, 0.5, -19.255, -19.255, 0.5, 9.495, -19.255, 0.5, 19.245, -11.255, 0.5, 19.245, 4.745, 0.5, 19.245, 12.995, 0.5, 19.245, 13.245, 0.5, 9.495, -9.755, 0.5, -19.255, -19.255, 0.5, -19.255, -19.255, 0.5, -9.755, -0.00500107, 0.5, -19.255, -19.255, 0.5, -9.755, -19.255, 0.5, -0.00499916, -3.255, 0.5, 19.245, 13.245, 0.5, 9.495, 19.245, 0.5, -3.755, 19.245, 0.5, -3.755, 19.245, 0.5, -11.505, 9.495, 0.5, -19.255, -0.00500107, 0.5, -19.255, -19.255, 0.5, 9.495, -11.255, 0.5, 19.245, -3.255, 0.5, 19.245, -19.255, 0.5, -0.00499916, -3.255, 0.5, 19.245, 4.745, 0.5, 19.245, 13.245, 0.5, 9.495, 19.245, 0.5, 11.745, 14.245, 0.5, 11.745, 14.245, 0.5, 19.245, 19.245, 0.5, 19.245)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(13, 12, 11), PackedInt32Array(16, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(22, 21, 20), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 28), PackedInt32Array(25, 28, 27), PackedInt32Array(25, 27, 26), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(39, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41)]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_letn0"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_e0n0n"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hr0j0"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8jk27"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_i3em7"]
+[sub_resource type="BoxMesh" id="BoxMesh_klqnn"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t424x"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3bek3"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4v0f"]
-albedo_texture = ExtResource("2_i8ybf")
-roughness_texture = ExtResource("4_142qv")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa7l0"]
+albedo_texture = ExtResource("3_33p03")
+roughness_texture = ExtResource("5_dm78o")
 normal_enabled = true
-normal_texture = ExtResource("3_1tm8k")
+normal_texture = ExtResource("4_lgx32")
 uv1_scale = Vector3(6.25, 2, 1)
 
-[node name="TutorialRoom02" type="Node3D"]
+[node name="TutorialRoom03" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navmesh = SubResource("NavigationMesh_lypat")
+navmesh = SubResource("NavigationMesh_xkwgb")
 
 [node name="FloorMesh" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
-mesh = SubResource("PlaneMesh_letn0")
-surface_material_override/0 = ExtResource("1_3skeo")
+mesh = SubResource("PlaneMesh_e0n0n")
+surface_material_override/0 = ExtResource("1_dqfkc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/FloorMesh"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/FloorMesh/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_hr0j0")
+shape = SubResource("ConcavePolygonShape3D_8jk27")
 
 [node name="WallMesh01" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(40, 0, 0, 0, 8, 0, 0, 0, 0.01, 0, 4, -20)
-mesh = SubResource("BoxMesh_i3em7")
-surface_material_override/0 = ExtResource("2_qw4cd")
+mesh = SubResource("BoxMesh_klqnn")
+surface_material_override/0 = ExtResource("2_bfq1h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh01"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh01/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_t424x")
+shape = SubResource("ConcavePolygonShape3D_3bek3")
 
 [node name="WallMesh02" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(40, 0, 0, 0, 8, 0, 0, 0, 0.01, 0, 4, 20)
-mesh = SubResource("BoxMesh_i3em7")
-surface_material_override/0 = ExtResource("2_qw4cd")
+mesh = SubResource("BoxMesh_klqnn")
+surface_material_override/0 = ExtResource("2_bfq1h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh02"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh02/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_t424x")
+shape = SubResource("ConcavePolygonShape3D_3bek3")
 
 [node name="WallMesh03" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(-1.74846e-06, 0, 0.01, 0, 8, 0, -40, 0, -4.37114e-10, -20, 4, 0)
-mesh = SubResource("BoxMesh_i3em7")
-surface_material_override/0 = ExtResource("2_qw4cd")
+mesh = SubResource("BoxMesh_klqnn")
+surface_material_override/0 = ExtResource("2_bfq1h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh03"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh03/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_t424x")
+shape = SubResource("ConcavePolygonShape3D_3bek3")
 
 [node name="WallMesh04" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(-1.74846e-06, 0, 0.01, 0, 8, 0, -40, 0, -4.37114e-10, 20, 4, 0)
-mesh = SubResource("BoxMesh_i3em7")
-surface_material_override/0 = ExtResource("2_qw4cd")
+mesh = SubResource("BoxMesh_klqnn")
+surface_material_override/0 = ExtResource("2_bfq1h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh04"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh04/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_t424x")
+shape = SubResource("ConcavePolygonShape3D_3bek3")
 
 [node name="WallMesh05" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(-4.37114e-07, 0, 0.01, 0, 8, 0, -10, 0, -4.37114e-10, 13.5, 4, 15)
-mesh = SubResource("BoxMesh_i3em7")
-surface_material_override/0 = SubResource("StandardMaterial3D_y4v0f")
+mesh = SubResource("BoxMesh_klqnn")
+surface_material_override/0 = SubResource("StandardMaterial3D_aa7l0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh05"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh05/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_t424x")
+shape = SubResource("ConcavePolygonShape3D_3bek3")
 
-[node name="LevelExitDoor" parent="NavigationRegion3D" instance=ExtResource("6_cpumt")]
+[node name="LevelExitDoor" parent="NavigationRegion3D" instance=ExtResource("6_etbf1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.0278, 0, 0)
-goto_scene = ExtResource("7_phbhj")
 
 [node name="Guards" type="Node3D" parent="."]
 
-[node name="Guard" parent="Guards" instance=ExtResource("6_41p1c")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 1, -12)
-patrol_points = [Vector3(-12, 1, -12), Vector3(-12, 1, 12), Vector3(9, 1, 12), Vector3(9, 1, -12)]
+[node name="Guard" parent="Guards" instance=ExtResource("7_yausu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 1, -10)
+patrol_points = [Vector3(15, 1, -10), Vector3(-10, 1, -10)]
 
-[node name="Player" parent="." instance=ExtResource("7_5ydux")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 17.1182, 1, 17.2437)
+[node name="Player" parent="." instance=ExtResource("8_fxuvm")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 16.0157, 1, 16.1301)
