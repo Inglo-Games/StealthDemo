@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://djhtiovhfs2oe"]
+
+[ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_d3oej"]
+[ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_r75ys"]
+[ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="3_isv5c"]
+[ext_resource type="PackedScene" uid="uid://bis2j4x36rtsl" path="res://src/level/TutorialRoom02.tscn" id="4_ldolt"]
+[ext_resource type="PackedScene" uid="uid://d3qjo0b0l0ou2" path="res://assets/safe.blend" id="4_luicb"]
+[ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="6_sxgw4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p3ni5"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5oy4h"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lgl7p"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6xpxb"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="TutRoom01" type="Node3D"]
+
+[node name="RoomGeometry" type="Node3D" parent="."]
+
+[node name="FloorMesh" type="MeshInstance3D" parent="RoomGeometry"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_p3ni5")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_d3oej")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RoomGeometry/FloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomGeometry/FloorMesh/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5oy4h")
+
+[node name="WallMesh01" type="MeshInstance3D" parent="RoomGeometry"]
+transform = Transform3D(40, 0, 0, 0, 8, 0, 0, 0, 0.05, 0, 4, -20)
+mesh = SubResource("BoxMesh_lgl7p")
+surface_material_override/0 = ExtResource("2_r75ys")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RoomGeometry/WallMesh01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomGeometry/WallMesh01/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6xpxb")
+
+[node name="WallMesh02" type="MeshInstance3D" parent="RoomGeometry"]
+transform = Transform3D(40, 0, 0, 0, 8, 0, 0, 0, 0.05, 0, 4, 20)
+mesh = SubResource("BoxMesh_lgl7p")
+surface_material_override/0 = ExtResource("2_r75ys")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RoomGeometry/WallMesh02"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomGeometry/WallMesh02/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6xpxb")
+
+[node name="WallMesh03" type="MeshInstance3D" parent="RoomGeometry"]
+transform = Transform3D(-1.74846e-06, 0, 0.05, 0, 8, 0, -40, 0, -2.18557e-09, -20, 4, 0)
+mesh = SubResource("BoxMesh_lgl7p")
+surface_material_override/0 = ExtResource("2_r75ys")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RoomGeometry/WallMesh03"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomGeometry/WallMesh03/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6xpxb")
+
+[node name="WallMesh04" type="MeshInstance3D" parent="RoomGeometry"]
+transform = Transform3D(-1.74846e-06, 0, 0.05, 0, 8, 0, -40, 0, -2.18557e-09, 20, 4, 0)
+mesh = SubResource("BoxMesh_lgl7p")
+surface_material_override/0 = ExtResource("2_r75ys")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RoomGeometry/WallMesh04"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomGeometry/WallMesh04/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6xpxb")
+
+[node name="LevelExitDoor" parent="RoomGeometry" instance=ExtResource("3_isv5c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70277, 0, -19.8545)
+goto_scene = ExtResource("4_ldolt")
+
+[node name="RoomItems" type="Node3D" parent="."]
+
+[node name="safe" parent="RoomItems" instance=ExtResource("4_luicb")]
+transform = Transform3D(0.941341, 0, -0.337457, 0, 1, 0, 0.337457, 0, 0.941341, 6.89663, 1, -4.40638)
+
+[node name="Player" parent="." instance=ExtResource("6_sxgw4")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -9.39813, 1, 11.4712)
