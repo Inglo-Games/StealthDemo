@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://djhtiovhfs2oe"]
+[gd_scene load_steps=12 format=3 uid="uid://djhtiovhfs2oe"]
 
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_d3oej"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_r75ys"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="3_isv5c"]
 [ext_resource type="PackedScene" uid="uid://bis2j4x36rtsl" path="res://src/level/TutorialRoom02.tscn" id="4_ldolt"]
 [ext_resource type="PackedScene" uid="uid://d3qjo0b0l0ou2" path="res://assets/safe.blend" id="4_luicb"]
+[ext_resource type="PackedScene" uid="uid://dq4lhtdkkcdd" path="res://src/items/Dresser.tscn" id="6_5ewef"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="6_sxgw4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p3ni5"]
@@ -80,6 +81,13 @@ goto_scene = ExtResource("4_ldolt")
 
 [node name="safe" parent="RoomItems" instance=ExtResource("4_luicb")]
 transform = Transform3D(0.941341, 0, -0.337457, 0, 1, 0, 0.337457, 0, 0.941341, 6.89663, 1, -4.40638)
+
+[node name="Dresser" parent="RoomItems" instance=ExtResource("6_5ewef")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.981321, 1.4798, -8.22892)
+open_time = 0.0
+items_contained = []
+keys_contained = ["safe01_key"]
+anim_name = "OpenAction"
 
 [node name="Player" parent="." instance=ExtResource("6_sxgw4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -9.39813, 1, 11.4712)

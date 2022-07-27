@@ -5,6 +5,8 @@ class_name ItemBox
 @export var items_contained := [""]
 # List of keys/codes in this container
 @export var keys_contained := [""]
+# Name of animation in AnimationPlayer
+@export var anim_name := "DoorAction002"
 
 const label_length := 3.0
 
@@ -39,7 +41,7 @@ func _open_box(player):
 		print("Opening safe!")
 		set_interacted(true)
 		_give_items(player)
-		$AnimationPlayer.play("DoorAction002")
+		$AnimationPlayer.play(anim_name)
 
 
 func pick_lock(player):
@@ -82,4 +84,4 @@ func _wait_for_timer(time, label):
 
 func _close_box():
 	set_interacted(false)
-	$AnimationPlayer.play_backwards("DoorAction002")
+	$AnimationPlayer.play_backwards(anim_name)
