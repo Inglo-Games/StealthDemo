@@ -148,14 +148,13 @@ tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.333333, 1, 0, 0.182354, 0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0le23"]
 _data = {
-"DoorAction002": SubResource("Animation_o1qg7")
+"OpenAction": SubResource("Animation_o1qg7")
 }
 
 [node name="safe" type="StaticBody3D"]
 script = ExtResource("2_sso34")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
-gi_mode = 1
 mesh = SubResource("ArrayMesh_ct2kt")
 skeleton = NodePath("")
 
@@ -164,19 +163,16 @@ shape = SubResource("ConcavePolygonShape3D_fmkhe")
 
 [node name="Door" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.22103, 0, 0, 0, 0.949513, 0, 0, 0, 1, 0.93497, 0.0371617, 1.00551)
-gi_mode = 1
 mesh = SubResource("ArrayMesh_addau")
 skeleton = NodePath("")
 
 [node name="Handle" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(0, 0, 0.818982, 1.05317, 0, 0, 0, 1, 0, -1.27449, -0.0391376, 0.160035)
-gi_mode = 1
 mesh = SubResource("ArrayMesh_x4mcp")
 skeleton = NodePath("")
 
 [node name="Tumbler" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(0, 0, 0.818982, 1.05317, 0, 0, 0, 1, 0, -0.765723, -0.0391376, 0.171905)
-gi_mode = 1
 mesh = SubResource("ArrayMesh_hjmhj")
 skeleton = NodePath("")
 

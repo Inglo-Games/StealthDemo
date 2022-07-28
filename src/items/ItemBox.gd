@@ -5,9 +5,10 @@ class_name ItemBox
 @export var items_contained := [""]
 # List of keys/codes in this container
 @export var keys_contained := [""]
-# Name of animation in AnimationPlayer
-@export var anim_name := "DoorAction002"
 
+# Name of animation in AnimationPlayer
+const anim_name := "OpenAction"
+# Length of time (in secs) the temp label is visible
 const label_length := 3.0
 
 @onready var temp_label = $TempLabel
@@ -38,7 +39,6 @@ func _open_box(player):
 		if open_time > 0:
 			await _wait_for_timer(unlock_time, "Opening...")
 		
-		print("Opening safe!")
 		set_interacted(true)
 		_give_items(player)
 		$AnimationPlayer.play(anim_name)
