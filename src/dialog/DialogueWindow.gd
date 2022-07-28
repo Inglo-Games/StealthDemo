@@ -77,9 +77,12 @@ func load_next_line():
 
 
 # Alert parent node that the dialogue has ended and clear the window from the
-# player's view
+# player's view, reset vars
 func clear_dialogue_window():
 	get_tree().paused = false
 	dialogue_ended.emit()
 	self.visible = false
-	self.queue_free()
+	
+	curr_convo = []
+	dialogue_count = 0
+	dialogue_size = 0
