@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://djhtiovhfs2oe"]
+[gd_scene load_steps=13 format=3 uid="uid://djhtiovhfs2oe"]
 
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_d3oej"]
+[ext_resource type="Script" path="res://src/level/TutorialRoom01.gd" id="1_p8swl"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_r75ys"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="3_isv5c"]
 [ext_resource type="PackedScene" uid="uid://bis2j4x36rtsl" path="res://src/level/TutorialRoom02.tscn" id="4_ldolt"]
@@ -19,6 +20,7 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="TutRoom01" type="Node3D"]
+script = ExtResource("1_p8swl")
 
 [node name="RoomGeometry" type="Node3D" parent="."]
 
@@ -101,3 +103,5 @@ keys_contained = ["tut01_exit_key"]
 
 [node name="Player" parent="." instance=ExtResource("6_sxgw4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -9.39813, 1, 11.4712)
+
+[node name="Guards" type="Node3D" parent="."]
