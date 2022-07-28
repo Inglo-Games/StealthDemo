@@ -8,6 +8,7 @@ class_name Interactable
 @export var key_id := ""
 
 signal action_started
+signal action_finished
 
 var interacted := false
 var open_timer := Timer.new()

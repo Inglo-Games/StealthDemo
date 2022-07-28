@@ -45,6 +45,7 @@ func _open_box(player):
 		set_interacted(true)
 		_give_items(player)
 		$AnimationPlayer.play(anim_name)
+		action_finished.emit()
 
 
 func pick_lock(player):
@@ -91,3 +92,4 @@ func _close_box():
 	
 	set_interacted(false)
 	$AnimationPlayer.play_backwards(anim_name)
+	action_finished.emit()
