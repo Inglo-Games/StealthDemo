@@ -25,6 +25,9 @@ func interact(player):
 
 
 func _open_box(player):
+	
+	action_started.emit()
+	
 	# First check if box is locked
 	if locked:
 		if player.keyring.find(key_id) != -1:
@@ -83,5 +86,8 @@ func _wait_for_timer(time, label):
 
 
 func _close_box():
+	
+	action_started.emit()
+	
 	set_interacted(false)
 	$AnimationPlayer.play_backwards(anim_name)
