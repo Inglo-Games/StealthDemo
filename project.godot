@@ -34,6 +34,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://src/items/ItemBox.gd"
 }, {
+"base": "Node3D",
+"class": &"Level",
+"language": &"GDScript",
+"path": "res://src/level/Level.gd"
+}, {
 "base": "Interactable",
 "class": &"LevelExit",
 "language": &"GDScript",
@@ -65,6 +70,7 @@ _global_script_class_icons={
 "HidingPlace": "",
 "Interactable": "",
 "ItemBox": "",
+"Level": "",
 "LevelExit": "",
 "NoiseMaker": "",
 "PauseMenu": "",
