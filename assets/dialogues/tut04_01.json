@@ -2,11 +2,11 @@
 	{
 		"name": "Benji",
 		"text": "No guards in this room, but watch out for traps.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/benji_norm.png"
 	},
 	{
 		"name": "Benji",
 		"text": "A snare will stop you in your tracks!",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/benji_norm.png"
 	}
 ]}

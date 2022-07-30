@@ -2,16 +2,16 @@
 	{
 		"name": "Benji",
 		"text": "Ok, that wasn't really fair of me was it?  Let me give you something to break out more easily.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/benji_norm.png"
 	},
 	{
 		"name": "Terry",
 		"text": "I designed these single-use boltcutters to fit around your jaws.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/terry_norm.png"
 	},
 	{
 		"name": "Benji",
 		"text": "Just [b]use an item[/b] (the R key) and select the boltcutters to start breaking the trap.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/benji_norm.png"
 	}
 ]}

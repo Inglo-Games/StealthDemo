@@ -2,11 +2,11 @@
 	{
 		"name": "Terry",
 		"text": "AHA! You left the desk drawer ajar, and now the guard has noticed and become suspicious.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/terry_norm.png"
 	},
 	{
 		"name": "Emma",
 		"text": "Quickly, get to the exit before it finds you!",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/emma_norm.png"
 	}
 ]}

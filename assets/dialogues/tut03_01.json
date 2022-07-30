@@ -2,11 +2,11 @@
 	{
 		"name": "Terry",
 		"text": "This time avoiding the guard will not be so simple.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/terry_norm.png"
 	},
 	{
 		"name": "Terry",
 		"text": "You need to retrieve the exit key from the desk then make your way to the exit.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/terry_norm.png"
 	}
 ]}

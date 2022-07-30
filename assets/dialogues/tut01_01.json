@@ -2,26 +2,26 @@
 	{
 		"name": "Emma",
 		"text": "Alright Frankie, let's do a little warm up to get you going.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/emma_norm.png"
 	},
 	{
 		"name": "Frankie",
 		"text": "Isn't this a little... basic for someone with my skills?",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/frankie_norm.png"
 	},
 	{
 		"name": "Emma",
 		"text": "Fundamentals Frankie!  You have to keep yourself sharp.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/emma_norm.png"
 	},
 	{
 		"name": "Emma",
 		"text": "To get to the next room you need the key from the safe.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/emma_norm.png"
 	},
 	{
 		"name": "Emma",
 		"text": "[b]Walk[/b] around the room (the WASD keys) and [b]interact with an item[/b] (the F key) to search through things.",
-		"pic": "res://assets/portraits/icon.png"
+		"pic": "res://assets/portraits/emma_norm.png"
 	},
 ]}
