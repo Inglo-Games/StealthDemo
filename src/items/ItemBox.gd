@@ -49,10 +49,13 @@ func _open_box(player):
 
 
 func pick_lock(player):
-	await _wait_for_timer(break_time, "Picking lock...")
-	locked = false
-	_open_box(player)
-	player.inventory["lockpicks"] -= 1
+	if break_time >= 0:
+		await _wait_for_timer(break_time, "Picking lock...")
+		locked = false
+		_open_box(player)
+		player.inventory["lockpicks"] -= 1
+	else:
+		temp_label.show_label_temp(label_length, "Can't pick!")
 
 
 # Empty the container and add contents to Player's inventory

@@ -27,9 +27,9 @@ signal break_trap
 
 var state : int = MOVE_STATE.STILL
 var inventory : Dictionary = {
-	"lockpicks": 1,
-	"noisemakers": 1,
-	"boltcutters": 1
+	"lockpicks": 0,
+	"noisemakers": 0,
+	"boltcutters": 0
 }
 var keyring := []
 

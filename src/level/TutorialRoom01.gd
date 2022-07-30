@@ -13,14 +13,14 @@ func _ready():
 	# Immediately load the first dialogue
 	_load_dialogue_01()
 	
-	# Load second dialogue when player tries to open a locked safe
+	# Load second dialogue when player tries to open a locked safe w/o key
 	$RoomItems/safe.action_started.connect(_load_dialogue_02)
 	
-	# Load third dialogue when player gets a lockpick
-	# TODO: Add dresser to level
+	# Load third dialogue when player gets a lockpick from the dresser
+	$RoomItems/Dresser.action_finished.connect(_load_dialogue_03)
 	
-	# Load fourth dialogue when player gets safe key
-	$RoomItems/Dresser.action_finished.connect(_load_dialogue_04)
+	# Load fourth dialogue when player gets safe key from the desk
+	$RoomItems/desk.action_finished.connect(_load_dialogue_04)
 	
 	# Load final dialogue when player opens safe
 	$RoomItems/safe.action_finished.connect(_load_dialogue_05)
@@ -43,7 +43,7 @@ func _load_dialogue_03():
 		dialogues_triggered[2] = true
 
 func _load_dialogue_04():
-	if not dialogues_triggered[3] and not $RoomItems/Dresser.locked:
+	if not dialogues_triggered[3] and not $RoomItems/desk.locked:
 		dialogue_window.initialize_conversation("res://assets/dialogues/tut01_04.json")
 		dialogues_triggered[3] = true
 
