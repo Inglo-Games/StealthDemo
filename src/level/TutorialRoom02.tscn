@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bis2j4x36rtsl"]
+[gd_scene load_steps=17 format=3 uid="uid://bis2j4x36rtsl"]
 
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_3skeo"]
+[ext_resource type="Script" path="res://src/level/TutorialRoom02.gd" id="1_8hyk8"]
 [ext_resource type="Texture2D" uid="uid://bh5v3vursrfi7" path="res://assets/textures/Bricks059_1K_Color.jpg" id="2_i8ybf"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_qw4cd"]
 [ext_resource type="Texture2D" uid="uid://613h0vnrcgl7" path="res://assets/textures/Bricks059_1K_NormalGL.jpg" id="3_1tm8k"]
@@ -32,6 +33,7 @@ normal_texture = ExtResource("3_1tm8k")
 uv1_scale = Vector3(6.25, 2, 1)
 
 [node name="TutorialRoom02" type="Node3D"]
+script = ExtResource("1_8hyk8")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navmesh = SubResource("NavigationMesh_lypat")

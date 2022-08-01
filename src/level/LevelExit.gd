@@ -28,6 +28,7 @@ func interact(player):
 			temp_label.show_label_temp(LABEL_TIME, LOCKED_LABEL)
 	
 	if not locked:
+		action_started.emit()
 		# Show a prompt to confirm the player wants to exit
 		exit_prompt.show_prompt(self)
 
