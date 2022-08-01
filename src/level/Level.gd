@@ -8,6 +8,9 @@ var pause_scene = preload("res://src/menus/PauseMenu.tscn")
 
 var dialogue_window = null
 
+# Record players inital position and rotation
+var player_start_pos : Transform3D 
+
 
 func _ready():
 	
@@ -20,13 +23,17 @@ func _ready():
 	dialogue_window = dialogue_window_scene.instantiate()
 	add_child(dialogue_window)
 	
-	# Connect player's noise signal to guards
+	# Connect player's noise signal to guards and player_caught signal to this
 	for guard in $Guards.get_children():
 		if guard is Guard:
 			$Player.emit_noise.connect(guard.on_hear_noise)
+			guard.player_caught.connect(_on_player_caught)
 	
 	# Connect place_noisemaker signal to level
 	$Player.place_noisemaker.connect(place_noisemaker)
+	
+	# Record player's start pos and rot for _on_player_reset func
+	player_start_pos = $Player.get_global_transform()
 
 
 func _process(_delta):
@@ -47,6 +54,15 @@ func place_noisemaker(pos:Vector3, magnitude:int):
 	for guard in $Guards.get_children():
 		if guard is Guard:
 			item.emit_noise.connect(guard.on_hear_noise)
+
+
+# Triggered when a guard catches the player
+func _on_player_caught():
+	get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
+
+
+func _on_player_reset():
+	$Player.set_global_transform(player_start_pos)
 
 
 func resume_from_dialogue():
