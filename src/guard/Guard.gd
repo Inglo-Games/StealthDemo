@@ -2,6 +2,8 @@ extends CharacterBody3D
 class_name Guard
 
 signal player_spotted
+signal player_caught
+signal interacted_item_spotted
 
 enum GUARD_STATE {
 	STATION,
@@ -32,6 +34,12 @@ var target_investigate
 
 
 func _ready():
+	
+	# Set up signals
+	player_spotted = Signal(self, "player_spotted")
+	player_caught = Signal(self, "player_caught")
+	interacted_item_spotted = Signal(self, "item_spotted")
+	
 	# Set up detection areas
 	$SightArea.connect("body_entered", _on_object_spotted)
 	$CatchArea.connect("body_entered", _on_object_caught)
@@ -138,19 +146,21 @@ func _on_object_spotted(body):
 			state = GUARD_STATE.CHASE
 			target_player = body
 			$TempLabel.show_label_temp(3, "!")
+			player_spotted.emit()
 	# Else if interactable object is spotted and it's been interacted with,
 	# become suspicious and move to investigate it
 	elif body is Interactable:
 		if body.is_interacted():
 			_enter_state_investigate(body)
+			interacted_item_spotted.emit()
 			nav_agent.set_target_location(body.global_transform.origin)
 
 
 # Function triggered when any object enters the "CatchArea" Area3D
 func _on_object_caught(body):
 	if body is Player and _check_raycast_hits_target(body) and body.state != body.MOVE_STATE.HIDING:
-		print("Caught player!")
-		get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
+		print("Guard caught the player!")
+		player_caught.emit()
 
 
 # Check if the raycast actually hits the body it's targeting, useful to check 
