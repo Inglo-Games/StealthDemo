@@ -22,9 +22,14 @@ const STATION_DIST_THRESHOLD := 5   # Distance a guard can be from "station" pos
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var ray_params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
+@onready var search_cooldown : Timer = $SearchCooldown
 
 @export var patrol_points := [Vector3.ZERO]
 @export var focus_point := Vector3.ZERO
+
+# Search counter tracks how many directions the guard will look to before
+# returning to PATROL mode
+var search_counter := 0
 
 var patrol_index := 0
 var phys_space : PhysicsDirectSpaceState3D
@@ -190,9 +195,9 @@ func _investigate_item(target):
 		# TODO: Pull player from HidingPlace
 		get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
 	elif target is Interactable:
-		# Reset it then go back to patrolling
+		# Reset it then search the area
 		target.interact(self)
-		state = GUARD_STATE.PATROL
+		_enter_state_search()
 
 
 # Guard enters PATROL or STATION mode and returns if not there already
@@ -225,7 +230,19 @@ func _enter_state_investigate(target):
 # Guard enters SEARCH state, looks around area and then returns to PATROL if
 # nothing is found
 func _enter_state_search():
-	# TODO: Add actual search logic.  Until then just return to PATROL/STATION.
+	
+	state = GUARD_STATE.SEARCH
+	search_counter = 4
+	
+	# Break out if search counter runs out or Guard changes state (e.g., it
+	# sees the player or another suspicious item)
+	while search_counter > 0 and state == GUARD_STATE.SEARCH:
+		search_counter -= 1
+		self.rotation.y += 90
+		search_cooldown.start(2)
+		await search_cooldown.timeout
+	
+	# Go back to patrolling when finished
 	_enter_state_patrol()
 
 

@@ -55,6 +55,9 @@ shape = SubResource("BoxShape3D_3pwhq")
 [node name="AlertCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="SearchCooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="TempLabel" parent="." instance=ExtResource("2_w70b2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40856, 0)
 
