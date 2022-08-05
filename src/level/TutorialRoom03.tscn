@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://d27db52alnahr"]
+[gd_scene load_steps=17 format=3 uid="uid://d27db52alnahr"]
 
+[ext_resource type="Script" path="res://src/level/TutorialRoom03.gd" id="1_2heh6"]
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_dqfkc"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_bfq1h"]
 [ext_resource type="Texture2D" uid="uid://bh5v3vursrfi7" path="res://assets/textures/Bricks059_1K_Color.jpg" id="3_33p03"]
 [ext_resource type="Texture2D" uid="uid://613h0vnrcgl7" path="res://assets/textures/Bricks059_1K_NormalGL.jpg" id="4_lgx32"]
 [ext_resource type="Texture2D" uid="uid://dkjrruiu2uht8" path="res://assets/textures/Bricks059_1K_Roughness.jpg" id="5_dm78o"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="6_etbf1"]
+[ext_resource type="PackedScene" uid="uid://q1m6ulueifrv" path="res://src/items/Desk.tscn" id="7_sg2my"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="7_yausu"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="8_fxuvm"]
 
@@ -31,6 +33,7 @@ normal_texture = ExtResource("4_lgx32")
 uv1_scale = Vector3(6.25, 2, 1)
 
 [node name="TutorialRoom03" type="Node3D"]
+script = ExtResource("1_2heh6")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navmesh = SubResource("NavigationMesh_xkwgb")
@@ -97,6 +100,15 @@ shape = SubResource("ConcavePolygonShape3D_3bek3")
 
 [node name="LevelExitDoor" parent="NavigationRegion3D" instance=ExtResource("6_etbf1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.0278, 0, 0)
+locked = true
+open_time = 0.0
+unlock_time = 0.0
+break_time = -1.0
+key_id = "tut03_exit_key"
+
+[node name="desk" parent="NavigationRegion3D" instance=ExtResource("7_sg2my")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7055, 0, -16.4448)
+keys_contained = ["tut03_exit_key"]
 
 [node name="Guards" type="Node3D" parent="."]
 
