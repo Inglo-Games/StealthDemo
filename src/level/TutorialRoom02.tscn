@@ -30,7 +30,7 @@ albedo_texture = ExtResource("2_i8ybf")
 roughness_texture = ExtResource("4_142qv")
 normal_enabled = true
 normal_texture = ExtResource("3_1tm8k")
-uv1_scale = Vector3(6.25, 2, 1)
+uv1_scale = Vector3(10, 3, 1)
 
 [node name="TutorialRoom02" type="Node3D"]
 script = ExtResource("1_8hyk8")
