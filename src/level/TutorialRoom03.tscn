@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d27db52alnahr"]
+[gd_scene load_steps=18 format=3 uid="uid://d27db52alnahr"]
 
 [ext_resource type="Script" path="res://src/level/TutorialRoom03.gd" id="1_2heh6"]
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_dqfkc"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://q1m6ulueifrv" path="res://src/items/Desk.tscn" id="7_sg2my"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="7_yausu"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="8_fxuvm"]
+[ext_resource type="PackedScene" uid="uid://uscng232c6ft" path="res://src/level/TutorialRoom04.tscn" id="8_t8hn5"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_xkwgb"]
 vertices = PackedVector3Array(14.245, 0.5, 9.745, 14.245, 0.5, 11.745, 19.245, 0.5, 11.745, 19.245, 0.5, 3.995, -0.00500107, 0.5, -19.255, -9.755, 0.5, -19.255, -19.255, 0.5, -9.755, 13.245, 0.5, 9.495, 14.245, 0.5, 9.745, 19.245, 0.5, 3.995, 19.245, 0.5, -3.755, 19.245, 0.5, -11.505, 19.245, 0.5, -19.255, 9.495, 0.5, -19.255, -19.255, 0.5, 9.495, -19.255, 0.5, 19.245, -11.255, 0.5, 19.245, 4.745, 0.5, 19.245, 12.995, 0.5, 19.245, 13.245, 0.5, 9.495, -9.755, 0.5, -19.255, -19.255, 0.5, -19.255, -19.255, 0.5, -9.755, -0.00500107, 0.5, -19.255, -19.255, 0.5, -9.755, -19.255, 0.5, -0.00499916, -3.255, 0.5, 19.245, 13.245, 0.5, 9.495, 19.245, 0.5, -3.755, 19.245, 0.5, -3.755, 19.245, 0.5, -11.505, 9.495, 0.5, -19.255, -0.00500107, 0.5, -19.255, -19.255, 0.5, 9.495, -11.255, 0.5, 19.245, -3.255, 0.5, 19.245, -19.255, 0.5, -0.00499916, -3.255, 0.5, 19.245, 4.745, 0.5, 19.245, 13.245, 0.5, 9.495, 19.245, 0.5, 11.745, 14.245, 0.5, 11.745, 14.245, 0.5, 19.245, 19.245, 0.5, 19.245)
@@ -105,6 +106,7 @@ open_time = 0.0
 unlock_time = 0.0
 break_time = -1.0
 key_id = "tut03_exit_key"
+goto_scene = ExtResource("8_t8hn5")
 
 [node name="desk" parent="NavigationRegion3D" instance=ExtResource("7_sg2my")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7055, 0, -16.4448)
