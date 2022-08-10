@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://uscng232c6ft"]
+[gd_scene load_steps=23 format=3 uid="uid://uscng232c6ft"]
 
 [ext_resource type="Texture2D" uid="uid://bs5q6dj1janba" path="res://assets/textures/Concrete032_1K_Color.jpg" id="1_n0dgu"]
 [ext_resource type="Script" path="res://src/level/TutorialRoom04.gd" id="1_ychyn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="7_fkkkj"]
 [ext_resource type="PackedScene" uid="uid://b3ofo55hjbkv8" path="res://src/items/snare_trap.tscn" id="8_1cvir"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="9_03ha7"]
+[ext_resource type="PackedScene" uid="uid://dtjygabicoy2" path="res://src/level/TutorialRoom05.tscn" id="9_smmlg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pqahu"]
 size = Vector2(4, 20)
@@ -112,6 +113,7 @@ shape = SubResource("ConcavePolygonShape3D_pseam")
 
 [node name="LevelExitDoor" parent="RoomGeometry" instance=ExtResource("7_fkkkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.94679)
+goto_scene = ExtResource("9_smmlg")
 
 [node name="RoomItems" type="Node3D" parent="."]
 

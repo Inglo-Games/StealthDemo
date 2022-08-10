@@ -23,10 +23,10 @@ func _ready():
 func _load_dialogue_01():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_01.json")
 
-func _load_dialogue_02(var1, var2):
+func _load_dialogue_02():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_02.json")
 
-func _load_dialogue_03(var1, var2):
+func _load_dialogue_03():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_03.json")
 	$Player.inventory["boltcutters"] += 1
 
