@@ -8,17 +8,17 @@
 points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
 
 [node name="SnareTrap" type="Node3D"]
-script = ExtResource( "1_vaxjl" )
+script = ExtResource("1_vaxjl")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TrapZone" type="Area3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TrapZone"]
-mesh = SubResource( "PlaneMesh_0wccm" )
+mesh = SubResource("PlaneMesh_0wccm")
 skeleton = NodePath("../../Timer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TrapZone"]
-shape = SubResource( "ConvexPolygonShape3D_0jub2" )
+shape = SubResource("ConvexPolygonShape3D_0jub2")
 
 [connection signal="body_entered" from="TrapZone" to="." method="_on_body_entered"]

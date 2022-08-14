@@ -79,12 +79,12 @@ shape = SubResource("ConcavePolygonShape3D_6xpxb")
 
 [node name="LevelExitDoor" parent="RoomGeometry" instance=ExtResource("3_isv5c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70277, 0, -19.8545)
+goto_scene = ExtResource("4_ldolt")
 locked = true
 open_time = 0.0
 unlock_time = 0.0
 break_time = -1.0
 key_id = "tut01_exit_key"
-goto_scene = ExtResource("4_ldolt")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="RoomGeometry"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.36372, 15.7459, -11.9537)
@@ -124,26 +124,26 @@ sky_mode = 1
 
 [node name="Dresser" parent="RoomItems" instance=ExtResource("6_5ewef")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.981321, 1.4798, -8.22892)
-open_time = 0.0
 items_contained = ["lockpicks"]
 keys_contained = []
+open_time = 0.0
 
 [node name="safe" parent="RoomItems" instance=ExtResource("6_3xgio")]
 transform = Transform3D(0.854468, 0, -0.519504, 0, 1, 0, 0.519504, 0, 0.854468, 6.06785, 1, -4.55724)
+keys_contained = ["tut01_exit_key"]
 locked = true
 open_time = 2.0
 unlock_time = 2.0
 break_time = -1.0
 key_id = "tut01_safe_key"
-keys_contained = ["tut01_exit_key"]
 
 [node name="desk" parent="RoomItems" instance=ExtResource("8_arse7")]
 transform = Transform3D(0.468053, 0, -0.8837, 0, 1, 0, 0.8837, 0, 0.468053, -9.03803, 0.0138999, -6.73064)
+keys_contained = ["tut01_safe_key"]
 locked = true
 open_time = 0.0
 break_time = 2.0
 key_id = "tut01_desk_key"
-keys_contained = ["tut01_safe_key"]
 
 [node name="Player" parent="." instance=ExtResource("6_sxgw4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -9.39813, 1, 11.4712)

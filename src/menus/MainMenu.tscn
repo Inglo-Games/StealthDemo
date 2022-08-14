@@ -5,7 +5,7 @@
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( "1_8fn6f" )
+script = ExtResource("1_8fn6f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -14,10 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-__meta__ = {
-"_edit_layout_mode": 1,
-"_edit_use_custom_anchors": false
-}
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 offset_top = 236.0
