@@ -3,10 +3,12 @@
 [ext_resource type="Script" path="res://src/ui/TempLabel.gd" id="1_neytk"]
 
 [node name="TempLabel" type="Node3D"]
-script = ExtResource( "1_neytk" )
+script = ExtResource("1_neytk")
 
 [node name="Label3D" type="Label3D" parent="."]
 billboard = 1
+no_depth_test = true
+render_priority = 1
 modulate = Color(1, 0.435294, 0, 1)
 text = "Label Text"
 font_size = 92
