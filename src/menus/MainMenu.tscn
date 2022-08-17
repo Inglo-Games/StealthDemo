@@ -16,26 +16,36 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-offset_top = 236.0
+offset_top = 216.0
 offset_right = 296.0
-offset_bottom = 284.0
+offset_bottom = 264.0
 theme_override_font_sizes/font_size = 32
 text = "Sealth Game Demo"
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
-offset_top = 288.0
+offset_top = 268.0
 offset_right = 296.0
-offset_bottom = 324.0
+offset_bottom = 304.0
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 20
-text = "Start Game"
+text = "Load Tutorial"
+
+[node name="DevButton" type="Button" parent="VBoxContainer"]
+offset_top = 308.0
+offset_right = 296.0
+offset_bottom = 344.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+text = "Load Dev Level
+"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-offset_top = 328.0
+offset_top = 348.0
 offset_right = 296.0
-offset_bottom = 364.0
+offset_bottom = 384.0
 theme_override_font_sizes/font_size = 20
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/DevButton" to="." method="_on_dev_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
