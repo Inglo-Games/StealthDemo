@@ -45,6 +45,7 @@ func _open_box(player):
 		set_interacted(true)
 		_give_items(player)
 		$AnimationPlayer.play(anim_name)
+		await $AnimationPlayer.animation_finished
 		action_finished.emit()
 
 
@@ -95,4 +96,5 @@ func _close_box():
 	
 	set_interacted(false)
 	$AnimationPlayer.play_backwards(anim_name)
+	await $AnimationPlayer.animation_finished
 	action_finished.emit()
