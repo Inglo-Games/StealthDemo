@@ -7,7 +7,6 @@ const LOCKED_LABEL = "Locked!"
 @export var goto_scene : PackedScene = preload("res://src/menus/MainMenu.tscn")
 @export var interact_anim : String = ""
 
-@onready var anim_player = $AnimationPlayer
 @onready var exit_prompt = $ExitPromptPanel
 @onready var temp_label = $TempLabel
 

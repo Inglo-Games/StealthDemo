@@ -96,7 +96,7 @@ func _input(event):
 		camera.rotation.y = 0
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	# Determine horizontal movement direction and scale down to max of 1
 	var dir = Vector3.ZERO

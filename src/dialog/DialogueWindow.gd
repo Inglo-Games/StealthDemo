@@ -18,7 +18,7 @@ func _ready():
 	dialogue_ended = Signal(self, "dialogue_ended")
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		load_next_line()
 

@@ -18,10 +18,10 @@ func _init():
 	action_started = Signal(self, "action_started")
 
 # Empty "virtual" function to be overridden by inheritor
-func interact(variant):
+func interact(_variant):
 	pass
 
-func pick_lock(variant):
+func pick_lock(_variant):
 	pass
 
 func is_interacted():
