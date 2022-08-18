@@ -1,8 +1,11 @@
 extends Interactable
 class_name HidingPlace
 
-var is_occupied = false
+# Tracks if this HidingPlace currently has Player inside it
+var is_occupied := false
 
+
+# Override Interactable interact, handles Player interaction
 func interact(player):
 	print("Triggering wardrobe interact function...")
 	if not $AnimationPlayer.is_playing():
@@ -11,6 +14,8 @@ func interact(player):
 		else:
 			_enter_hiding_spot(player)
 
+
+# Handle Player entering the HidingPlace
 func _enter_hiding_spot(player):
 	open_timer.start(open_time * 2.0)
 	emit_signal("action_started", "Hiding...", open_time * 2.0)
@@ -22,6 +27,7 @@ func _enter_hiding_spot(player):
 	is_occupied = true
 	await _close_spot()
 
+# Handle Player leavign the HidingPlace
 func _exit_hiding_spot(player):
 	open_timer.start(open_time * 2.0)
 	emit_signal("action_started", "Exiting...", open_time * 2.0)
@@ -30,12 +36,15 @@ func _exit_hiding_spot(player):
 	is_occupied = false
 	await _close_spot()
 
+
+# Play door-opening animation and set interacted instance var 
 func _open_spot():
 	set_interacted(true)
 	$AnimationPlayer.play("RDoorAction")
 	$AnimationPlayer.play("LDoorAction")
 	await $AnimationPlayer.animation_finished
 
+# Play door closing and set interacted instance var
 func _close_spot():
 	$AnimationPlayer.play_backwards("RDoorAction")
 	$AnimationPlayer.play_backwards("LDoorAction")

@@ -22,17 +22,26 @@ const STATION_DIST_THRESHOLD := 5   # Distance a guard can be from "station" pos
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var ray_params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
+
+# Cooldown timer for when Guard loses sight of player
 @onready var search_cooldown : Timer = $SearchCooldown
 
+# List of points defining Guard's patrol path
 @export var patrol_points := [Vector3.ZERO]
+
+# Point to look to if guard is stationary
 @export var focus_point := Vector3.ZERO
 
 # Search counter tracks how many directions the guard will look to before
 # returning to PATROL mode
 var search_counter := 0
 
+# Track which point in the patrol path the Guard is going to next
 var patrol_index := 0
+
+# Physics Space used for checking raycast collisions
 var phys_space : PhysicsDirectSpaceState3D
+
 var state := GUARD_STATE.PATROL
 var target_player : Player
 var target_investigate
@@ -86,10 +95,6 @@ func _physics_process(_delta):
 		GUARD_STATE.INVESTIGATE:
 			_move_toward_target(BASE_SPEED)
 		
-		GUARD_STATE.SEARCH:
-			# TODO: Implement searching func
-			pass
-		
 		GUARD_STATE.CHASE:
 			# Recalculate path to player using NavigationAgent
 			nav_agent.set_target_location(target_player.global_transform.origin)
@@ -103,6 +108,8 @@ func _physics_process(_delta):
 			print("Guard process error: invalid GUARD_STATE")
 
 
+# Move the Guard towards a target point at given speed, using NavigationAgent
+# function to perform the actual motion
 func _move_toward_target(speed : float):
 	if nav_agent.is_target_reachable():
 		var next_pos : Vector3 = nav_agent.get_next_location()
@@ -179,6 +186,7 @@ func _check_raycast_hits_target(body):
 	return res["collider"] == body
 
 
+# Triggered when Guard receives noise signal (noisemaker, player footsteps, etc)
 func on_hear_noise(noise_origin, noise_magnitude):
 	# Check distance to noise against magnitude
 	if self.position.distance_to(noise_origin) <= noise_magnitude:

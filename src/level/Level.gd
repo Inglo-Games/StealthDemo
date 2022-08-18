@@ -6,6 +6,7 @@ var dialogue_window_scene = preload("res://src/dialog/DialogueWindow.tscn")
 var noisemaker_scene = preload("res://src/items/Noisemaker.tscn")
 var pause_scene = preload("res://src/menus/PauseMenu.tscn")
 
+# Window to show NPC dialogues
 var dialogue_window = null
 
 # Record players inital position and rotation
@@ -37,6 +38,7 @@ func _ready():
 
 
 func _process(_delta):
+	# Handle pause menu
 	if Input.is_action_just_pressed("ui_cancel"):
 		var pause_menu = pause_scene.instantiate()
 		add_child(pause_menu)
@@ -61,9 +63,6 @@ func _on_player_caught():
 	get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
 
 
+# Resets player to starting posision, used in tutorial levels
 func _on_player_reset():
 	$Player.set_global_transform(player_start_pos)
-
-
-func resume_from_dialogue():
-	pass

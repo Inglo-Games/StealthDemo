@@ -4,16 +4,17 @@ class_name LevelExit
 const LABEL_TIME = 3.0
 const LOCKED_LABEL = "Locked!"
 
+# Scene to load when LevelExit is used
 @export var goto_scene : PackedScene = preload("res://src/menus/MainMenu.tscn")
+
+# Name of animation when opening
 @export var interact_anim : String = ""
 
+# Prompt for player to leave area
 @onready var exit_prompt = $ExitPromptPanel
+
+# TempLabel to show state after interactions
 @onready var temp_label = $TempLabel
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
 # Function triggers when the player presses the "interact" button near this item

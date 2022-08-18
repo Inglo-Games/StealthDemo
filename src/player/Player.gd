@@ -9,14 +9,23 @@ enum MOVE_STATE {
 	TRAPPED
 }
 
+# Speed of non-running movement
 const BASE_SPEED := 6
+
+# Speed of running movement
 const DASH_SPEED := 9
-const JUMP_SPEED := 7
+
+# Sensitivity for camera rotation via mouse
 const CAM_SENSITIVITY := 0.005
+
+# Min and max allowed distances for Player's camera
 const CAM_ZOOM_INNER_LIMIT := 5.0
 const CAM_ZOOM_OUTER_LIMIT := 20.0
+
+# Magnitude (distance) for noises coming from Player
 const NOISE_MAGNITUDE := 25
 
+# Node to hold Camera object, used for rotating camera independently of Player
 @onready var camera = $CameraTarget
 
 signal emit_noise
@@ -25,12 +34,17 @@ signal pick_lock
 signal place_noisemaker
 signal break_trap
 
+# Movement state
 var state : int = MOVE_STATE.STILL
+
+# Inventory of player
 var inventory : Dictionary = {
 	"lockpicks": 0,
 	"noisemakers": 0,
 	"boltcutters": 0
 }
+
+# Keys Player is holding onto
 var keyring := []
 
 
@@ -43,6 +57,7 @@ func _init():
 
 
 func _ready():
+	# Initially hide all menus and progress bar
 	_clear_prog_bar()
 	$ItemMenu.visible = false
 
@@ -130,6 +145,8 @@ func _move_camera(move_in : bool):
 	cam.position.z = -cam.position.y
 
 
+# Connect the interact and lock picking signals to interactable if one enter's
+# Player InteractArea
 func _connect_body_interact_signal(body):
 	if body is Interactable:
 		interact.connect(body.interact)
@@ -138,8 +155,8 @@ func _connect_body_interact_signal(body):
 		print("Connected player's interact signal to object")
 
 
+# Disconnect signals and cancel any ongoing actions (unlocking, open, etc)
 func _disconnect_player_interact_signal(body):
-	# Disconnect signals and cancel any ongoing actions (unlocking, open, etc)
 	if body is Interactable:
 		body.cancel_interaction()
 		body.action_started.disconnect(setup_prog_bar)
@@ -156,6 +173,7 @@ func _clear_prog_bar():
 	$ActionProgBarContainer/Label.text = ""
 
 
+# Setup debugging progress bar to show action's time to completion
 func setup_prog_bar(label, time):
 	$ActionProgBarContainer.visible = true
 	$ActionProgBarContainer/Label.text = label
@@ -176,12 +194,14 @@ func give_key_id(id):
 		keyring.push_back(id)
 
 
+# Make player invisible and uncollidable upon entering a HidingPlace
 func hide_player():
 	visible = false
 	state = MOVE_STATE.HIDING
 	$CollisionShape3D.disabled = true
 
 
+# Make player visible/collidable when exiting a HidingPlace
 func unhide_player():
 	visible = true
 	state = MOVE_STATE.STILL

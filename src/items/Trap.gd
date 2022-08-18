@@ -3,18 +3,25 @@ class_name Trap
 
 # Time required to break free from trap without escape tool
 @export var ESCAPE_TIME := 15.0
+
 # Time required to break free with escape tool
 @export var BREAK_TIME := 5.0
+
 # Loudness of sound emitted when player is caught
 @export var SOUND_MAGNITUDE := 20.0
 
+# Whether player has been caught already, prevents getting caught multiple times
+# by the same trap
 var is_triggered := false
+
+# Current occupant of the trap, points to Player when Player is caught
 var occupant = null
 
 @onready var timer = $Timer
 
 signal action_started
 signal emit_noise
+
 
 func _ready():
 	emit_noise = Signal(self, "emit_noise")
