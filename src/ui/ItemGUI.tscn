@@ -1,16 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://4hcqf577upoj"]
+[gd_scene load_steps=5 format=3 uid="uid://4hcqf577upoj"]
 
 [ext_resource type="Script" path="res://src/ui/ItemGUI.gd" id="1_g6c2i"]
+[ext_resource type="Texture2D" uid="uid://ca4n6g6aic1o1" path="res://assets/icons/picks.png" id="2_joixt"]
+[ext_resource type="Texture2D" uid="uid://ba03lnowi6iim" path="res://assets/icons/cutter.png" id="3_f5u3l"]
+[ext_resource type="Texture2D" uid="uid://bav0eon4vepx0" path="res://assets/icons/noise.png" id="4_pux0g"]
 
 [node name="ItemGUI" type="Control"]
-custom_minimum_size = Vector2(175, 160)
+custom_minimum_size = Vector2(96, 200)
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -175.0
-offset_bottom = 160.0
+offset_left = -96.0
+offset_bottom = 200.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 script = ExtResource("1_g6c2i")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -29,67 +33,61 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer"]
-offset_top = 12.0
-offset_right = 175.0
-offset_bottom = 38.0
+offset_right = 96.0
+offset_bottom = 64.0
 size_flags_vertical = 6
-
-[node name="LockpickLabel" type="Label" parent="VBoxContainer/HFlowContainer"]
-offset_right = 75.0
-offset_bottom = 26.0
-text = "Lockpicks"
 
 [node name="LockpickIcon" type="TextureRect" parent="VBoxContainer/HFlowContainer"]
-offset_left = 79.0
-offset_right = 79.0
-offset_bottom = 26.0
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("2_joixt")
+ignore_texture_size = true
 
 [node name="LockpickCount" type="Label" parent="VBoxContainer/HFlowContainer"]
-offset_left = 83.0
-offset_right = 93.0
-offset_bottom = 26.0
-text = "0"
+offset_left = 68.0
+offset_top = 19.0
+offset_right = 86.0
+offset_bottom = 45.0
+text = "x0"
 
 [node name="HFlowContainer2" type="HFlowContainer" parent="VBoxContainer"]
-offset_top = 66.0
-offset_right = 175.0
-offset_bottom = 92.0
+offset_top = 68.0
+offset_right = 96.0
+offset_bottom = 132.0
 size_flags_vertical = 6
-
-[node name="BoltLabel" type="Label" parent="VBoxContainer/HFlowContainer2"]
-offset_right = 86.0
-offset_bottom = 26.0
-text = "Boltcutters"
 
 [node name="BoltIcon" type="TextureRect" parent="VBoxContainer/HFlowContainer2"]
-offset_left = 90.0
-offset_right = 90.0
-offset_bottom = 26.0
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("3_f5u3l")
+ignore_texture_size = true
+flip_h = true
 
 [node name="BoltCount" type="Label" parent="VBoxContainer/HFlowContainer2"]
-offset_left = 94.0
-offset_right = 104.0
-offset_bottom = 26.0
-text = "0"
+offset_left = 68.0
+offset_top = 19.0
+offset_right = 86.0
+offset_bottom = 45.0
+text = "x0"
 
 [node name="HFlowContainer3" type="HFlowContainer" parent="VBoxContainer"]
-offset_top = 121.0
-offset_right = 175.0
-offset_bottom = 147.0
+offset_top = 136.0
+offset_right = 96.0
+offset_bottom = 200.0
 size_flags_vertical = 6
 
-[node name="NoiseLabel" type="Label" parent="VBoxContainer/HFlowContainer3"]
-offset_right = 102.0
-offset_bottom = 26.0
-text = "Noisemakers"
-
 [node name="NoiseIcon" type="TextureRect" parent="VBoxContainer/HFlowContainer3"]
-offset_left = 106.0
-offset_right = 106.0
-offset_bottom = 26.0
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("4_pux0g")
+ignore_texture_size = true
 
 [node name="NoiseCount" type="Label" parent="VBoxContainer/HFlowContainer3"]
-offset_left = 110.0
-offset_right = 120.0
-offset_bottom = 26.0
-text = "0"
+offset_left = 68.0
+offset_top = 19.0
+offset_right = 86.0
+offset_bottom = 45.0
+text = "x0"

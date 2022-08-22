@@ -17,6 +17,6 @@ func _process(_delta):
 
 # Update each count label to show the current amount the player has
 func _update_count_labels():
-	pick_count_label.text = "%d" % player.inventory["lockpicks"]
-	bolt_count_label.text = "%d" % player.inventory["boltcutters"]
-	noise_count_label.text = "%d" % player.inventory["noisemakers"]
+	pick_count_label.text = "x%d" % player.inventory["lockpicks"]
+	bolt_count_label.text = "x%d" % player.inventory["boltcutters"]
+	noise_count_label.text = "x%d" % player.inventory["noisemakers"]
