@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://d27db52alnahr"]
+[gd_scene load_steps=19 format=3 uid="uid://d27db52alnahr"]
 
 [ext_resource type="Script" path="res://src/level/TutorialRoom03.gd" id="1_2heh6"]
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_dqfkc"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_bfq1h"]
-[ext_resource type="Texture2D" uid="uid://bh5v3vursrfi7" path="res://assets/textures/Bricks059_1K_Color.jpg" id="3_33p03"]
-[ext_resource type="Texture2D" uid="uid://613h0vnrcgl7" path="res://assets/textures/Bricks059_1K_NormalGL.jpg" id="4_lgx32"]
-[ext_resource type="Texture2D" uid="uid://dkjrruiu2uht8" path="res://assets/textures/Bricks059_1K_Roughness.jpg" id="5_dm78o"]
+[ext_resource type="Texture2D" uid="uid://bnw4nb66xp5q1" path="res://assets/textures/BrickMaterial_basecolor.png" id="4_fq1kt"]
+[ext_resource type="Texture2D" uid="uid://buv7k5gp6k1da" path="res://assets/textures/BrickMaterial_ambientocclusion.png" id="5_xdf6f"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="6_etbf1"]
+[ext_resource type="Texture2D" uid="uid://b02wd35fgv027" path="res://assets/textures/BrickMaterial_normal.png" id="6_ig2qn"]
+[ext_resource type="Texture2D" uid="uid://q6oac64rhpwy" path="res://assets/textures/BrickMaterial_roughness.png" id="7_av30r"]
 [ext_resource type="PackedScene" uid="uid://q1m6ulueifrv" path="res://src/items/Desk.tscn" id="7_sg2my"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="7_yausu"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="8_fxuvm"]
@@ -27,11 +28,13 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa7l0"]
-albedo_texture = ExtResource("3_33p03")
-roughness_texture = ExtResource("5_dm78o")
+albedo_texture = ExtResource("4_fq1kt")
+roughness_texture = ExtResource("7_av30r")
 normal_enabled = true
-normal_texture = ExtResource("4_lgx32")
-uv1_scale = Vector3(10, 3, 0)
+normal_texture = ExtResource("6_ig2qn")
+ao_enabled = true
+ao_texture = ExtResource("5_xdf6f")
+uv1_scale = Vector3(2, 2, 0)
 
 [node name="TutorialRoom03" type="Node3D"]
 script = ExtResource("1_2heh6")

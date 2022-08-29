@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bis2j4x36rtsl"]
+[gd_scene load_steps=18 format=3 uid="uid://bis2j4x36rtsl"]
 
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_3skeo"]
 [ext_resource type="Script" path="res://src/level/TutorialRoom02.gd" id="1_8hyk8"]
-[ext_resource type="Texture2D" uid="uid://bh5v3vursrfi7" path="res://assets/textures/Bricks059_1K_Color.jpg" id="2_i8ybf"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_qw4cd"]
-[ext_resource type="Texture2D" uid="uid://613h0vnrcgl7" path="res://assets/textures/Bricks059_1K_NormalGL.jpg" id="3_1tm8k"]
-[ext_resource type="Texture2D" uid="uid://dkjrruiu2uht8" path="res://assets/textures/Bricks059_1K_Roughness.jpg" id="4_142qv"]
+[ext_resource type="Texture2D" uid="uid://bnw4nb66xp5q1" path="res://assets/textures/BrickMaterial_basecolor.png" id="4_20dnb"]
+[ext_resource type="Texture2D" uid="uid://buv7k5gp6k1da" path="res://assets/textures/BrickMaterial_ambientocclusion.png" id="5_dcutf"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="6_41p1c"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="6_cpumt"]
+[ext_resource type="Texture2D" uid="uid://b02wd35fgv027" path="res://assets/textures/BrickMaterial_normal.png" id="6_k0j4g"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="7_5ydux"]
 [ext_resource type="PackedScene" uid="uid://d27db52alnahr" path="res://src/level/TutorialRoom03.tscn" id="7_phbhj"]
+[ext_resource type="Texture2D" uid="uid://q6oac64rhpwy" path="res://assets/textures/BrickMaterial_roughness.png" id="7_xsc0f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_lypat"]
 vertices = PackedVector3Array(14.245, 0.5, 9.745, 14.245, 0.5, 11.745, 19.245, 0.5, 11.745, 19.245, 0.5, 3.995, -0.00500107, 0.5, -19.255, -9.755, 0.5, -19.255, -19.255, 0.5, -9.755, 13.245, 0.5, 9.495, 14.245, 0.5, 9.745, 19.245, 0.5, 3.995, 19.245, 0.5, -3.755, 19.245, 0.5, -11.505, 19.245, 0.5, -19.255, 9.495, 0.5, -19.255, -19.255, 0.5, 9.495, -19.255, 0.5, 19.245, -11.255, 0.5, 19.245, 4.745, 0.5, 19.245, 12.995, 0.5, 19.245, 13.245, 0.5, 9.495, -9.755, 0.5, -19.255, -19.255, 0.5, -19.255, -19.255, 0.5, -9.755, -0.00500107, 0.5, -19.255, -19.255, 0.5, -9.755, -19.255, 0.5, -0.00499916, -3.255, 0.5, 19.245, 13.245, 0.5, 9.495, 19.245, 0.5, -3.755, 19.245, 0.5, -3.755, 19.245, 0.5, -11.505, 9.495, 0.5, -19.255, -0.00500107, 0.5, -19.255, -19.255, 0.5, 9.495, -11.255, 0.5, 19.245, -3.255, 0.5, 19.245, -19.255, 0.5, -0.00499916, -3.255, 0.5, 19.245, 4.745, 0.5, 19.245, 13.245, 0.5, 9.495, 19.245, 0.5, 11.745, 14.245, 0.5, 11.745, 14.245, 0.5, 19.245, 19.245, 0.5, 19.245)
@@ -26,11 +27,13 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4v0f"]
-albedo_texture = ExtResource("2_i8ybf")
-roughness_texture = ExtResource("4_142qv")
+albedo_texture = ExtResource("4_20dnb")
+roughness_texture = ExtResource("7_xsc0f")
 normal_enabled = true
-normal_texture = ExtResource("3_1tm8k")
-uv1_scale = Vector3(10, 3, 1)
+normal_texture = ExtResource("6_k0j4g")
+ao_enabled = true
+ao_texture = ExtResource("5_dcutf")
+uv1_scale = Vector3(2, 2, 2)
 
 [node name="TutorialRoom02" type="Node3D"]
 script = ExtResource("1_8hyk8")
