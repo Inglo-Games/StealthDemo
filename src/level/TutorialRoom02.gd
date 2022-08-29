@@ -15,7 +15,15 @@ func _ready():
 	guard.player_caught.disconnect(_on_player_caught)
 	guard.player_caught.connect(_on_player_reset)
 	
-	# Immediately load the first dialogue
+	# Start a very brief timer to allow guardds time to start moving before
+	# pausing the scene for dialogues
+	var temp_timer = Timer.new()
+	add_child(temp_timer)
+	temp_timer.start(0.1)
+	await temp_timer.timeout
+	temp_timer.queue_free()
+	
+	# Start initial dialogue
 	_load_dialogue_01()
 	
 	# Load second and third dialogues after being caught
