@@ -1,7 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmeb1m3k3bg0i"]
+[gd_scene load_steps=20 format=3 uid="uid://bmeb1m3k3bg0i"]
 
+[ext_resource type="Material" uid="uid://bdoqc8k2fp77y" path="res://assets/materials/safe_body_metal.tres" id="2_lgefk"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_pwek7"]
 [ext_resource type="Script" path="res://src/items/ItemBox.gd" id="2_sso34"]
+[ext_resource type="Material" uid="uid://slxpps3adg3m" path="res://assets/materials/handle_metal.tres" id="3_ujie4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_116qa"]
 resource_name = "Material"
@@ -157,6 +159,7 @@ script = ExtResource("2_sso34")
 [node name="Cube" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ct2kt")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_lgefk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_fmkhe")
@@ -165,16 +168,19 @@ shape = SubResource("ConcavePolygonShape3D_fmkhe")
 transform = Transform3D(1.22103, 0, 0, 0, 0.949513, 0, 0, 0, 1, 0.93497, 0.0371617, 1.00551)
 mesh = SubResource("ArrayMesh_addau")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_lgefk")
 
 [node name="Handle" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(0, 0, 0.818982, 1.05317, 0, 0, 0, 1, 0, -1.27449, -0.0391376, 0.160035)
 mesh = SubResource("ArrayMesh_x4mcp")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_ujie4")
 
 [node name="Tumbler" type="MeshInstance3D" parent="Door"]
 transform = Transform3D(0, 0, 0.818982, 1.05317, 0, 0, 0, 1, 0, -0.765723, -0.0391376, 0.171905)
 mesh = SubResource("ArrayMesh_hjmhj")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_ujie4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
