@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b31vo3pvmegc5"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="PackedScene" uid="uid://bij2yu8i17p5" path="res://assets/dev_level.blend" id="1_w20iu"]
+[ext_resource type="PackedScene" path="res://assets/models_src/dev_level.blend" id="1_w20iu"]
 [ext_resource type="Texture2D" uid="uid://b2w1fvw5kbbuw" path="res://assets/textures/devdark.png" id="2_7ljol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggdol"]
