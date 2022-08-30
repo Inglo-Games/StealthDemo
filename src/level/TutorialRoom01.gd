@@ -20,7 +20,7 @@ func _ready():
 	$RoomItems/Dresser.action_finished.connect(_load_dialogue_03)
 	
 	# Load fourth dialogue when player gets safe key from the desk
-	$RoomItems/desk.action_finished.connect(_load_dialogue_04)
+	$RoomItems/Desk.action_finished.connect(_load_dialogue_04)
 	
 	# Load final dialogue when player opens safe
 	$RoomItems/safe.action_finished.connect(_load_dialogue_05)
@@ -43,7 +43,7 @@ func _load_dialogue_03():
 		dialogues_triggered[2] = true
 
 func _load_dialogue_04():
-	if not dialogues_triggered[3] and not $RoomItems/desk.locked:
+	if not dialogues_triggered[3] and not $RoomItems/Desk.locked:
 		dialogue_window.initialize_conversation("res://assets/dialogues/tut01_04.json")
 		dialogues_triggered[3] = true
 

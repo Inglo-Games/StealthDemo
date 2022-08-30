@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://djhtiovhfs2oe"]
+[gd_scene load_steps=15 format=3 uid="uid://pdouxp2v0qgd"]
 
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_d3oej"]
 [ext_resource type="Script" path="res://src/level/TutorialRoom01.gd" id="1_p8swl"]
@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="3_isv5c"]
 [ext_resource type="PackedScene" uid="uid://bis2j4x36rtsl" path="res://src/level/TutorialRoom02.tscn" id="4_ldolt"]
 [ext_resource type="PackedScene" uid="uid://bmeb1m3k3bg0i" path="res://src/items/Safe.tscn" id="6_3xgio"]
-[ext_resource type="PackedScene" uid="uid://dq4lhtdkkcdd" path="res://src/items/Dresser.tscn" id="6_5ewef"]
+[ext_resource type="PackedScene" uid="uid://cr2y66j4j5gmc" path="res://src/items/Dresser.tscn" id="6_5ewef"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="6_sxgw4"]
-[ext_resource type="PackedScene" uid="uid://q1m6ulueifrv" path="res://src/items/Desk.tscn" id="8_arse7"]
+[ext_resource type="PackedScene" uid="uid://cratri44e5cpd" path="res://src/items/Desk.tscn" id="8_7hn14"]
 [ext_resource type="Environment" uid="uid://h1bg78qp0wge" path="res://src/level/tutorial_env.tres" id="10_y8xqp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_p3ni5"]
@@ -122,12 +122,6 @@ sky_mode = 1
 
 [node name="RoomItems" type="Node3D" parent="."]
 
-[node name="Dresser" parent="RoomItems" instance=ExtResource("6_5ewef")]
-transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.981321, 1.4798, -8.22892)
-items_contained = ["lockpicks"]
-keys_contained = []
-open_time = 0.0
-
 [node name="safe" parent="RoomItems" instance=ExtResource("6_3xgio")]
 transform = Transform3D(0.854468, 0, -0.519504, 0, 1, 0, 0.519504, 0, 0.854468, 6.06785, 1, -4.55724)
 keys_contained = ["tut01_exit_key"]
@@ -137,13 +131,19 @@ unlock_time = 2.0
 break_time = -1.0
 key_id = "tut01_safe_key"
 
-[node name="desk" parent="RoomItems" instance=ExtResource("8_arse7")]
-transform = Transform3D(0.468053, 0, -0.8837, 0, 1, 0, 0.8837, 0, 0.468053, -9.03803, 0.0138999, -6.73064)
+[node name="Desk" parent="RoomItems" instance=ExtResource("8_7hn14")]
+transform = Transform3D(0.348736, 0, -0.937221, 0, 1, 0, 0.937221, 0, 0.348736, -9.14336, 0, -4.59251)
 keys_contained = ["tut01_safe_key"]
 locked = true
 open_time = 0.0
 break_time = 2.0
 key_id = "tut01_desk_key"
+
+[node name="Dresser" parent="RoomItems" instance=ExtResource("6_5ewef")]
+transform = Transform3D(-0.00415385, 0, -0.499983, 0, 0.5, 0, 0.499983, 0, -0.00415385, 0, 1.4798, -6.74904)
+items_contained = ["lockpicks"]
+keys_contained = []
+open_time = 0.0
 
 [node name="Player" parent="." instance=ExtResource("6_sxgw4")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -9.39813, 1, 11.4712)
