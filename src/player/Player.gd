@@ -22,8 +22,11 @@ const CAM_SENSITIVITY := 0.005
 const CAM_ZOOM_INNER_LIMIT := 5.0
 const CAM_ZOOM_OUTER_LIMIT := 20.0
 
-# Magnitude (distance) for noises coming from Player
-const NOISE_MAGNITUDE := 25
+# Limit for footstep_timer when it emits a noise and resets
+const STEP_TIMER_LIMIT := 250
+
+# Constant to scale player's velocity to use for "emit_noise" magnitude
+const STEP_MAGNITUDE_SCALE := 0.5
 
 # Node to hold Camera object, used for rotating camera independently of Player
 @onready var camera = $CameraTarget
@@ -36,6 +39,9 @@ signal break_trap
 
 # Movement state
 var state : int = MOVE_STATE.STILL
+
+# "timer" to track how often a footstep noise is emitted, fills based on movement speed
+var footstep_timer := 0
 
 # Inventory of player
 var inventory : Dictionary = {
@@ -77,11 +83,6 @@ func _input(event):
 	if event.is_action_pressed("interact_a"):
 		print("Emitting interact signal...")
 		interact.emit(self)
-	
-	# Handle emitting noise
-	if event.is_action_pressed("make_noise"):
-		print("Emitting noise signal...")
-		emit_noise.emit(position, NOISE_MAGNITUDE)
 		
 	# Handle showing items menu
 	if event.is_action_pressed("use_item"):
@@ -128,9 +129,28 @@ func _physics_process(_delta):
 		dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
 		velocity.x = dir.x
 		velocity.z = dir.z
+		
+		# Add to footstep "timer" based on current velocity and check if ready to emit noise
+		_update_step_timer(dir)
 	
 		# Move character
 		move_and_slide()
+
+
+# Update the footstep "timer" and emit a noise when it reaches a threshold, clear it if not moving
+func _update_step_timer(dir : Vector3):
+	
+	footstep_timer += dir.length()
+	
+	if footstep_timer >= STEP_TIMER_LIMIT:
+		footstep_timer = 0
+		var magnit = dir.length_squared() * STEP_MAGNITUDE_SCALE
+		print("Emitting step noise with magnitude %d" % magnit)
+		emit_noise.emit(position, magnit)
+	
+	# If not moving, reset footstep "timer" to 0
+	if dir.length() <= 0:
+		footstep_timer = 0
 
 
 # Function to shift the camera toward player or away from player
