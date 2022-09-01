@@ -31,8 +31,6 @@ func interact(player):
 # Handle opening the box if it's unlocked
 func _open_box(player):
 	
-	action_started.emit()
-	
 	# First check if box is locked
 	if locked:
 		# If player has the correct key, unlock and remove key from inventory
@@ -95,7 +93,7 @@ func _give_items(player):
 func _wait_for_timer(time, label):
 	open_timer.start(time)
 	temp_label.show_label_temp(time, label)
-	emit_signal("action_started", label, time)
+	action_started.emit(label, time)
 	await open_timer.timeout
 	open_timer.stop()
 
@@ -103,7 +101,7 @@ func _wait_for_timer(time, label):
 # Handle closing the box and setting interacted var to false
 func _close_box():
 	
-	action_started.emit()
+	action_started.emit("Closing...", 3)
 	
 	set_interacted(false)
 	$AnimationPlayer.play_backwards(anim_name)
