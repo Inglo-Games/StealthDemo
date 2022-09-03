@@ -43,16 +43,6 @@ var state : int = MOVE_STATE.STILL
 # "timer" to track how often a footstep noise is emitted, fills based on movement speed
 var footstep_timer := 0
 
-# Inventory of player
-var inventory : Dictionary = {
-	"lockpicks": 0,
-	"noisemakers": 0,
-	"boltcutters": 0
-}
-
-# Keys Player is holding onto
-var keyring := []
-
 
 func _init():
 	emit_noise = Signal(self, "emit_noise")
@@ -199,19 +189,6 @@ func setup_prog_bar(label, time):
 	$ActionProgBarContainer/Label.text = label
 	$ActionProgBarContainer/ProgressBar.value = 0.0
 	$ActionProgBarContainer/ProgressBar.max_value = time
-
-
-# Remove a given key ID from player keyring, if it exists
-func remove_key_id(id):
-	var index = keyring.find(id)
-	if index != -1:
-		keyring.remove_at(index)
-
-
-# Add a given key ID to the player keyring, avoiding duplicates
-func give_key_id(id):
-	if not keyring.has(id):
-		keyring.push_back(id)
 
 
 # Make player invisible and uncollidable upon entering a HidingPlace

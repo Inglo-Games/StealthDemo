@@ -18,10 +18,10 @@ const LOCKED_LABEL = "Locked!"
 
 
 # Function triggers when the player presses the "interact" button near this item
-func interact(player):
+func interact(_variant):
 	# See if player has key if it's locked
 	if locked:
-		if player.keyring.find(key_id) != -1:
+		if PlayerInventory.keyring.find(key_id) != -1:
 			locked = false
 		# else, locked and player does not have a key
 		else:

@@ -30,13 +30,13 @@ func hide_item_menu():
 
 func _update_items():
 	# Disable buttons if player doesn't have any of the respective item
-	$Panel/VBoxContainer/LockpickButton.disabled = (player.inventory["lockpicks"] <= 0)
-	$Panel/VBoxContainer/NoiseButton.disabled = (player.inventory["noisemakers"] <= 0)
-	$Panel/VBoxContainer/CutterButton.disabled = (player.inventory["boltcutters"] <= 0)
+	$Panel/VBoxContainer/LockpickButton.disabled = (PlayerInventory.inventory["lockpick"] <= 0)
+	$Panel/VBoxContainer/NoiseButton.disabled = (PlayerInventory.inventory["noisemaker"] <= 0)
+	$Panel/VBoxContainer/CutterButton.disabled = (PlayerInventory.inventory["boltcutter"] <= 0)
 
 
 func _on_lockpick_button_pressed():
-	player.pick_lock.emit(player)
+	player.pick_lock.emit()
 	hide_item_menu()
 
 
@@ -46,7 +46,7 @@ func _on_noise_button_pressed():
 	var pos : Vector3 = player.global_transform.origin + \
 				DIST_ITEM_PLACEMENT * player.rotation
 	player.place_noisemaker.emit(pos, NOISEMAKER_VOLUME)
-	player.inventory["noisemakers"] -= 1
+	PlayerInventory.remove_item("noisemaker")
 	hide_item_menu()
 
 

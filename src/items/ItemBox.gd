@@ -18,26 +18,26 @@ const label_length := 3.0
 
 
 # Handle Player interaction, open or close object depending on state
-func interact(player):
+func interact(_variant):
 	print("Triggering interact function...")
 	# Don't do anything if previous interaction is still resolving
 	if not $AnimationPlayer.is_playing():
 		if is_interacted():
 			_close_box()
 		else:
-			_open_box(player)
+			_open_box()
 
 
 # Handle opening the box if it's unlocked
-func _open_box(player):
+func _open_box():
 	
 	# First check if box is locked
 	if locked:
 		# If player has the correct key, unlock and remove key from inventory
-		if player.keyring.find(key_id) != -1:
+		if PlayerInventory.keyring.find(key_id) != -1:
 			await _wait_for_timer(unlock_time, "Unlocking...")
 			locked = false
-			player.remove_key_id(key_id)
+			PlayerInventory.remove_key_id(key_id)
 		else:
 			temp_label.show_label_temp(label_length, "Locked!")
 	
@@ -48,35 +48,35 @@ func _open_box(player):
 		
 		set_interacted(true)
 		# Give player the box's contents and play opening animation
-		_give_items(player)
+		_give_items()
 		$AnimationPlayer.play(anim_name)
 		await $AnimationPlayer.animation_finished
 		action_finished.emit()
 
 
 # Pick object's lock if possible
-func pick_lock(player):
+func pick_lock():
 	# Only allow picking if break_time is positive
 	if break_time >= 0:
 		await _wait_for_timer(break_time, "Picking lock...")
 		locked = false
-		_open_box(player)
-		player.inventory["lockpicks"] -= 1
+		_open_box()
+		PlayerInventory.remove_item("lockpick")
 	else:
 		temp_label.show_label_temp(label_length, "Can't pick!")
 
 
 # Empty the container and add contents to Player's inventory
-func _give_items(player):
+func _give_items():
 	
 	# First handle the consumable items
 	for item in items_contained:
-		if player.inventory.has(item):
-			player.inventory[item] += 1
+		if PlayerInventory.inventory.has(item):
+			PlayerInventory.give_items(item, 1)
 		
 	# Then handle keys/codes
 	for key in keys_contained:
-		player.give_key_id(key)
+		PlayerInventory.give_key_id(key)
 		
 	# Alert player that they have received something, key takes precendence
 	if keys_contained.size() != 0:

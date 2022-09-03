@@ -29,7 +29,7 @@ func interact(_variant):
 	pass
 
 # Unlock object without a key, usually takes longer
-func pick_lock(_variant):
+func pick_lock():
 	pass
 
 

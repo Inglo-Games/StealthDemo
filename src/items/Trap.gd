@@ -66,7 +66,7 @@ func _on_player_breaking_trap(player):
 		player.get_node("AnimationPlayer").play("SnareRelease")
 		await player.get_node("AnimationPlayer").animation_finished
 		player.state = Player.MOVE_STATE.STILL
-		player.inventory["boltcutters"] -= 1
+		PlayerInventory.remove_item("boltcutter")
 		self.queue_free()
 
 

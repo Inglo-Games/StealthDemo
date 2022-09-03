@@ -85,6 +85,10 @@ run/main_scene="res://src/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 config/icon="res://icon.png"
 
+[autoload]
+
+PlayerInventory="*res://src/player/PlayerInventory.gd"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/bwhai/GitHub/StealthDemo/testvid.avi"
