@@ -3,5 +3,10 @@
 		"name": "Emma",
 		"text": "Nice job, you found the combination for the safe!  Try opening it now.",
 		"pic": "res://assets/portraits/emma_norm.png"
-	}
+	},
+	{
+		"name": "Emma",
+		"text": "By the way, you can see what keys and combos you've found in the [b]Inventory[/b] (the I key).",
+		"pic": "res://assets/portraits/emma_norm.png"
+	},
 ]}

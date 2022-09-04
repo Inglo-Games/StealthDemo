@@ -21,7 +21,7 @@
 	},
 	{
 		"name": "Emma",
-		"text": "[b]Walk[/b] around the room (the WASD keys) and [b]interact with an item[/b] (the F key) to search through things.",
+		"text": "[b]Walk[/b] around the room (the WASD keys), [b]look[/b] around (the mouse), and [b]interact with an item[/b] (the F key) to search through things.",
 		"pic": "res://assets/portraits/emma_norm.png"
 	},
 ]}
