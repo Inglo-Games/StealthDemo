@@ -109,11 +109,11 @@ locked = true
 open_time = 0.0
 unlock_time = 0.0
 break_time = -1.0
-key_id = "tut03_exit_key"
+key_id = "Tutorial Exit 3 Key"
 
 [node name="Desk" parent="NavigationRegion3D" instance=ExtResource("10_jvfeg")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.7373, 0, -16.3414)
-keys_contained = ["tut03_exit_key"]
+keys_contained = ["Tutorial Exit 3 Key"]
 
 [node name="Guards" type="Node3D" parent="."]
 

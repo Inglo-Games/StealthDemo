@@ -23,6 +23,7 @@ func interact(_variant):
 	if locked:
 		if PlayerInventory.keyring.find(key_id) != -1:
 			locked = false
+			PlayerInventory.remove_key_id(key_id)
 		# else, locked and player does not have a key
 		else:
 			temp_label.show_label_temp(LABEL_TIME, LOCKED_LABEL)

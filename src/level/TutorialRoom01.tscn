@@ -84,7 +84,7 @@ locked = true
 open_time = 0.0
 unlock_time = 0.0
 break_time = -1.0
-key_id = "tut01_exit_key"
+key_id = "Tutorial Exit 1 Key"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="RoomGeometry"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.36372, 15.7459, -11.9537)
@@ -124,20 +124,20 @@ sky_mode = 1
 
 [node name="safe" parent="RoomItems" instance=ExtResource("6_3xgio")]
 transform = Transform3D(0.854468, 0, -0.519504, 0, 1, 0, 0.519504, 0, 0.854468, 6.06785, 1, -4.55724)
-keys_contained = ["tut01_exit_key"]
+keys_contained = ["Tutorial Exit 1 Key"]
 locked = true
 open_time = 2.0
 unlock_time = 2.0
 break_time = -1.0
-key_id = "tut01_safe_key"
+key_id = "Tutorial Safe Combo"
 
 [node name="Desk" parent="RoomItems" instance=ExtResource("8_7hn14")]
 transform = Transform3D(0.348736, 0, -0.937221, 0, 1, 0, 0.937221, 0, 0.348736, -9.14336, 0, -4.59251)
-keys_contained = ["tut01_safe_key"]
+keys_contained = ["Tutorial Safe Combo"]
 locked = true
 open_time = 0.0
 break_time = 2.0
-key_id = "tut01_desk_key"
+key_id = "Tutorial Desk Key"
 
 [node name="Dresser" parent="RoomItems" instance=ExtResource("6_5ewef")]
 transform = Transform3D(-0.00415385, 0, -0.499983, 0, 0.5, 0, 0.499983, 0, -0.00415385, 0, 1.4798, -6.74904)
