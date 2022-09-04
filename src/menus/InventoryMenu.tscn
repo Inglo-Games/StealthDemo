@@ -1,0 +1,123 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkoe217u1ocks"]
+
+[ext_resource type="Script" path="res://src/menus/InventoryMenu.gd" id="1_gxdhv"]
+
+[node name="InventoryMenu" type="Control"]
+process_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_gxdhv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0.211765, 0.211765, 0.862745)
+metadata/_edit_layout_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 300)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_layout_mode = 1
+
+[node name="MenuTitle" type="Label" parent="Panel"]
+anchor_right = 1.0
+offset_bottom = 53.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "Inventory"
+horizontal_alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+metadata/_edit_layout_mode = 1
+
+[node name="LVBox" type="VBoxContainer" parent="Panel/GridContainer"]
+offset_right = 248.0
+offset_bottom = 119.0
+size_flags_horizontal = 3
+
+[node name="KeysHeader" type="Label" parent="Panel/GridContainer/LVBox"]
+offset_right = 248.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 18
+text = "keys collected"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="KeyNoneLabel" type="Label" parent="Panel/GridContainer/LVBox"]
+offset_top = 33.0
+offset_right = 248.0
+offset_bottom = 59.0
+text = "[None]"
+horizontal_alignment = 1
+
+[node name="KeysBox" type="VBoxContainer" parent="Panel/GridContainer/LVBox"]
+offset_top = 63.0
+offset_right = 248.0
+offset_bottom = 119.0
+size_flags_vertical = 3
+
+[node name="RVBox" type="VBoxContainer" parent="Panel/GridContainer"]
+offset_left = 252.0
+offset_right = 500.0
+offset_bottom = 119.0
+size_flags_horizontal = 3
+
+[node name="ItemsHeader" type="Label" parent="Panel/GridContainer/RVBox"]
+offset_right = 248.0
+offset_bottom = 29.0
+theme_override_font_sizes/font_size = 18
+text = "Items
+"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="PickLabel" type="Label" parent="Panel/GridContainer/RVBox"]
+offset_top = 33.0
+offset_right = 248.0
+offset_bottom = 59.0
+text = "Lockpicks: 0"
+horizontal_alignment = 1
+
+[node name="CutterLabel" type="Label" parent="Panel/GridContainer/RVBox"]
+offset_top = 63.0
+offset_right = 248.0
+offset_bottom = 89.0
+text = "Boltcutters: 0"
+horizontal_alignment = 1
+
+[node name="NoiseLabel" type="Label" parent="Panel/GridContainer/RVBox"]
+offset_top = 93.0
+offset_right = 248.0
+offset_bottom = 119.0
+text = "Noisemakers: 0
+"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="Button" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -18.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+metadata/_edit_layout_mode = 1
+
+[connection signal="pressed" from="Panel/ExitButton" to="." method="hide_menu"]

@@ -3,6 +3,7 @@ class_name Level
 
 # Preload widely used scenes
 var dialogue_window_scene = preload("res://src/dialog/DialogueWindow.tscn")
+var inventory_scene = preload("res://src/menus/InventoryMenu.tscn")
 var noisemaker_scene = preload("res://src/items/Noisemaker.tscn")
 var pause_scene = preload("res://src/menus/PauseMenu.tscn")
 
@@ -37,11 +38,17 @@ func _ready():
 	player_start_pos = $Player.get_global_transform()
 
 
-func _process(_delta):
+func _input(event):
 	# Handle pause menu
-	if Input.is_action_just_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel"):
 		var pause_menu = pause_scene.instantiate()
 		add_child(pause_menu)
+		get_tree().paused = true
+	
+	# Handle inventory menu
+	elif event.is_action_pressed("open_inventory"):
+		var inv_menu = inventory_scene.instantiate()
+		add_child(inv_menu)
 		get_tree().paused = true
 
 
