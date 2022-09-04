@@ -26,7 +26,7 @@ const CAM_ZOOM_OUTER_LIMIT := 20.0
 const STEP_TIMER_LIMIT := 250
 
 # Constant to scale player's velocity to use for "emit_noise" magnitude
-const STEP_MAGNITUDE_SCALE := 0.5
+const STEP_MAGNITUDE_SCALE := 0.2
 
 # Node to hold Camera object, used for rotating camera independently of Player
 @onready var camera = $CameraTarget
