@@ -15,7 +15,7 @@ func _ready():
 	temp_timer.queue_free()
 	
 	# Immediately load first dialogue and give player a Noisemaker item
-	$Player.inventory["noisemakers"] += 1
+	PlayerInventory.give_items("noisemaker", 1)
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut05_01.json")
 	
 	# Load final when player reaches exit

@@ -28,7 +28,7 @@ func _load_dialogue_02():
 
 func _load_dialogue_03():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_03.json")
-	$Player.inventory["boltcutters"] += 1
+	PlayerInventory.give_items("boltcutter", 1)
 
 func _load_dialogue_04():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_04.json")
