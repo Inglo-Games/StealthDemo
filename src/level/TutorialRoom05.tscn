@@ -158,6 +158,7 @@ layers = 3
 mesh = SubResource("BoxMesh_2csw7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh04"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh04/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y4pdq")
@@ -167,6 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 4, -3.09342)
 mesh = SubResource("BoxMesh_dpdxb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh05"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh05/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pnbor")
@@ -176,6 +178,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 14.85)
 mesh = SubResource("BoxMesh_ge8yh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh06"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh06/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_q8hks")
@@ -185,6 +188,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01329, 4, -31.0983)
 mesh = SubResource("BoxMesh_hqpa7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh07"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh07/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fnqgs")
@@ -194,6 +198,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5279, 4, 21.6138)
 mesh = SubResource("BoxMesh_5cgkd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh08"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh08/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_tift2")
@@ -203,6 +208,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5279, 4, -5.24387)
 mesh = SubResource("BoxMesh_33g5s")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh09"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh09/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_66iym")
@@ -212,6 +218,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 34.994)
 mesh = SubResource("BoxMesh_tumpb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh10"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh10/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qf2aj")
@@ -221,6 +228,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 20.833)
 mesh = SubResource("BoxMesh_tsoww")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh11"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh11/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vh7jy")
@@ -230,6 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -3.179)
 mesh = SubResource("BoxMesh_grryl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh12"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh12/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0bnem")
@@ -239,6 +248,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, -26.6254)
 mesh = SubResource("BoxMesh_bsqxh")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/WallMesh13"]
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/WallMesh13/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_bc4v8")
@@ -247,12 +257,15 @@ shape = SubResource("ConcavePolygonShape3D_bc4v8")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.0278, 0, -35.4893)
 locked = true
 open_time = 0.0
-unlock_time = 0.0
 break_time = -1.0
-key_id = "tut03_exit_key"
+key_id = "Final Tutorial Exit Key"
 
 [node name="Desk" parent="NavigationRegion3D" instance=ExtResource("5_04ko0")]
 transform = Transform3D(-1, 0, -0.000314148, 0, 1, 0, 0.000314148, 0, -1, -10.4526, 0.0138999, -17.795)
+keys_contained = ["Final Tutorial Exit Key"]
+locked = true
+break_time = 8.0
+key_id = "Final Tutorial Desk Key"
 
 [node name="wardrobe" parent="NavigationRegion3D" instance=ExtResource("6_qfje7")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.9232, 2.41805, 20.3988)
@@ -262,6 +275,8 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.5219, 2.41805, 20.3988)
 
 [node name="Dresser" parent="NavigationRegion3D" instance=ExtResource("7_d5dyb")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -6.7608, 1.4798, 39.3052)
+items_contained = ["noisemaker", "noisemaker", "noisemaker"]
+keys_contained = ["Final Tutorial Desk Key"]
 
 [node name="Crate" parent="NavigationRegion3D" instance=ExtResource("8_3uwtu")]
 transform = Transform3D(0.977109, 0, -0.21274, 0, 1, 0, 0.21274, 0, 0.977109, -13.4262, 1, 0.952939)
