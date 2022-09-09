@@ -36,6 +36,9 @@ const STATION_DIST_THRESHOLD := 5   # Distance a guard can be from "station" pos
 # returning to PATROL mode
 var search_counter := 0
 
+# Record starting position for level resets
+@onready var start_pos : Transform3D = get_global_transform()
+
 # Track which point in the patrol path the Guard is going to next
 var patrol_index := 0
 
@@ -262,3 +265,17 @@ func _on_AlertCooldown_timeout():
 	if state == GUARD_STATE.ALERT:
 		print("Entering patrol state...")
 		state = GUARD_STATE.PATROL
+
+
+# Reset position and state to initial conditions
+func reset_guard():
+	
+	# Reset instance params
+	patrol_index = 0
+	search_counter = 0
+	target_player = null
+	target_investigate = null
+	
+	# Reset position, rotation, and state
+	set_global_transform(start_pos)
+	_enter_state_patrol()

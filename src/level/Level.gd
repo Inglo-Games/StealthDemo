@@ -73,3 +73,5 @@ func _on_player_caught():
 # Resets player to starting posision, used in tutorial levels
 func _on_player_reset():
 	$Player.set_global_transform(player_start_pos)
+	for guard in $Guards.get_children():
+		guard.reset_guard()
