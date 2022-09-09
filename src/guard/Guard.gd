@@ -232,7 +232,10 @@ func _enter_state_investigate(target):
 	$TempLabel.show_label_temp(3, "?")
 	state = GUARD_STATE.INVESTIGATE
 	target_investigate = target
-	look_at(target)
+	if target is Vector3:
+		look_at(target)
+	else:
+		look_at(target.global_transform.origin)
 
 
 # Guard enters SEARCH state, looks around area and then returns to PATROL if
