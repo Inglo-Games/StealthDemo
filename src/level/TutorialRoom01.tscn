@@ -105,33 +105,18 @@ unlock_time = 0.0
 break_time = -1.0
 key_id = "Tutorial Exit 1 Key"
 
-[node name="SpotLight3D" type="SpotLight3D" parent="RoomGeometry"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 6.36372, 15.7459, -11.9537)
-light_color = Color(0.968627, 1, 0.894118, 1)
-light_energy = 0.549
+[node name="OmniLight3D" type="OmniLight3D" parent="RoomGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 13, 0)
+light_energy = 11.591
 shadow_enabled = true
-spot_range = 36.5736
-spot_attenuation = 0.0412346
-spot_angle = 47.4063
-spot_angle_attenuation = 0.0544094
+omni_range = 40.0
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="RoomGeometry"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -7.04119, 15.7459, -1.16347)
-light_color = Color(0.968627, 1, 0.894118, 1)
+[node name="OmniLight3D2" type="OmniLight3D" parent="RoomGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 13, 0)
+light_energy = 11.591
+light_indirect_energy = 0.0
 shadow_enabled = true
-spot_range = 36.5736
-spot_attenuation = 0.0412346
-spot_angle = 47.4063
-spot_angle_attenuation = 0.0544094
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="RoomGeometry"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.1466, 15.7459, 7.9163)
-light_color = Color(0.968627, 1, 0.894118, 1)
-shadow_enabled = true
-spot_range = 36.5736
-spot_attenuation = 0.0412346
-spot_angle = 47.4063
-spot_angle_attenuation = 0.0544094
+omni_range = 40.0
 
 [node name="RoomItems" type="Node3D" parent="."]
 

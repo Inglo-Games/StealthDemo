@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://uscng232c6ft"]
+[gd_scene load_steps=25 format=3 uid="uid://uscng232c6ft"]
 
 [ext_resource type="Texture2D" uid="uid://bs5q6dj1janba" path="res://assets/textures/Concrete032_1K_Color.jpg" id="1_n0dgu"]
 [ext_resource type="Script" path="res://src/level/TutorialRoom04.gd" id="1_ychyn"]
@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b3ofo55hjbkv8" path="res://src/items/snare_trap.tscn" id="8_1cvir"]
 [ext_resource type="Texture2D" uid="uid://q6oac64rhpwy" path="res://assets/textures/BrickMaterial_roughness.png" id="8_vt0d3"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="9_03ha7"]
-[ext_resource type="PackedScene" uid="uid://dtjygabicoy2" path="res://src/level/TutorialRoom05.tscn" id="9_smmlg"]
+[ext_resource type="PackedScene" uid="uid://clof7yqajt3ui" path="res://src/level/TutorialRoom05.tscn" id="9_smmlg"]
+[ext_resource type="Environment" uid="uid://h1bg78qp0wge" path="res://src/level/tutorial_env.tres" id="14_6ro8v"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pqahu"]
 size = Vector2(4, 20)
@@ -117,6 +118,12 @@ shape = SubResource("ConcavePolygonShape3D_j2lui")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.94679)
 goto_scene = ExtResource("9_smmlg")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="RoomGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.246, 0)
+light_energy = 3.253
+shadow_enabled = true
+omni_range = 40.0
+
 [node name="RoomItems" type="Node3D" parent="."]
 
 [node name="SnareTrap01" parent="RoomItems" instance=ExtResource("8_1cvir")]
@@ -129,3 +136,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0354891, -4.06291)
 
 [node name="Player" parent="." instance=ExtResource("9_03ha7")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, 7.11958)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("14_6ro8v")
