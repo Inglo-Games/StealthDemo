@@ -1,14 +1,14 @@
-[gd_scene load_steps=38 format=3 uid="uid://dtjygabicoy2"]
+[gd_scene load_steps=38 format=3 uid="uid://clof7yqajt3ui"]
 
 [ext_resource type="Material" uid="uid://lk4t7pr3spik" path="res://src/level/concrete_floor.material" id="1_dqfkc"]
 [ext_resource type="Script" path="res://src/level/TutorialRoom05.gd" id="1_u7rxx"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_bfq1h"]
-[ext_resource type="PackedScene" uid="uid://cratri44e5cpd" path="res://src/items/Desk.tscn" id="5_04ko0"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="6_etbf1"]
 [ext_resource type="PackedScene" uid="uid://blnbydlheje1n" path="res://src/items/Wardrobe.tscn" id="6_qfje7"]
 [ext_resource type="PackedScene" uid="uid://cr2y66j4j5gmc" path="res://src/items/Dresser.tscn" id="7_d5dyb"]
 [ext_resource type="PackedScene" uid="uid://da2cq7xi0y6g1" path="res://src/guard/Guard.tscn" id="7_yausu"]
 [ext_resource type="PackedScene" uid="uid://mmfutgnfpi68" path="res://src/items/Crate.tscn" id="8_3uwtu"]
+[ext_resource type="PackedScene" uid="uid://dl2bru2x6eej6" path="res://src/items/Desk.tscn" id="8_fuwm3"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="8_fxuvm"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_xkwgb"]
@@ -260,13 +260,6 @@ open_time = 0.0
 break_time = -1.0
 key_id = "Final Tutorial Exit Key"
 
-[node name="Desk" parent="NavigationRegion3D" instance=ExtResource("5_04ko0")]
-transform = Transform3D(-1, 0, -0.000314148, 0, 1, 0, 0.000314148, 0, -1, -10.4526, 0.0138999, -17.795)
-keys_contained = ["Final Tutorial Exit Key"]
-locked = true
-break_time = 8.0
-key_id = "Final Tutorial Desk Key"
-
 [node name="wardrobe" parent="NavigationRegion3D" instance=ExtResource("6_qfje7")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.9232, 2.41805, 20.3988)
 
@@ -304,6 +297,13 @@ transform = Transform3D(0.567686, 0, -0.823246, 0, 1, 0, 0.823246, 0, 0.567686, 
 
 [node name="Crate9" parent="NavigationRegion3D" instance=ExtResource("8_3uwtu")]
 transform = Transform3D(0.856024, 0, -0.516937, 0, 1, 0, 0.516937, 0, 0.856024, -5.96624, 1, 6.10409)
+
+[node name="Desk" parent="NavigationRegion3D" instance=ExtResource("8_fuwm3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.4896, 0, -18.0172)
+keys_contained = ["Final Tutorial Exit Key"]
+locked = true
+break_time = 8.0
+key_id = "Final Tutorial Desk Key"
 
 [node name="Guards" type="Node3D" parent="."]
 
