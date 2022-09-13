@@ -40,13 +40,11 @@ func _exit_hiding_spot(player):
 # Play door-opening animation and set interacted instance var 
 func _open_spot():
 	set_interacted(true)
-	$AnimationPlayer.play("RDoorAction")
-	$AnimationPlayer.play("LDoorAction")
+	$AnimationPlayer.play("OpenAction")
 	await $AnimationPlayer.animation_finished
 
 # Play door closing and set interacted instance var
 func _close_spot():
-	$AnimationPlayer.play_backwards("RDoorAction")
-	$AnimationPlayer.play_backwards("LDoorAction")
+	$AnimationPlayer.play_backwards("OpenAction")
 	await $AnimationPlayer.animation_finished
 	set_interacted(false)
