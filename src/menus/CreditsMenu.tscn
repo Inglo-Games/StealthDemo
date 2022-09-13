@@ -19,25 +19,27 @@ alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-offset_top = 217.0
 offset_right = 1152.0
-offset_bottom = 299.0
+offset_bottom = 82.0
 text = "Assets:"
 label_settings = SubResource("LabelSettings_8kio4")
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
-offset_top = 303.0
+offset_top = 86.0
 offset_right = 1152.0
-offset_bottom = 431.0
+offset_bottom = 648.0
+size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer"]
-offset_right = 1144.0
-offset_bottom = 130.0
+offset_right = 1152.0
+offset_bottom = 562.0
 size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "Pliers icons created by Umesh Vg -- https://www.flaticon.com/free-icons/pliers
+size_flags_vertical = 3
+text = "Fox model and animations by Quaternius - https://quaternius.com/
+
+Pliers icons created by Umesh Vg -- https://www.flaticon.com/free-icons/pliers
 
 Noise pollution icons created by Freepik -- https://www.flaticon.com/free-icons/noise-pollution
 
