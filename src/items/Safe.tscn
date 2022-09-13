@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmeb1m3k3bg0i"]
+[gd_scene load_steps=8 format=3 uid="uid://bmeb1m3k3bg0i"]
 
 [ext_resource type="PackedScene" uid="uid://b3gb86yloaytd" path="res://assets/models/safe.glb" id="1_55tqs"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_pwek7"]
@@ -7,11 +7,88 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b01nr"]
 points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
 
+[sub_resource type="Animation" id="Animation_oejnp"]
+resource_name = "OpenAction"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 2.76111, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Door:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.9)
+}
+
+[sub_resource type="Animation" id="Animation_y5hto"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door:rotation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Door:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mo334"]
+_data = {
+"OpenAction": SubResource("Animation_oejnp"),
+"RESET": SubResource("Animation_y5hto")
+}
+
 [node name="Safe" instance=ExtResource("1_55tqs")]
 script = ExtResource("2_sso34")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_b01nr")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_mo334")
+}
 
 [node name="TempLabel" parent="." index="4" instance=ExtResource("2_pwek7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.61231, 0)

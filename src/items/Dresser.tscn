@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr2y66j4j5gmc"]
+[gd_scene load_steps=8 format=3 uid="uid://cr2y66j4j5gmc"]
 
 [ext_resource type="PackedScene" uid="uid://b2jkghtg3p7p8" path="res://assets/models/dresser.glb" id="1_sydk1"]
 [ext_resource type="Script" path="res://src/items/ItemBox.gd" id="2_1sm1r"]
@@ -7,6 +7,66 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m5fgs"]
 points = PackedVector3Array(-1, -2.87062, -2.37493, 0.988052, 2.9128, 2.41447, 0.984727, 2.90313, -2.4406, 0.988052, -2.9596, 2.41447, -1, 2.82382, 2.34079, 0.984727, -2.94993, -2.4406, -1, -2.87062, 2.34079, -1, 2.82382, -2.37493)
 
+[sub_resource type="Animation" id="Animation_toulm"]
+resource_name = "OpenAction"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dresser/Drawer002:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.87783, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dresser/Drawer004:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1.36355, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6bc5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dresser/Drawer002:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dresser/Drawer004:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lc2gi"]
+_data = {
+"OpenAction": SubResource("Animation_toulm"),
+"RESET": SubResource("Animation_6bc5y")
+}
+
 [node name="Dresser" instance=ExtResource("1_sydk1")]
 script = ExtResource("2_1sm1r")
 
@@ -14,7 +74,9 @@ script = ExtResource("2_1sm1r")
 shape = SubResource("ConvexPolygonShape3D_m5fgs")
 
 [node name="AnimationPlayer" parent="." index="2"]
-libraries = {}
+libraries = {
+"": SubResource("AnimationLibrary_lc2gi")
+}
 
 [node name="TempLabel" parent="." index="3" instance=ExtResource("2_i8nmw")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5.45993, 0)
