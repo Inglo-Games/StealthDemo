@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cby5t2uokjceu"]
+[gd_scene load_steps=4 format=3 uid="uid://cby5t2uokjceu"]
 
+[ext_resource type="Theme" uid="uid://mulhwki2w787" path="res://assets/ui_themes/main_menu.tres" id="1_5xryb"]
 [ext_resource type="Script" path="res://src/menus/CreditsMenu.gd" id="1_hyu2l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8kio4"]
-font_size = 58
+font_size = 72
 
 [node name="AttributionMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource("1_5xryb")
 script = ExtResource("1_hyu2l")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 72.0
+offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -20,24 +24,26 @@ metadata/_edit_layout_mode = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 offset_right = 1152.0
-offset_bottom = 82.0
+offset_bottom = 83.0
 text = "Assets:"
 label_settings = SubResource("LabelSettings_8kio4")
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
-offset_top = 86.0
+offset_top = 95.0
 offset_right = 1152.0
 offset_bottom = 648.0
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollContainer"]
 offset_right = 1152.0
-offset_bottom = 562.0
+offset_bottom = 553.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Fox model and animations by Quaternius - https://quaternius.com/
+
+Camping Holiday font by Hanoded - https://www.hanodedfonts.com/
 
 Pliers icons created by Umesh Vg -- https://www.flaticon.com/free-icons/pliers
 
@@ -47,8 +53,9 @@ Lockpick icons created by Freepik -- https://www.flaticon.com/free-icons/lockpic
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(120, 0)
 offset_right = 74.0
 offset_bottom = 31.0
-text = "<-- BACK"
+text = "BACK"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
