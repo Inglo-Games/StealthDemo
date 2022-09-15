@@ -186,7 +186,8 @@ func _check_raycast_hits_target(body):
 	ray_params.to = body.global_transform.origin
 	# Intersect the ray and check if the collision object matches the target
 	var res = phys_space.intersect_ray(ray_params)
-	return res["collider"] == body
+	if res.size() != 0:
+		return res["collider"] == body
 
 
 # Triggered when Guard receives noise signal (noisemaker, player footsteps, etc)
