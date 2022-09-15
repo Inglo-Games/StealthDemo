@@ -1,7 +1,7 @@
 extends Level
 
 # Keep track of which dialogues have been triggered
-var dialogues_triggered := [ false, false, false ]
+var dialogues_triggered := [ false, false ]
 
 @onready var guard = $Guards/Guard
 
@@ -45,9 +45,8 @@ func _load_dialogue_02():
 		dialogues_triggered[1] = true
 
 func _load_dialogue_03():
-	if not dialogues_triggered[2] and dialogues_triggered[1]:
+	if dialogues_triggered[1]:
 		dialogue_window.initialize_conversation("res://assets/dialogues/tut02_03.json")
-		dialogues_triggered[2] = true
 
 func _load_dialogue_04():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut02_04.json")
