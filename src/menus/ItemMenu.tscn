@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://0tesuxwlb2gv"]
+[gd_scene load_steps=3 format=3 uid="uid://0tesuxwlb2gv"]
 
+[ext_resource type="Theme" uid="uid://dwjxtwdsk2ggs" path="res://assets/ui_themes/ingame_menu.tres" id="1_dt7gs"]
 [ext_resource type="Script" path="res://src/menus/ItemMenu.gd" id="1_lyq5o"]
 
 [node name="ItemMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( "1_lyq5o" )
+theme = ExtResource("1_dt7gs")
+script = ExtResource("1_lyq5o")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -16,10 +18,15 @@ color = Color(0, 0, 0, 0.411765)
 metadata/_edit_layout_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(100, 200)
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 94.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_layout_mode = 1
@@ -30,20 +37,20 @@ offset_bottom = 101.0
 alignment = 1
 
 [node name="LockpickButton" type="Button" parent="Panel/VBoxContainer"]
-offset_right = 102.0
-offset_bottom = 31.0
+offset_right = 142.0
+offset_bottom = 51.0
 text = "Lockpick"
 
 [node name="NoiseButton" type="Button" parent="Panel/VBoxContainer"]
-offset_top = 35.0
-offset_right = 102.0
-offset_bottom = 66.0
+offset_top = 63.0
+offset_right = 142.0
+offset_bottom = 114.0
 text = "Noisemaker"
 
 [node name="CutterButton" type="Button" parent="Panel/VBoxContainer"]
-offset_top = 70.0
-offset_right = 102.0
-offset_bottom = 101.0
+offset_top = 126.0
+offset_right = 142.0
+offset_bottom = 177.0
 text = "Boltcutter"
 
 [connection signal="pressed" from="Panel/VBoxContainer/LockpickButton" to="." method="_on_lockpick_button_pressed"]

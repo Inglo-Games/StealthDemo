@@ -1,12 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cy2vdvvyn2t8l"]
+[gd_scene load_steps=3 format=3 uid="uid://cy2vdvvyn2t8l"]
 
+[ext_resource type="Theme" uid="uid://dwjxtwdsk2ggs" path="res://assets/ui_themes/ingame_menu.tres" id="1_06yig"]
 [ext_resource type="Script" path="res://src/menus/PauseMenu.gd" id="1_m8dfp"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( "1_m8dfp" )
+theme = ExtResource("1_06yig")
+script = ExtResource("1_m8dfp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -22,8 +24,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -60.0
 offset_top = -60.0
-offset_right = 60.0
-offset_bottom = 60.0
+offset_right = 120.0
+offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -40,22 +42,22 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MenuLabel" type="Label" parent="Panel/VBoxContainer"]
-offset_right = 106.0
-offset_bottom = 26.0
+offset_right = 152.0
+offset_bottom = 44.0
 text = "Game Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="Panel/VBoxContainer"]
-offset_top = 30.0
-offset_right = 106.0
-offset_bottom = 61.0
+offset_top = 56.0
+offset_right = 152.0
+offset_bottom = 107.0
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
-offset_top = 65.0
-offset_right = 106.0
-offset_bottom = 96.0
+offset_top = 119.0
+offset_right = 152.0
+offset_bottom = 170.0
 text = "Quit"
 
 [connection signal="pressed" from="Panel/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

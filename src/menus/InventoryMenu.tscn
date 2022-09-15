@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkoe217u1ocks"]
+[gd_scene load_steps=3 format=3 uid="uid://dkoe217u1ocks"]
 
 [ext_resource type="Script" path="res://src/menus/InventoryMenu.gd" id="1_gxdhv"]
+[ext_resource type="Theme" uid="uid://dwjxtwdsk2ggs" path="res://assets/ui_themes/ingame_menu.tres" id="1_u35a2"]
 
 [node name="InventoryMenu" type="Control"]
 process_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource("1_u35a2")
 script = ExtResource("1_gxdhv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -13,7 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.211765, 0.211765, 0.211765, 0.862745)
+color = Color(0.211765, 0.211765, 0.211765, 0.607843)
 metadata/_edit_layout_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
@@ -34,7 +36,7 @@ metadata/_edit_layout_mode = 1
 anchor_right = 1.0
 offset_bottom = 53.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 42
 text = "Inventory"
 horizontal_alignment = 1
 metadata/_edit_layout_mode = 1
@@ -50,68 +52,71 @@ metadata/_edit_layout_mode = 1
 
 [node name="LVBox" type="VBoxContainer" parent="Panel/GridContainer"]
 offset_right = 248.0
-offset_bottom = 119.0
+offset_bottom = 177.0
 size_flags_horizontal = 3
 
 [node name="KeysHeader" type="Label" parent="Panel/GridContainer/LVBox"]
 offset_right = 248.0
-offset_bottom = 29.0
-theme_override_font_sizes/font_size = 18
+offset_bottom = 44.0
 text = "keys collected"
 horizontal_alignment = 1
 uppercase = true
 
 [node name="KeyNoneLabel" type="Label" parent="Panel/GridContainer/LVBox"]
-offset_top = 33.0
+offset_top = 56.0
 offset_right = 248.0
-offset_bottom = 59.0
-text = "[None]"
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 26
+text = "None"
 horizontal_alignment = 1
 
 [node name="KeysBox" type="VBoxContainer" parent="Panel/GridContainer/LVBox"]
-offset_top = 63.0
+offset_top = 101.0
 offset_right = 248.0
-offset_bottom = 119.0
+offset_bottom = 177.0
 size_flags_vertical = 3
 
 [node name="RVBox" type="VBoxContainer" parent="Panel/GridContainer"]
 offset_left = 252.0
 offset_right = 500.0
-offset_bottom = 119.0
+offset_bottom = 177.0
 size_flags_horizontal = 3
 
 [node name="ItemsHeader" type="Label" parent="Panel/GridContainer/RVBox"]
 offset_right = 248.0
-offset_bottom = 29.0
-theme_override_font_sizes/font_size = 18
+offset_bottom = 44.0
 text = "Items
 "
 horizontal_alignment = 1
 uppercase = true
 
 [node name="PickLabel" type="Label" parent="Panel/GridContainer/RVBox"]
-offset_top = 33.0
+offset_top = 56.0
 offset_right = 248.0
-offset_bottom = 59.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 26
 text = "Lockpicks: 0"
 horizontal_alignment = 1
 
 [node name="CutterLabel" type="Label" parent="Panel/GridContainer/RVBox"]
-offset_top = 63.0
+offset_top = 101.0
 offset_right = 248.0
-offset_bottom = 89.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 25
 text = "Boltcutters: 0"
 horizontal_alignment = 1
 
 [node name="NoiseLabel" type="Label" parent="Panel/GridContainer/RVBox"]
-offset_top = 93.0
+offset_top = 144.0
 offset_right = 248.0
-offset_bottom = 119.0
+offset_bottom = 177.0
+theme_override_font_sizes/font_size = 26
 text = "Noisemakers: 0
 "
 horizontal_alignment = 1
 
 [node name="ExitButton" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(36, 0)
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -18.0
