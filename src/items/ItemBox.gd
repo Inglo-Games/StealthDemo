@@ -40,11 +40,14 @@ func _open_box():
 			PlayerInventory.remove_key_id(key_id)
 		else:
 			temp_label.show_label_temp(label_length, "Locked!")
+			action_started.emit()
 	
 	# Only open if not locked and not already opening
 	if not locked and open_timer.is_stopped():
 		if open_time > 0:
 			await _wait_for_timer(unlock_time, "Opening...")
+		else:
+			action_started.emit()
 		
 		set_interacted(true)
 		# Give player the box's contents and play opening animation
