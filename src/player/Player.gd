@@ -15,6 +15,9 @@ const BASE_SPEED := 6
 # Speed of running movement
 const DASH_SPEED := 9
 
+# Player speed at which the player is considered "dashing"
+const RUN_SPEED_THRESHOLD := 40.0
+
 # Sensitivity for camera rotation via mouse
 const CAM_SENSITIVITY := 0.005
 
@@ -30,6 +33,9 @@ const STEP_MAGNITUDE_SCALE := 0.2
 
 # Node to hold Camera object, used for rotating camera independently of Player
 @onready var camera = $CameraTarget
+
+# Animations for the player model
+@onready var anims = $AnimationPlayer
 
 signal emit_noise
 signal interact
@@ -122,6 +128,14 @@ func _physics_process(_delta):
 		
 		# Add to footstep "timer" based on current velocity and check if ready to emit noise
 		_update_step_timer(dir)
+		
+		# Update state
+		if dir.length_squared() == 0:
+			_enter_state_still()
+		elif dir.length_squared() <= RUN_SPEED_THRESHOLD:
+			_enter_state_sneaking()
+		else:
+			_enter_state_dashing()
 	
 		# Move character
 		move_and_slide()
@@ -174,6 +188,27 @@ func _disconnect_player_interact_signal(body):
 		pick_lock.disconnect(body.pick_lock)
 		print("Disconnected player's interact signal from object")
 	_clear_prog_bar()
+
+
+# Transition to STILL state, if appropriate
+func _enter_state_still():
+	state = MOVE_STATE.STILL
+	if anims.current_animation != "Idle":
+		anims.play("Idle")
+
+
+# Transition to SNEAKING state
+func _enter_state_sneaking():
+	state = MOVE_STATE.SNEAKING
+	if anims.current_animation != "Walk":
+		anims.play("Walk")
+
+
+# Transition to DASHING state
+func _enter_state_dashing():
+	state = MOVE_STATE.DASHING
+	if anims.current_animation != "Gallop":
+		anims.play("Gallop")
 
 
 # Reset action progress bar
