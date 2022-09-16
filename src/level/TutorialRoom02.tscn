@@ -126,7 +126,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 1
 patrol_points = [Vector3(-12, 1, -12), Vector3(-12, 1, 12), Vector3(9, 1, 12), Vector3(9, 1, -12)]
 
 [node name="Player" parent="." instance=ExtResource("7_5ydux")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 17.1182, 1, 17.2437)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 17.1182, 0.0483161, 17.2437)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("8_2hges")

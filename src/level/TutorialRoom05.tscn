@@ -348,7 +348,7 @@ patrol_points = [Vector3(17, 1, -30)]
 focus_point = Vector3(17, 1, -25)
 
 [node name="Player" parent="." instance=ExtResource("8_fxuvm")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 13.0053, 1, 33.388)
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 13.0053, 0.0483161, 33.388)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("11_mpgmi")
