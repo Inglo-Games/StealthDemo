@@ -33,7 +33,7 @@ func _load_dialogue_01():
 		dialogues_triggered[0] = true
 
 func _load_dialogue_02():
-	if not dialogues_triggered[1] and $RoomItems/safe.locked and $Player.keyring.find("Tutorial Safe Combo") == -1:
+	if not dialogues_triggered[1] and $RoomItems/safe.locked and PlayerInventory.keyring.find("Tutorial Safe Combo") == -1:
 		dialogue_window.initialize_conversation("res://assets/dialogues/tut01_02.json")
 		dialogues_triggered[1] = true
 
