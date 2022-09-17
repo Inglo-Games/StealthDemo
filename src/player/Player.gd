@@ -18,8 +18,9 @@ const DASH_SPEED := 9
 # Player speed at which the player is considered "dashing"
 const RUN_SPEED_THRESHOLD := 40.0
 
-# Sensitivity for camera rotation via mouse
-const CAM_SENSITIVITY := 0.005
+# Sensitivity for camera rotation
+const CAM_SENSITIVITY_MOUSE := 0.005
+const CAM_SENSITIVITY_KEYS := 0.02
 
 # Min and max allowed distances for Player's camera
 const CAM_ZOOM_INNER_LIMIT := 5.0
@@ -84,28 +85,15 @@ func _input(event):
 	if event.is_action_pressed("use_item"):
 		$ItemMenu.show_item_menu()
 	
-	# Only do camera movements if not paused or item is not opened
+	# Handle camera direction via mouse motion
 	if not $ItemMenu.visible:
-		if event is InputEventMouseButton:
-			# Mouse scroll wheel zooms camera in and out
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				_move_camera(true)
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				_move_camera(false)
-		elif event is InputEventMouseMotion:
-			# Mouse motion rotates camera
+		
+		if event is InputEventMouseMotion:
 			# If moving, rotate player; otherwise only rotate camera
 			if velocity != Vector3.ZERO:
-				self.rotation.y -= event.relative.x * CAM_SENSITIVITY
+				self.rotation.y -= event.relative.x * CAM_SENSITIVITY_MOUSE
 			else:
-				camera.rotation.y -= event.relative.x * CAM_SENSITIVITY
-	
-	# If moving and camera rotation is non-zero, correct player rotation
-	if camera.rotation.y != 0 and \
-				(Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_back") or \
-				Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
-		self.rotation.y += camera.rotation.y
-		camera.rotation.y = 0
+				camera.rotation.y -= event.relative.x * CAM_SENSITIVITY_MOUSE
 
 
 func _physics_process(_delta):
@@ -116,15 +104,12 @@ func _physics_process(_delta):
 	# Only move if player is allowed to
 	if state != MOVE_STATE.TRAPPED and state != MOVE_STATE.HIDING:
 		# Determine movement direction
-		dir += transform.basis.x.normalized() * Input.get_axis("move_right", "move_left")
-		dir += transform.basis.z.normalized() * Input.get_axis("move_back", "move_forward")
-		if dir.length_squared() > 1:
-			dir = dir.normalized()
+		dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	
 		# Scale movement based on sprinting
 		dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
 		velocity.x = dir.x
-		velocity.z = dir.z
+		velocity.z = dir.y
 		
 		# Add to footstep "timer" based on current velocity and check if ready to emit noise
 		_update_step_timer(dir)
@@ -136,13 +121,35 @@ func _physics_process(_delta):
 			_enter_state_sneaking()
 		else:
 			_enter_state_dashing()
-	
+		
 		# Move character
 		move_and_slide()
+	
+	# Only do camera movements if not paused or item is not opened
+	if not $ItemMenu.visible:
+		
+		# Camera zoom
+		if Input.is_action_pressed("cam_zoom_in") or Input.is_action_pressed("cam_zoom_out"):
+			_move_camera(Input.get_axis("cam_zoom_in", "cam_zoom_out"))
+		
+		# Camera directiom (joystick and keys)
+		if Input.is_action_pressed("cam_left") or Input.is_action_pressed("cam_right"):
+			# If moving, rotate player; otherwise only rotate camera
+			if velocity != Vector3.ZERO:
+				self.rotation.y -= Input.get_axis("cam_left", "cam_right") * CAM_SENSITIVITY_KEYS
+			else:
+				camera.rotation.y -= Input.get_axis("cam_left", "cam_right") * CAM_SENSITIVITY_KEYS
+	
+	# If moving and camera rotation is non-zero, correct player rotation
+	if camera.rotation.y != 0 and \
+				(Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_back") or \
+				Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
+		self.rotation.y += camera.rotation.y
+		camera.rotation.y = 0
 
 
 # Update the footstep "timer" and emit a noise when it reaches a threshold, clear it if not moving
-func _update_step_timer(dir : Vector3):
+func _update_step_timer(dir : Vector2):
 	
 	footstep_timer += dir.length()
 	
@@ -158,14 +165,9 @@ func _update_step_timer(dir : Vector3):
 
 
 # Function to shift the camera toward player or away from player
-func _move_camera(move_in : bool):
+func _move_camera(magnitude : float):
 	var cam = $CameraTarget/Camera3D
-	
-	if move_in and cam.position.y > CAM_ZOOM_INNER_LIMIT:
-		cam.position.y -= 1.0
-	elif not move_in and cam.position.y < CAM_ZOOM_OUTER_LIMIT:
-		cam.position.y += 1.0
-		
+	cam.position.y = clampf(cam.position.y + magnitude, CAM_ZOOM_INNER_LIMIT, CAM_ZOOM_OUTER_LIMIT)
 	cam.position.z = -cam.position.y
 
 
