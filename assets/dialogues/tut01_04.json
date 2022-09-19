@@ -6,7 +6,7 @@
 	},
 	{
 		"name": "Emma",
-		"text": "By the way, you can see what keys and combos you've found in the [b]Inventory[/b] (the I key).",
+		"text": "By the way, you can see what keys and combos you've found in the [color=#44ddff]Inventory[/color] (the I key).",
 		"pic": "res://assets/portraits/emma_norm.png"
 	},
 ]}

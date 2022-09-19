@@ -8,5 +8,10 @@
 		"name": "Terry",
 		"text": "You need to retrieve the exit key from the desk then make your way to the exit.",
 		"pic": "res://assets/portraits/terry_norm.png"
+	},
+	{
+		"name": "Terry",
+		"text": "And some advice, you can [color=#44ddff]sprint[/color] (the SHIFT key) to move faster, but it makes your footsteps louder as well.",
+		"pic": "res://assets/portraits/terry_norm.png"
 	}
 ]}
