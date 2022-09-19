@@ -111,7 +111,10 @@ func _physics_process(_delta):
 		dir += transform.basis.z.normalized() * Input.get_axis("move_back", "move_forward")
 		if dir.length_squared() > 1:
 			dir = dir.normalized()
-	
+		
+		# Adjust player movement animation speed based on movement speed
+		anims.set_speed_scale(dir.length())
+		
 		# Scale movement based on sprinting
 		dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
 		velocity.x = dir.x
@@ -203,6 +206,7 @@ func _enter_state_still():
 	state = MOVE_STATE.STILL
 	if anims.current_animation != "Idle":
 		anims.play("Idle")
+		anims.set_speed_scale(1.0)
 
 
 # Transition to SNEAKING state
