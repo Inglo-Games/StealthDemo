@@ -11,7 +11,7 @@
 	},
 	{
 		"name": "Benji",
-		"text": "A master thief has to be a master escape artist too.  [b]Interact[/b] with the trap (the F key) to start chewing yourself free.",
+		"text": "A master thief has to be a master escape artist too.  [color=#44ddff]Interact[/color] with the trap (the F key) to start chewing yourself free.",
 		"pic": "res://assets/portraits/benji_norm.png"
 	}
 ]}

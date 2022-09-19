@@ -11,7 +11,7 @@
 	},
 	{
 		"name": "Benji",
-		"text": "Just [b]use an item[/b] (the R key) and select the boltcutters to start breaking the trap.",
+		"text": "Just [color=#44ddff]use an item[/color] (the R key) and select the boltcutters to start breaking the trap.",
 		"pic": "res://assets/portraits/benji_norm.png"
 	}
 ]}

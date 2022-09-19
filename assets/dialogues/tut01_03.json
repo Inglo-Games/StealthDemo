@@ -6,7 +6,7 @@
 	},
 	{
 		"name": "Emma",
-		"text": "Walk over to the desk and [b]use an item[/b] (the T key) to use the lockpick and unlock the desk.",
+		"text": "Walk over to the desk and [color=#44ddff]use an item[/color] (the T key) to use the lockpick and unlock the desk.",
 		"pic": "res://assets/portraits/emma_norm.png"
 	}
 ]}

@@ -66,7 +66,9 @@ grow_horizontal = 0
 grow_vertical = 2
 focus_neighbor_left = NodePath("../Portrait")
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 44
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
 bbcode_enabled = true
 text = "This is some example text!  It's RICH text too!"
 
