@@ -81,9 +81,12 @@ func _input(event):
 		print("Emitting interact signal...")
 		interact.emit(self)
 		
-	# Handle showing items menu
+	# Handle showing/hiding items menu
 	if event.is_action_pressed("use_item"):
-		$ItemMenu.show_item_menu()
+		if $ItemMenu.visible:
+			$ItemMenu.visible = false
+		else:
+			$ItemMenu.show_item_menu()
 	
 	# Handle camera direction via mouse motion
 	if not $ItemMenu.visible:
@@ -104,12 +107,15 @@ func _physics_process(_delta):
 	# Only move if player is allowed to
 	if state != MOVE_STATE.TRAPPED and state != MOVE_STATE.HIDING:
 		# Determine movement direction
-		dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+		dir += transform.basis.x.normalized() * Input.get_axis("move_right", "move_left")
+		dir += transform.basis.z.normalized() * Input.get_axis("move_back", "move_forward")
+		if dir.length_squared() > 1:
+			dir = dir.normalized()
 	
 		# Scale movement based on sprinting
 		dir *= DASH_SPEED if Input.is_action_pressed("sprint") else BASE_SPEED
 		velocity.x = dir.x
-		velocity.z = dir.y
+		velocity.z = dir.z
 		
 		# Add to footstep "timer" based on current velocity and check if ready to emit noise
 		_update_step_timer(dir)
@@ -149,7 +155,7 @@ func _physics_process(_delta):
 
 
 # Update the footstep "timer" and emit a noise when it reaches a threshold, clear it if not moving
-func _update_step_timer(dir : Vector2):
+func _update_step_timer(dir : Vector3):
 	
 	footstep_timer += dir.length()
 	
