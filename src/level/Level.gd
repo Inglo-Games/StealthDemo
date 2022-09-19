@@ -10,6 +10,10 @@ var pause_scene = preload("res://src/menus/PauseMenu.tscn")
 # Window to show NPC dialogues
 var dialogue_window = null
 
+# Pause and inventory menus
+var pause_menu
+var inventory_menu
+
 # Record players inital position and rotation
 var player_start_pos : Transform3D 
 
@@ -41,15 +45,22 @@ func _ready():
 func _input(event):
 	# Handle pause menu
 	if event.is_action_pressed("ui_cancel"):
-		var pause_menu = pause_scene.instantiate()
-		add_child(pause_menu)
-		get_tree().paused = true
+		if pause_menu == null:
+			pause_menu = pause_scene.instantiate()
+			add_child(pause_menu)
+			get_tree().paused = true
+		else: 
+			# There is already a visible pause menu, so get rid of it
+			pause_menu.queue_free()
 	
 	# Handle inventory menu
 	elif event.is_action_pressed("open_inventory"):
-		var inv_menu = inventory_scene.instantiate()
-		add_child(inv_menu)
-		get_tree().paused = true
+		if inventory_menu == null:
+			inventory_menu = inventory_scene.instantiate()
+			add_child(inventory_menu)
+			get_tree().paused = true
+		else:
+			inventory_menu.queue_free()
 
 
 # Create a new NoiseMaker object and place it in the specified position
