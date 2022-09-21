@@ -36,6 +36,8 @@ func _open_box():
 		# If player has the correct key, unlock and remove key from inventory
 		if PlayerInventory.keyring.find(key_id) != -1:
 			await _wait_for_timer(unlock_time, "Unlocking...")
+			audio_player.stream = unlock_sound
+			audio_player.play()
 			locked = false
 			PlayerInventory.remove_key_id(key_id)
 		else:
@@ -45,6 +47,9 @@ func _open_box():
 	# Only open if not locked and not already opening
 	if not locked and open_timer.is_stopped():
 		if open_time > 0:
+			if open_sound != null:
+				audio_player.stream = open_sound
+				audio_player.play
 			await _wait_for_timer(unlock_time, "Opening...")
 		else:
 			action_started.emit()
@@ -61,8 +66,11 @@ func _open_box():
 func pick_lock():
 	# Only allow picking if break_time is positive
 	if break_time >= 0:
+		audio_player.stream = lockpick_sound
+		audio_player.play()
 		await _wait_for_timer(break_time, "Picking lock...")
 		locked = false
+		audio_player.stop()
 		_open_box()
 		PlayerInventory.remove_item("lockpick")
 	else:
@@ -106,6 +114,9 @@ func _close_box():
 	
 	action_started.emit("Closing...", 3)
 	
+	if close_sound != null:
+		audio_player.stream = close_sound
+		audio_player.play()
 	set_interacted(false)
 	$AnimationPlayer.play_backwards(anim_name)
 	await $AnimationPlayer.animation_finished

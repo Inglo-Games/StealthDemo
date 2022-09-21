@@ -80,3 +80,5 @@ libraries = {
 
 [node name="TempLabel" parent="." index="3" instance=ExtResource("2_i8nmw")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 5.45993, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="4"]

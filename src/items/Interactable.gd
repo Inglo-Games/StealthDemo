@@ -16,6 +16,17 @@ var interacted := false
 # Timer to track time to open and if an interaction is ongoing
 var open_timer := Timer.new()
 
+# Audio player for playing object sfx
+@onready var audio_player = $AudioStreamPlayer3D
+
+# Sounds common to all Interactables
+@onready var unlock_sound = preload("res://assets/sfx/lock.wav")
+@onready var lockpick_sound = preload("res://assets/sfx/lockpicking.wav")
+
+# Sounds unique to each subclass
+var open_sound = null
+var close_sound = null
+
 
 func _init():
 	add_child(open_timer)

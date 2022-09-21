@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl2bru2x6eej6"]
+[gd_scene load_steps=9 format=3 uid="uid://dl2bru2x6eej6"]
 
 [ext_resource type="PackedScene" uid="uid://bi10ksbt5ocmo" path="res://assets/models/desk.glb" id="1_de7ry"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_5uiqc"]
 [ext_resource type="Script" path="res://src/items/ItemBox.gd" id="2_bo2pn"]
+[ext_resource type="AudioStream" uid="uid://dys8mwgeg3iw4" path="res://assets/sfx/lock.wav" id="4_0yy10"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7s0vn"]
 points = PackedVector3Array(-0.998549, -0.0139, -2.17332, 0.98197, 1.8987, 2.19833, -1, 1.88916, 2.17652, 0.98197, 1.8987, -2.19833, 0.970638, -0.0139, 2.17332, -1, 1.88916, -2.17652, 0.970638, -0.0139, -2.17332, -0.998549, -0.0139, 2.17332)
@@ -104,3 +105,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89284, 0)
 libraries = {
 "": SubResource("AnimationLibrary_0e3qg")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94339, 0)
+stream = ExtResource("4_0yy10")
+bus = &"SFX"
