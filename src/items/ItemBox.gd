@@ -47,12 +47,13 @@ func _open_box():
 	# Only open if not locked and not already opening
 	if not locked and open_timer.is_stopped():
 		if open_time > 0:
-			if open_sound != null:
-				audio_player.stream = open_sound
-				audio_player.play
 			await _wait_for_timer(unlock_time, "Opening...")
 		else:
 			action_started.emit()
+		
+		if open_sound != null:
+			audio_player.stream = open_sound
+			audio_player.play()
 		
 		set_interacted(true)
 		# Give player the box's contents and play opening animation

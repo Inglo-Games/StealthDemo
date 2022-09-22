@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bi10ksbt5ocmo" path="res://assets/models/desk.glb" id="1_de7ry"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_5uiqc"]
-[ext_resource type="Script" path="res://src/items/ItemBox.gd" id="2_bo2pn"]
+[ext_resource type="Script" path="res://src/items/Desk.gd" id="2_6g7c7"]
 [ext_resource type="AudioStream" uid="uid://dys8mwgeg3iw4" path="res://assets/sfx/lock.wav" id="4_0yy10"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7s0vn"]
@@ -93,7 +93,7 @@ _data = {
 }
 
 [node name="Desk" instance=ExtResource("1_de7ry")]
-script = ExtResource("2_bo2pn")
+script = ExtResource("2_6g7c7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_7s0vn")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cr2y66j4j5gmc"]
 
 [ext_resource type="PackedScene" uid="uid://b2jkghtg3p7p8" path="res://assets/models/dresser.glb" id="1_sydk1"]
-[ext_resource type="Script" path="res://src/items/ItemBox.gd" id="2_1sm1r"]
+[ext_resource type="Script" path="res://src/items/Dresser.gd" id="2_eiu6g"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_i8nmw"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m5fgs"]
@@ -68,7 +68,7 @@ _data = {
 }
 
 [node name="Dresser" instance=ExtResource("1_sydk1")]
-script = ExtResource("2_1sm1r")
+script = ExtResource("2_eiu6g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_m5fgs")

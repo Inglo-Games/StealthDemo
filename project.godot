@@ -9,10 +9,20 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "ItemBox",
+"class": &"Desk",
+"language": &"GDScript",
+"path": "res://src/items/Desk.gd"
+}, {
 "base": "Control",
 "class": &"DialogueWindow",
 "language": &"GDScript",
 "path": "res://src/dialog/DialogueWindow.gd"
+}, {
+"base": "ItemBox",
+"class": &"Dresser",
+"language": &"GDScript",
+"path": "res://src/items/Dresser.gd"
 }, {
 "base": "CharacterBody3D",
 "class": &"Guard",
@@ -65,7 +75,9 @@ _global_script_classes=[{
 "path": "res://src/items/Trap.gd"
 }]
 _global_script_class_icons={
+"Desk": "",
 "DialogueWindow": "",
+"Dresser": "",
 "Guard": "",
 "HidingPlace": "",
 "Interactable": "",
