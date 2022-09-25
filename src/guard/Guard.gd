@@ -194,9 +194,10 @@ func _check_raycast_hits_target(body):
 func on_hear_noise(noise_origin, noise_magnitude):
 	# Check distance to noise against magnitude
 	if self.position.distance_to(noise_origin) <= noise_magnitude:
-		print("This guard heard a noise, investigating...")
-		_enter_state_investigate(noise_origin)
-		nav_agent.set_target_location(noise_origin)
+		# Only care if not actively chasing player
+		if state != GUARD_STATE.CHASE:
+			_enter_state_investigate(noise_origin)
+			nav_agent.set_target_location(noise_origin)
 
 
 # Guard checks item to see if player is hiding in it and resets it's interacted
