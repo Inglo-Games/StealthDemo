@@ -3,6 +3,10 @@ extends Node3D
 # Max distance from camera a wall can be to have pixel dithering enabled
 const FADE_MAX_DISTANCE = 15.0
 
+# Two wall materials, one with distance fade and one without
+const WALL_MAT = preload("res://src/level/brick_wall.material")
+const WALL_MAT_DITHER = preload("res://src/level/brick_wall_dithering.material")
+
 @onready var cam = get_node("Camera3D")
 
 # Raycast to detect collisions with walls
@@ -41,16 +45,13 @@ func _enable_pixel_dither():
 	
 	# Get parent because raycast hits the StaticBody3D shape, but we want to
 	# modify the material of its parent MeshInstance3D
-	var mat = obj.get_parent().mesh.surface_get_material(0)
-	mat.distance_fade_mode = BaseMaterial3D.DistanceFadeMode.DISTANCE_FADE_PIXEL_DITHER
-	mat.distance_fade_max_distance = FADE_MAX_DISTANCE
+	obj.get_parent().mesh.surface_set_material(0, WALL_MAT_DITHER)
 
 
 # Disable pixel dithering on object if it exists
 func _disable_pixel_dithering():
 	
 	if obj != null:
-		obj.get_parent().mesh.surface_get_material(0).distance_fade_mode = \
-					BaseMaterial3D.DistanceFadeMode.DISTANCE_FADE_DISABLED
+		obj.get_parent().mesh.surface_set_material(0, WALL_MAT)
 	
 	obj = null
