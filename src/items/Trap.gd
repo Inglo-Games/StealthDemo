@@ -18,6 +18,7 @@ var is_triggered := false
 var occupant = null
 
 @onready var timer = $Timer
+@onready var anims = $AnimationPlayer
 
 signal action_started
 signal emit_noise
@@ -34,7 +35,7 @@ func _on_body_entered(body):
 		is_triggered = true
 		occupant = body
 		body.state = Player.MOVE_STATE.TRAPPED
-		body.get_node("AnimationPlayer").play("SnareTrapped")
+		anims.play("SnareTriggered")
 		# Connect player signals to interact with trap object
 		body.interact.connect(_on_player_escaping_trap)
 		body.break_trap.connect(_on_player_breaking_trap)
