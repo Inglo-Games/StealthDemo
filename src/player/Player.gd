@@ -93,7 +93,7 @@ func _input(event):
 		
 		if event is InputEventMouseMotion:
 			# If moving, rotate player; otherwise only rotate camera
-			if velocity != Vector3.ZERO:
+			if velocity != Vector3.ZERO and state != MOVE_STATE.TRAPPED:
 				self.rotation.y -= event.relative.x * CAM_SENSITIVITY_MOUSE
 			else:
 				camera.rotation.y -= event.relative.x * CAM_SENSITIVITY_MOUSE
