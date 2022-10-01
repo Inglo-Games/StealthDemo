@@ -187,7 +187,10 @@ func _connect_body_interact_signal(body):
 		interact.connect(body.interact)
 		pick_lock.connect(body.pick_lock)
 		body.action_started.connect(setup_prog_bar)
-		print("Connected player's interact signal to object")
+		print("Connected player's interact signal to Interactable")
+	elif body is Trap:
+		break_trap.connect(body.clear_trap)
+		print("Connected player's interact signal to Trap")
 
 
 # Disconnect signals and cancel any ongoing actions (unlocking, open, etc)
@@ -197,7 +200,9 @@ func _disconnect_player_interact_signal(body):
 		body.action_started.disconnect(setup_prog_bar)
 		interact.disconnect(body.interact)
 		pick_lock.disconnect(body.pick_lock)
-		print("Disconnected player's interact signal from object")
+	if body is Trap:
+		break_trap.disconnect(body.clear_trap)
+	print("Disconnected player's interact signal from object")
 	_clear_prog_bar()
 
 
@@ -221,6 +226,11 @@ func _enter_state_dashing():
 	state = MOVE_STATE.DASHING
 	if anims.current_animation != "Gallop":
 		anims.play("Gallop")
+
+
+# Transition to TRAPPED state, called by Trap class
+func enter_state_trapped():
+	state = MOVE_STATE.TRAPPED
 
 
 # Reset action progress bar

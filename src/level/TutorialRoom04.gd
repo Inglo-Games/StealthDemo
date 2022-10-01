@@ -23,10 +23,10 @@ func _ready():
 func _load_dialogue_01():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_01.json")
 
-func _load_dialogue_02(anim_name:String):
+func _load_dialogue_02(_anim_name:String):
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_02.json")
 
-func _load_dialogue_03(anim_name:String):
+func _load_dialogue_03(_anim_name:String):
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_03.json")
 	PlayerInventory.give_items("boltcutter", 1)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3ofo55hjbkv8"]
+[gd_scene load_steps=12 format=3 uid="uid://b3ofo55hjbkv8"]
 
 [ext_resource type="Script" path="res://src/items/Trap.gd" id="1_xmhpi"]
 [ext_resource type="Material" uid="uid://bacifkuh642yy" path="res://assets/materials/wood_light.tres" id="2_kr8a3"]
@@ -11,6 +11,9 @@ radius = 0.9
 [sub_resource type="BoxMesh" id="BoxMesh_ithrv"]
 material = ExtResource("2_kr8a3")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mopy4"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
 [sub_resource type="BoxMesh" id="BoxMesh_ai63v"]
 material = ExtResource("3_h8scg")
 size = Vector3(0.01, 3, 0.01)
@@ -21,6 +24,51 @@ inner_radius = 0.92
 outer_radius = 0.94
 rings = 24
 ring_segments = 4
+
+[sub_resource type="Animation" id="Animation_76g15"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopCable:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"points": PackedFloat32Array(-0.470837, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopCable:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"points": PackedFloat32Array(1.4885, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TopCable:rotation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"points": PackedFloat32Array(-0.349066, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BottomCable:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ybquh"]
 resource_name = "SnareTriggered"
@@ -69,58 +117,13 @@ tracks/3/keys = {
 "values": [Vector3(1, 1, 1), Vector3(0, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_76g15"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TopCable:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"points": PackedFloat32Array(-0.470837, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TopCable:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"points": PackedFloat32Array(1.4885, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TopCable:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"points": PackedFloat32Array(-0.349066, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BottomCable:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_32mj5"]
 _data = {
 "RESET": SubResource("Animation_76g15"),
 "SnareTriggered": SubResource("Animation_ybquh")
 }
 
-[node name="SnareTrap" type="Node3D"]
+[node name="SnareTrap" type="StaticBody3D"]
 script = ExtResource("1_xmhpi")
 
 [node name="Timer" type="Timer" parent="."]
@@ -134,6 +137,10 @@ shape = SubResource("CylinderShape3D_00y3r")
 [node name="Stake" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.05, 0, 0, 0, 0.2, 0, 0, 0, 0.05, -1, 0.1, 0)
 mesh = SubResource("BoxMesh_ithrv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.2, 0, 0, 0, 0.05, -1, 0.1, 0)
+shape = SubResource("ConvexPolygonShape3D_mopy4")
 
 [node name="TopCable" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, -0.470837, 1.4885, 0)
