@@ -11,10 +11,10 @@ func _ready():
 	_load_dialogue_01()
 	
 	# Load the first dialogue after tripping the first snare
-	$RoomItems/SnareTrap01.emit_noise.connect(_load_dialogue_02)
+	$RoomItems/SnareTrap01.anims.animation_finished.connect(_load_dialogue_02)
 	
 	# Load the second dialogue after tripping the second snare
-	$RoomItems/SnareTrap02.emit_noise.connect(_load_dialogue_03)
+	$RoomItems/SnareTrap02.anims.animation_finished.connect(_load_dialogue_03)
 	
 	# Load final dialogue on exit
 	$RoomGeometry/LevelExitDoor.action_started.connect(_load_dialogue_04)
@@ -23,10 +23,10 @@ func _ready():
 func _load_dialogue_01():
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_01.json")
 
-func _load_dialogue_02():
+func _load_dialogue_02(anim_name:String):
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_02.json")
 
-func _load_dialogue_03():
+func _load_dialogue_03(anim_name:String):
 	dialogue_window.initialize_conversation("res://assets/dialogues/tut04_03.json")
 	PlayerInventory.give_items("boltcutter", 1)
 
