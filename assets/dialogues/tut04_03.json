@@ -1,7 +1,7 @@
 {"lines": [
 	{
 		"name": "Benji",
-		"text": "Ok, that wasn't really fair of me was it?  Let me give you something to break out more easily.",
+		"text": "Ok, for the next one let's clear the trap [b]before[/b] getting caught.",
 		"pic": "res://assets/portraits/benji_norm.png"
 	},
 	{
@@ -11,7 +11,12 @@
 	},
 	{
 		"name": "Benji",
-		"text": "Just [color=#44ddff]use an item[/color] (the R key) and select the boltcutters to start breaking the trap.",
+		"text": "Just get close and [color=#44ddff]use an item[/color] (the T key) and select the boltcutters to clear the trap.",
+		"pic": "res://assets/portraits/benji_norm.png"
+	},
+	{
+		"name": "Benji",
+		"text": "You can also use the boltcutters after getting snared to break free a little faster if you mess up!",
 		"pic": "res://assets/portraits/benji_norm.png"
 	}
 ]}

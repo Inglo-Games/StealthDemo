@@ -22,10 +22,11 @@ var occupant = null
 
 signal action_started
 signal emit_noise
-
+signal player_escaped
 
 func _ready():
 	emit_noise = Signal(self, "emit_noise")
+	player_escaped = Signal(self, "player_escaped")
 
 
 # Handle a character entering the trap area
@@ -55,6 +56,7 @@ func _on_player_escaping_trap(player):
 		await player.get_node("AnimationPlayer").animation_finished
 		player._enter_state_still()
 		occupant = null
+		player_escaped.emit()
 
 
 # Called when a trapped player uses a "boltcutter" item to break free
@@ -68,6 +70,7 @@ func _on_player_breaking_trap(player):
 	player._enter_state_still()
 	PlayerInventory.remove_item("boltcutter")
 	self.queue_free()
+	player_escaped.emit()
 
 
 # Called when player uses boltcutters *before* being caught
