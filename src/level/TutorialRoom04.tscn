@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://uscng232c6ft"]
+[gd_scene load_steps=26 format=3 uid="uid://dc3kodl01e76a"]
 
 [ext_resource type="Texture2D" uid="uid://bs5q6dj1janba" path="res://assets/textures/Concrete032_1K_Color.jpg" id="1_n0dgu"]
 [ext_resource type="Script" path="res://src/level/TutorialRoom04.gd" id="1_ychyn"]
@@ -9,10 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://buv7k5gp6k1da" path="res://assets/textures/BrickMaterial_ambientocclusion.png" id="6_2uubh"]
 [ext_resource type="Texture2D" uid="uid://b02wd35fgv027" path="res://assets/textures/BrickMaterial_normal.png" id="7_bfu3r"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="7_fkkkj"]
-[ext_resource type="PackedScene" uid="uid://b3ofo55hjbkv8" path="res://src/items/snare_trap.tscn" id="8_1cvir"]
 [ext_resource type="Texture2D" uid="uid://q6oac64rhpwy" path="res://assets/textures/BrickMaterial_roughness.png" id="8_vt0d3"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="9_03ha7"]
 [ext_resource type="PackedScene" uid="uid://clof7yqajt3ui" path="res://src/level/TutorialRoom05.tscn" id="9_smmlg"]
+[ext_resource type="Material" uid="uid://bflj44pi3270a" path="res://src/level/brick_wall_dithering.material" id="10_0016d"]
+[ext_resource type="PackedScene" uid="uid://b3ofo55hjbkv8" path="res://src/items/Snare.tscn" id="12_6uycc"]
 [ext_resource type="Environment" uid="uid://h1bg78qp0wge" path="res://src/level/tutorial_env.tres" id="14_6ro8v"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pqahu"]
@@ -49,7 +50,7 @@ uv1_scale = Vector3(5, 2, 0)
 data = PackedVector3Array(-0.025, 4, 10, 0.025, 4, 10, -0.025, -4, 10, 0.025, 4, 10, 0.025, -4, 10, -0.025, -4, 10, 0.025, 4, -10, -0.025, 4, -10, 0.025, -4, -10, -0.025, 4, -10, -0.025, -4, -10, 0.025, -4, -10, 0.025, 4, 10, 0.025, 4, -10, 0.025, -4, 10, 0.025, 4, -10, 0.025, -4, -10, 0.025, -4, 10, -0.025, 4, -10, -0.025, 4, 10, -0.025, -4, -10, -0.025, 4, 10, -0.025, -4, 10, -0.025, -4, -10, 0.025, 4, 10, -0.025, 4, 10, 0.025, 4, -10, -0.025, 4, 10, -0.025, 4, -10, 0.025, 4, -10, -0.025, -4, 10, 0.025, -4, 10, -0.025, -4, -10, 0.025, -4, 10, 0.025, -4, -10, -0.025, -4, -10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ijy38"]
-material = ExtResource("5_7x2dl")
+material = ExtResource("10_0016d")
 size = Vector3(4, 8, 0.05)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8tlyy"]
@@ -77,7 +78,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4, 0)
 mesh = SubResource("BoxMesh_rc5qf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RoomGeometry/WallMesh01"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191338, 0.0286112, -0.0275078)
 collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RoomGeometry/WallMesh01/StaticBody3D"]
@@ -126,11 +126,11 @@ omni_range = 40.0
 
 [node name="RoomItems" type="Node3D" parent="."]
 
-[node name="SnareTrap01" parent="RoomItems" instance=ExtResource("8_1cvir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0354891, 2.55915)
+[node name="SnareTrap01" parent="RoomItems" instance=ExtResource("12_6uycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.559)
 
-[node name="SnareTrap02" parent="RoomItems" instance=ExtResource("8_1cvir")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0354891, -4.06291)
+[node name="SnareTrap02" parent="RoomItems" instance=ExtResource("12_6uycc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.063)
 
 [node name="Guards" type="Node3D" parent="."]
 
