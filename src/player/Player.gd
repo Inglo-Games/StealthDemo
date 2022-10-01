@@ -133,6 +133,9 @@ func _physics_process(_delta):
 		
 		# Move character
 		move_and_slide()
+		
+		# Snap player to floor to avoid vertical movement glitching
+		position.y = 0
 	
 	# Only do camera movements if not paused or item is not opened
 	if not $ItemMenu.visible:
@@ -150,7 +153,7 @@ func _physics_process(_delta):
 				camera.rotation.y -= Input.get_axis("cam_left", "cam_right") * CAM_SENSITIVITY_KEYS
 	
 	# If moving and camera rotation is non-zero, correct player rotation
-	if camera.rotation.y != 0 and \
+	if camera.rotation.y != 0 and state != MOVE_STATE.TRAPPED and \
 				(Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_back") or \
 				Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
 		self.rotation.y += camera.rotation.y
