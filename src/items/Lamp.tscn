@@ -12,6 +12,8 @@ points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8q5u1"]
 albedo_color = Color(0.584314, 0.4, 0.247059, 1)
 metallic_specular = 0.13
+backlight_enabled = true
+backlight = Color(0.584314, 0.4, 0.247059, 1)
 refraction_enabled = true
 refraction_scale = 0.64
 
