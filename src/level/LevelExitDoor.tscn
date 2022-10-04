@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf5061yye8rjx"]
+[gd_scene load_steps=6 format=3 uid="uid://cf5061yye8rjx"]
 
 [ext_resource type="Script" path="res://src/level/LevelExit.gd" id="1_1hygx"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="3_6ia75"]
 [ext_resource type="PackedScene" uid="uid://d2ta5kp86dk85" path="res://assets/models/door.glb" id="4_vcc4f"]
 [ext_resource type="PackedScene" uid="uid://kavkbpdlsql0" path="res://src/menus/ExitPrompt.tscn" id="4_x1rmr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtvoc"]
+size = Vector3(2.43157, 5.0344, 0.424942)
 
 [node name="LevelExitDoor" type="StaticBody3D"]
 script = ExtResource("1_1hygx")
@@ -19,3 +22,7 @@ offset_bottom = 37.5
 
 [node name="Door" parent="." instance=ExtResource("4_vcc4f")]
 transform = Transform3D(-1.09278e-07, 0, -2.5, 0, 2.5, 0, 2.5, 0, -1.09278e-07, 0, 0, -0.184167)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49758, -0.182291)
+shape = SubResource("BoxShape3D_gtvoc")
