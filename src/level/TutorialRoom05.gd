@@ -6,6 +6,11 @@ func _ready():
 	# Run parent class _ready func first
 	super._ready()
 	
+	# Guards should reset player instead of game over
+	for guard in $Guards.get_children():
+		guard.player_caught.disconnect(_on_player_caught)
+		guard.player_caught.connect(_on_player_reset)
+	
 	# Start a very brief timer to allow guardds time to start moving before
 	# pausing the scene for dialogues
 	var temp_timer = Timer.new()
