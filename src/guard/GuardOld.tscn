@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://da2cq7xi0y6g1"]
+
+[ext_resource type="Script" path="res://src/guard/Guard.gd" id="1_04xca"]
+[ext_resource type="Texture2D" uid="uid://cm62i0ll0di6n" path="res://assets/textures/devorange.png" id="2_l2loy"]
+[ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="3_e6s33"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7778k"]
+albedo_texture = ExtResource("2_l2loy")
+
+[sub_resource type="PrismMesh" id="PrismMesh_giqij"]
+material = SubResource("StandardMaterial3D_7778k")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4xjlc"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.0146517, 0.470697, 0.470697, 0.0735213, 0.352957, 0.47061, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.0146517, 0.470697, -0.470697, 0.5, -0.5, 0.5, -0.0146517, 0.470697, 0.470697, 0.0146517, 0.470697, -0.470697)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq6l8"]
+size = Vector3(18.5, 2, 10.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3pwhq"]
+size = Vector3(3, 2, 3)
+
+[node name="Guard" type="CharacterBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_04xca")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("PrismMesh_giqij")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_4xjlc")
+disabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417921, -1.10569)
+light_color = Color(1, 0.933333, 0.396078, 1)
+light_energy = 15.0
+light_indirect_energy = 1.75
+spot_range = 17.0
+
+[node name="SightArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SightArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.25)
+shape = SubResource("BoxShape3D_aq6l8")
+
+[node name="CatchArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CatchArea"]
+shape = SubResource("BoxShape3D_3pwhq")
+
+[node name="AlertCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="SearchCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="TempLabel" parent="." instance=ExtResource("3_e6s33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40856, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.5
+avoidance_enabled = true
+
+[connection signal="timeout" from="AlertCooldown" to="." method="_on_AlertCooldown_timeout"]
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_nav_target_reached"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_nav_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_nav_velocity_computed"]
