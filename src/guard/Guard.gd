@@ -20,11 +20,20 @@ const CHASE_THRESHOLD := 30         # Distance at which guard stops chase
 const COOLDOWN_TIME := 20           # Seconds until Guard loses "alert" state
 const STATION_DIST_THRESHOLD := 5   # Distance a guard can be from "station" position
 
+# Materials for eyes to change based on state
+const eye_mat_green = preload("res://assets/materials/glow_green.tres")
+const eye_mat_red = preload("res://assets/materials/glow_red.tres")
+const eye_mat_yellow = preload("res://assets/materials/glow_yellow.tres")
+
+
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var ray_params : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
 
 # Cooldown timer for when Guard loses sight of player
 @onready var search_cooldown : Timer = $SearchCooldown
+
+@onready var head_mesh = $Head
+@onready var eyes_mesh = $Head/Eyes
 
 # List of points defining Guard's patrol path
 @export var patrol_points := [Vector3.ZERO]
@@ -158,6 +167,7 @@ func _on_object_spotted(body):
 		if _check_raycast_hits_target(body):
 			# Guard starts to chase!
 			look_at(body.global_transform.origin)
+			eyes_mesh.mesh.surface_set_material(0, eye_mat_red)
 			state = GUARD_STATE.CHASE
 			target_player = body
 			$TempLabel.show_label_temp(3, "!")
@@ -221,6 +231,7 @@ func _enter_state_patrol():
 		look_at(patrol_points[patrol_index])
 	else:
 		state = GUARD_STATE.STATION
+	eyes_mesh.mesh.surface_set_material(0, eye_mat_green)
 
 
 # Guard enters ALERT state, moves more quickly until cooldown timer expires
@@ -228,6 +239,7 @@ func _enter_state_alert():
 	print("Entering alert state...")
 	$TempLabel.show_label_temp(3, "!")
 	state = GUARD_STATE.ALERT
+	eyes_mesh.mesh.surface_set_material(0, eye_mat_red)
 	$AlertCooldown.start(COOLDOWN_TIME)
 
 
@@ -237,6 +249,7 @@ func _enter_state_investigate(target):
 	$TempLabel.show_label_temp(3, "?")
 	state = GUARD_STATE.INVESTIGATE
 	target_investigate = target
+	eyes_mesh.mesh.surface_set_material(0, eye_mat_yellow)
 	if target is Vector3:
 		look_at(target)
 	else:
@@ -266,7 +279,7 @@ func _enter_state_search():
 func _on_AlertCooldown_timeout():
 	if state == GUARD_STATE.ALERT:
 		print("Entering patrol state...")
-		state = GUARD_STATE.PATROL
+		_enter_state_patrol()
 
 
 # Reset position and state to initial conditions
