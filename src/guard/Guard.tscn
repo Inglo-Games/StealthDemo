@@ -51,3 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39512, 0)
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="13"]
 target_desired_distance = 2.5
 avoidance_enabled = true
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="_on_nav_target_reached"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_nav_target_reached"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_nav_velocity_computed"]
