@@ -3,7 +3,7 @@ extends Level
 # Keep track of which dialogues have been triggered
 var dialogues_triggered := [ false, false, false ]
 
-@onready var guard = $Guards/Guard
+@onready var guard = $Guards/GuardBot
 
 
 func _ready():

@@ -3,7 +3,7 @@ extends Level
 # Keep track of which dialogues have been triggered
 var dialogues_triggered := [ false, false ]
 
-@onready var guard = $Guards/Guard
+@onready var guard = $Guards/GuardBot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
