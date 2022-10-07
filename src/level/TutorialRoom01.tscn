@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/level/TutorialRoom01.gd" id="1_p8swl"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="2_r75ys"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="3_isv5c"]
-[ext_resource type="PackedScene" uid="uid://bis2j4x36rtsl" path="res://src/level/TutorialRoom02.tscn" id="4_ldolt"]
+[ext_resource type="PackedScene" uid="uid://bh7buurmo625p" path="res://src/level/TutorialRoom02.tscn" id="4_ldolt"]
 [ext_resource type="PackedScene" uid="uid://bmeb1m3k3bg0i" path="res://src/items/Safe.tscn" id="6_3xgio"]
 [ext_resource type="PackedScene" uid="uid://cr2y66j4j5gmc" path="res://src/items/Dresser.tscn" id="6_5ewef"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="6_sxgw4"]

@@ -1,15 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://dc3kodl01e76a"]
+[gd_scene load_steps=22 format=3 uid="uid://dc3kodl01e76a"]
 
 [ext_resource type="Texture2D" uid="uid://bs5q6dj1janba" path="res://assets/textures/Concrete032_1K_Color.jpg" id="1_n0dgu"]
 [ext_resource type="Script" path="res://src/level/TutorialRoom04.gd" id="1_ychyn"]
 [ext_resource type="Texture2D" uid="uid://2vkge5sq82io" path="res://assets/textures/Concrete032_1K_NormalGL.jpg" id="2_a0cgm"]
 [ext_resource type="Texture2D" uid="uid://bgbwj0xrhuax4" path="res://assets/textures/Concrete032_1K_Roughness.jpg" id="3_vxj6q"]
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="5_7x2dl"]
-[ext_resource type="Texture2D" uid="uid://bnw4nb66xp5q1" path="res://assets/textures/BrickMaterial_basecolor.png" id="5_r6log"]
-[ext_resource type="Texture2D" uid="uid://buv7k5gp6k1da" path="res://assets/textures/BrickMaterial_ambientocclusion.png" id="6_2uubh"]
-[ext_resource type="Texture2D" uid="uid://b02wd35fgv027" path="res://assets/textures/BrickMaterial_normal.png" id="7_bfu3r"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="7_fkkkj"]
-[ext_resource type="Texture2D" uid="uid://q6oac64rhpwy" path="res://assets/textures/BrickMaterial_roughness.png" id="8_vt0d3"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="9_03ha7"]
 [ext_resource type="PackedScene" uid="uid://clof7yqajt3ui" path="res://src/level/TutorialRoom05.tscn" id="9_smmlg"]
 [ext_resource type="Material" uid="uid://bflj44pi3270a" path="res://src/level/brick_wall_dithering.material" id="10_0016d"]
@@ -37,15 +33,6 @@ size = Vector3(0.05, 8, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_sd286"]
 data = PackedVector3Array(-0.025, 4, 10, 0.025, 4, 10, -0.025, -4, 10, 0.025, 4, 10, 0.025, -4, 10, -0.025, -4, 10, 0.025, 4, -10, -0.025, 4, -10, 0.025, -4, -10, -0.025, 4, -10, -0.025, -4, -10, 0.025, -4, -10, 0.025, 4, 10, 0.025, 4, -10, 0.025, -4, 10, 0.025, 4, -10, 0.025, -4, -10, 0.025, -4, 10, -0.025, 4, -10, -0.025, 4, 10, -0.025, -4, -10, -0.025, 4, 10, -0.025, -4, 10, -0.025, -4, -10, 0.025, 4, 10, -0.025, 4, 10, 0.025, 4, -10, -0.025, 4, 10, -0.025, 4, -10, 0.025, 4, -10, -0.025, -4, 10, 0.025, -4, 10, -0.025, -4, -10, 0.025, -4, 10, 0.025, -4, -10, -0.025, -4, -10)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dh2tq"]
-albedo_texture = ExtResource("5_r6log")
-roughness_texture = ExtResource("8_vt0d3")
-normal_enabled = true
-normal_texture = ExtResource("7_bfu3r")
-ao_enabled = true
-ao_texture = ExtResource("6_2uubh")
-uv1_scale = Vector3(5, 2, 0)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cb64v"]
 data = PackedVector3Array(-0.025, 4, 10, 0.025, 4, 10, -0.025, -4, 10, 0.025, 4, 10, 0.025, -4, 10, -0.025, -4, 10, 0.025, 4, -10, -0.025, 4, -10, 0.025, -4, -10, -0.025, 4, -10, -0.025, -4, -10, 0.025, -4, -10, 0.025, 4, 10, 0.025, 4, -10, 0.025, -4, 10, 0.025, 4, -10, 0.025, -4, -10, 0.025, -4, 10, -0.025, 4, -10, -0.025, 4, 10, -0.025, -4, -10, -0.025, 4, 10, -0.025, -4, 10, -0.025, -4, -10, 0.025, 4, 10, -0.025, 4, 10, 0.025, 4, -10, -0.025, 4, 10, -0.025, 4, -10, 0.025, 4, -10, -0.025, -4, 10, 0.025, -4, 10, -0.025, -4, -10, 0.025, -4, 10, 0.025, -4, -10, -0.025, -4, -10)
@@ -87,7 +74,6 @@ shape = SubResource("ConcavePolygonShape3D_sd286")
 [node name="WallMesh02" type="MeshInstance3D" parent="RoomGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 0)
 mesh = SubResource("BoxMesh_rc5qf")
-surface_material_override/0 = SubResource("StandardMaterial3D_dh2tq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RoomGeometry/WallMesh02"]
 collision_layer = 3
