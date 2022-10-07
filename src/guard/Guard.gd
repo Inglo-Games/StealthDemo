@@ -149,6 +149,7 @@ func _on_nav_target_reached():
 		GUARD_STATE.INVESTIGATE:
 			print("Reached investigation target...")
 			if target_investigate is Interactable:
+				look_at(target_investigate.position)
 				_investigate_item(target_investigate)
 			# Noise sources are stored as a Vector3 point
 			elif target_investigate is Vector3:
@@ -179,6 +180,7 @@ func _on_object_spotted(body):
 			_enter_state_investigate(body)
 			interacted_item_spotted.emit()
 			nav_agent.set_target_location(body.global_transform.origin)
+			look_at(body.global_transform.origin)
 
 
 # Function triggered when any object enters the "CatchArea" Area3D
@@ -193,7 +195,7 @@ func _on_object_caught(body):
 func _check_raycast_hits_target(body):
 	# Set the locations for the start and end of the ray
 	ray_params.from = self.global_transform.origin
-	ray_params.to = body.global_transform.origin
+	ray_params.to = body.global_transform.origin + Vector3(0, 2.5, 0)
 	# Intersect the ray and check if the collision object matches the target
 	var res = phys_space.intersect_ray(ray_params)
 	if res.size() != 0:
