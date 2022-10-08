@@ -40,8 +40,8 @@ tracks/0/path = NodePath("LDoor:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -50,8 +50,8 @@ tracks/1/path = NodePath("RDoor:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0)
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -63,7 +63,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.92161, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -75,7 +75,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -2.28987, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14smc"]
@@ -92,10 +92,10 @@ transform = Transform3D(0.67, 0, 0, 0, 0.98, 0, 0, 0, 0.43, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_xe5tk")
 
 [node name="LDoor" parent="." index="2"]
-transform = Transform3D(-0.961687, 0, -0.752416, 0, 1, 0, 1.09853, 0, -0.658688, 0.631799, -0.00883364, -0.432085)
+transform = Transform3D(1.46, 0, 0, 0, 1, 0, 0, 0, 1, 0.631799, -0.00883364, -0.432085)
 
 [node name="RDoor" parent="." index="3"]
-transform = Transform3D(-0.501747, 0, 0.939093, 0, 1, 0, -1.37108, 0, -0.343662, -0.633936, 0.00428278, -0.430901)
+transform = Transform3D(1.46, 0, 0, 0, 1, 0, 0, 0, 1, -0.633936, 0.00428278, -0.430901)
 
 [node name="AnimationPlayer" parent="." index="4"]
 libraries = {
