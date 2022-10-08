@@ -5,6 +5,12 @@ class_name HidingPlace
 var is_occupied := false
 
 
+func _ready():
+	# Audio tracks for opening and closing
+	open_sound = load("res://assets/sfx/wardrobe_open.wav")
+	close_sound = preload("res://assets/sfx/wardrobe_close.wav")
+
+
 # Override Interactable interact, handles Player interaction
 func interact(player):
 	print("Triggering wardrobe interact function...")
@@ -39,12 +45,16 @@ func _exit_hiding_spot(player):
 
 # Play door-opening animation and set interacted instance var 
 func _open_spot():
+	audio_player.stream = open_sound
+	audio_player.play()
 	set_interacted(true)
 	$AnimationPlayer.play("OpenAction")
 	await $AnimationPlayer.animation_finished
 
 # Play door closing and set interacted instance var
 func _close_spot():
+	audio_player.stream = close_sound
+	audio_player.play()
 	$AnimationPlayer.play_backwards("OpenAction")
 	await $AnimationPlayer.animation_finished
 	set_interacted(false)
