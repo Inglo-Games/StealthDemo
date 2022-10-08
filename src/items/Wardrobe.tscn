@@ -9,65 +9,26 @@ points = PackedVector3Array(0.98745, 1, 0.98745, -1, -1.23152, -1, 0.985511, -1.
 
 [sub_resource type="Animation" id="Animation_y2a3f"]
 resource_name = "OpenAction"
+length = 0.4
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LDoor:rotation:x")
+tracks/0/path = NodePath("LDoor:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.9)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -2.28987, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.4)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LDoor:rotation:y")
+tracks/1/path = NodePath("RDoor:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -2.61799, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.9)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LDoor:rotation:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.9)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RDoor:rotation:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.9)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RDoor:rotation:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 2.61799, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.9)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("RDoor:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.9)
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, 1.92161, -0.25, 0, 0.25, 0, 1),
+"times": PackedFloat32Array(0, 0.4)
 }
 
 [sub_resource type="Animation" id="Animation_m1s66"]
@@ -75,62 +36,46 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LDoor:rotation:x")
+tracks/0/path = NodePath("LDoor:rotation:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("LDoor:rotation:y")
+tracks/1/path = NodePath("RDoor:rotation:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
-tracks/2/type = "bezier"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("LDoor:rotation:z")
+tracks/2/path = NodePath("RDoor:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.92161, 0)]
 }
-tracks/3/type = "bezier"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RDoor:rotation:x")
+tracks/3/path = NodePath("LDoor:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("RDoor:rotation:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("RDoor:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.28987, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_14smc"]
@@ -145,6 +90,12 @@ script = ExtResource("1_flptb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(0.67, 0, 0, 0, 0.98, 0, 0, 0, 0.43, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_xe5tk")
+
+[node name="LDoor" parent="." index="2"]
+transform = Transform3D(-0.961687, 0, -0.752415, 0, 1, 0, 1.09853, 0, -0.658689, 0.631799, -0.00883364, -0.432085)
+
+[node name="RDoor" parent="." index="3"]
+transform = Transform3D(-0.501743, 0, 0.939094, 0, 1, 0, -1.37108, 0, -0.34366, -0.633936, 0.00428278, -0.430901)
 
 [node name="AnimationPlayer" parent="." index="4"]
 libraries = {
