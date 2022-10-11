@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2c3t8vd7vevf"]
+
+[ext_resource type="PackedScene" uid="uid://bmytv2lsw6pgu" path="res://assets/models/bed.glb" id="1_e5e2r"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a0ckq"]
+points = PackedVector3Array(-1, 0.00195047, -0.729626, -1, 0.00195047, 0.729626, -1, 0.3061, -0.729626, 1, 0.00195047, -0.729626, -1, 0.3061, 0.729626, 1, 0.00195047, 0.729483, 1, 0.3061, -0.729626, 1, 0.3061, 0.729483)
+
+[node name="Bed" instance=ExtResource("1_e5e2r")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape3D_a0ckq")
