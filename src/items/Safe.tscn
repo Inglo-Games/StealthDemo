@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmeb1m3k3bg0i"]
 
 [ext_resource type="PackedScene" uid="uid://b3gb86yloaytd" path="res://assets/models/safe.glb" id="1_55tqs"]
+[ext_resource type="Script" path="res://src/items/Safe.gd" id="2_7xy3v"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_pwek7"]
-[ext_resource type="Script" path="res://src/items/ItemBox.gd" id="2_sso34"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_b01nr"]
 points = PackedVector3Array(-1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, -1)
@@ -80,7 +80,7 @@ _data = {
 }
 
 [node name="Safe" instance=ExtResource("1_55tqs")]
-script = ExtResource("2_sso34")
+script = ExtResource("2_7xy3v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_b01nr")
