@@ -31,8 +31,11 @@ func hide_item_menu():
 func _update_items():
 	# Disable buttons if player doesn't have any of the respective item
 	$Panel/VBoxContainer/LockpickButton.disabled = (PlayerInventory.inventory["lockpick"] <= 0)
+	$PickButton.disabled = (PlayerInventory.inventory["lockpick"] <= 0)
 	$Panel/VBoxContainer/NoiseButton.disabled = (PlayerInventory.inventory["noisemaker"] <= 0)
+	$NoiseButton.disabled = (PlayerInventory.inventory["noisemaker"] <= 0)
 	$Panel/VBoxContainer/CutterButton.disabled = (PlayerInventory.inventory["boltcutter"] <= 0)
+	$CutterButton.disabled = (PlayerInventory.inventory["boltcutter"] <= 0)
 
 
 func _on_lockpick_button_pressed():
