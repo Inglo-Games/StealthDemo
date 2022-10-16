@@ -38,4 +38,4 @@ func interact(_variant):
 func transition_level():
 	#anim_player.play(interact_anim)
 	#await anim_player.animation_finished
-	get_tree().change_scene_to(goto_scene)
+	get_tree().change_scene_to_packed(goto_scene)
