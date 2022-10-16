@@ -27,17 +27,16 @@ func _process(_delta):
 # Loads a conversation from a given filepath
 func initialize_conversation(path):
 	
-	var f = File.new()
+	#var f = File.new()
 	var parser = JSON.new()
 	
 	# Pause game during dialogue
 	get_tree().paused = true
 	
-	if f.file_exists(path):
+	if FileAccess.file_exists(path):
 		# Attempt to parse JSON contents of file
-		f.open(path, File.READ)
+		var f = FileAccess.open(path, FileAccess.READ)
 		var rval := parser.parse(f.get_as_text())
-		f.close()
 		if rval == OK:
 			# Get file contents as a dictionary
 			curr_convo = parser.get_data().get("lines")
@@ -67,8 +66,7 @@ func load_next_line():
 		
 		# Try to load the portrait file
 		var portrait_path = curr_line.get("pic")
-		var f = File.new()
-		if f.file_exists(portrait_path):
+		if FileAccess.file_exists(portrait_path):
 			portrait.texture = load(portrait_path)
 		else:
 			# If portrait path doesn't exist, default to Godot icon

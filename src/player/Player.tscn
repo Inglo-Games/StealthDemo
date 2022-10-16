@@ -4644,8 +4644,13 @@ points = PackedVector3Array(0.262938, 2.28566, -2.38592, -0.483927, -0.0483162, 
 script = ExtResource("1_xq3hb")
 
 [node name="ItemMenu" parent="." index="0" instance=ExtResource("2_lddin")]
+layout_mode = 3
+anchors_preset = 15
 
 [node name="ItemGUI" parent="." index="1" instance=ExtResource("4_8nia2")]
+custom_minimum_size = Vector2i(96, 200)
+layout_mode = 3
+anchors_preset = 1
 
 [node name="ActionProgBarContainer" type="VBoxContainer" parent="." index="2"]
 offset_right = 160.0
@@ -4663,7 +4668,6 @@ offset_top = 30.0
 offset_right = 160.0
 offset_bottom = 34.0
 value = 50.0
-percent_visible = false
 
 [node name="InteractArea" type="Area3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1.21942, 0, 0, 0, 1, 0, 1.17546, 3.12959)
