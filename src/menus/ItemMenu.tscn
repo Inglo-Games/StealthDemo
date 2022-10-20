@@ -34,10 +34,10 @@ metadata/_edit_layout_mode = 1
 
 [node name="NoiseButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 44.0
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = 681.0
+offset_top = 260.0
+offset_right = 961.0
+offset_bottom = 540.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("9_0d5gb")
@@ -49,10 +49,10 @@ stretch_mode = 4
 
 [node name="CutterButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 324.0
-offset_right = 576.0
-offset_bottom = 604.0
+offset_left = 681.0
+offset_top = 540.0
+offset_right = 961.0
+offset_bottom = 820.0
 size_flags_horizontal = 6
 texture_normal = ExtResource("6_pd4j0")
 texture_hover = ExtResource("7_xijhv")
@@ -63,10 +63,10 @@ stretch_mode = 0
 
 [node name="PickButton" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 324.0
-offset_right = 856.0
-offset_bottom = 604.0
+offset_left = 961.0
+offset_top = 540.0
+offset_right = 1241.0
+offset_bottom = 820.0
 size_flags_horizontal = 3
 texture_normal = ExtResource("3_33s0p")
 texture_hover = ExtResource("4_5ijbi")
