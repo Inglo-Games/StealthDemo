@@ -1,0 +1,12 @@
+{"lines": [
+	{
+		"name": "Emma",
+		"text": "No worries, pick yourself up and try again!",
+		"pic": "res://assets/portraits/emma_norm.png"
+	},
+	{
+		"name": "Terry",
+		"text": "Here's another noisemaker to help you out.",
+		"pic": "res://assets/portraits/terry_norm.png"
+	}
+]}
