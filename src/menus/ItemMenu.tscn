@@ -23,7 +23,6 @@ theme = ExtResource("1_dt7gs")
 script = ExtResource("1_lyq5o")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,7 +32,6 @@ color = Color(0, 0, 0, 0.411765)
 metadata/_edit_layout_mode = 1
 
 [node name="NoiseButton" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 681.0
 offset_top = 260.0
 offset_right = 961.0
@@ -48,7 +46,6 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="CutterButton" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 681.0
 offset_top = 540.0
 offset_right = 961.0
@@ -62,7 +59,6 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="PickButton" type="TextureButton" parent="."]
-layout_mode = 0
 offset_left = 961.0
 offset_top = 540.0
 offset_right = 1241.0
