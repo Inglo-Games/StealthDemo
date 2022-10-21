@@ -112,6 +112,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerInventory="*res://src/player/PlayerInventory.gd"
+MusicManager="*res://src/audio/MusicManager.gd"
 
 [display]
 
