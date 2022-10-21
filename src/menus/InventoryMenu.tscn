@@ -5,12 +5,16 @@
 
 [node name="InventoryMenu" type="Control"]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource("1_u35a2")
 script = ExtResource("1_gxdhv")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -20,6 +24,8 @@ metadata/_edit_layout_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -33,6 +39,8 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 
 [node name="MenuTitle" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 53.0
 grow_horizontal = 2
@@ -42,6 +50,8 @@ horizontal_alignment = 1
 metadata/_edit_layout_mode = 1
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 70.0
@@ -51,11 +61,13 @@ columns = 2
 metadata/_edit_layout_mode = 1
 
 [node name="LVBox" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
 offset_right = 248.0
 offset_bottom = 177.0
 size_flags_horizontal = 3
 
 [node name="KeysHeader" type="Label" parent="Panel/GridContainer/LVBox"]
+layout_mode = 2
 offset_right = 248.0
 offset_bottom = 44.0
 text = "keys collected"
@@ -63,6 +75,7 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="KeyNoneLabel" type="Label" parent="Panel/GridContainer/LVBox"]
+layout_mode = 2
 offset_top = 56.0
 offset_right = 248.0
 offset_bottom = 89.0
@@ -71,18 +84,21 @@ text = "None"
 horizontal_alignment = 1
 
 [node name="KeysBox" type="VBoxContainer" parent="Panel/GridContainer/LVBox"]
+layout_mode = 2
 offset_top = 101.0
 offset_right = 248.0
 offset_bottom = 177.0
 size_flags_vertical = 3
 
 [node name="RVBox" type="VBoxContainer" parent="Panel/GridContainer"]
+layout_mode = 2
 offset_left = 252.0
 offset_right = 500.0
 offset_bottom = 177.0
 size_flags_horizontal = 3
 
 [node name="ItemsHeader" type="Label" parent="Panel/GridContainer/RVBox"]
+layout_mode = 2
 offset_right = 248.0
 offset_bottom = 44.0
 text = "Items
@@ -91,6 +107,7 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="PickLabel" type="Label" parent="Panel/GridContainer/RVBox"]
+layout_mode = 2
 offset_top = 56.0
 offset_right = 248.0
 offset_bottom = 89.0
@@ -99,6 +116,7 @@ text = "Lockpicks: 0"
 horizontal_alignment = 1
 
 [node name="CutterLabel" type="Label" parent="Panel/GridContainer/RVBox"]
+layout_mode = 2
 offset_top = 101.0
 offset_right = 248.0
 offset_bottom = 132.0
@@ -107,6 +125,7 @@ text = "Boltcutters: 0"
 horizontal_alignment = 1
 
 [node name="NoiseLabel" type="Label" parent="Panel/GridContainer/RVBox"]
+layout_mode = 2
 offset_top = 144.0
 offset_right = 248.0
 offset_bottom = 177.0
@@ -117,10 +136,12 @@ horizontal_alignment = 1
 
 [node name="ExitButton" type="Button" parent="Panel"]
 custom_minimum_size = Vector2(36, 0)
+layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -18.0
-offset_bottom = 31.0
+offset_left = -36.0
+offset_bottom = 51.0
 grow_horizontal = 0
 text = "X"
 metadata/_edit_layout_mode = 1

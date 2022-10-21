@@ -51,11 +51,12 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6wvp"]
-bg_color = Color(0.360784, 0.360784, 0.360784, 0.454902)
+bg_color = Color(0.65098, 0.509804, 0.388235, 1)
 border_width_left = 12
 border_width_top = 12
 border_width_right = 12
 border_width_bottom = 12
+border_color = Color(0.133333, 0.25098, 0.227451, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
