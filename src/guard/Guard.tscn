@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cim0smeqjobbv"]
 
 [ext_resource type="Script" path="res://src/guard/Guard.gd" id="1_ck1ss"]
-[ext_resource type="PackedScene" uid="uid://b32d6c4y8p1vt" path="res://assets/models/guardbot.glb" id="1_onnlx"]
+[ext_resource type="PackedScene" uid="uid://yr44n1vxk5r7" path="res://assets/models/guardbot.glb" id="1_onnlx"]
 [ext_resource type="PackedScene" uid="uid://c6jtsxrdsu121" path="res://src/ui/TempLabel.tscn" id="2_w70b2"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wa15d"]
