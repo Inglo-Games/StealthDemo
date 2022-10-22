@@ -173,6 +173,7 @@ func _on_object_spotted(body):
 			target_player = body
 			$TempLabel.show_label_temp(3, "!")
 			player_spotted.emit()
+			MusicManager.add_guard_alert()
 	# Else if interactable object is spotted and it's been interacted with,
 	# become suspicious and move to investigate it
 	elif body is Interactable:
@@ -217,8 +218,7 @@ func on_hear_noise(noise_origin, noise_magnitude):
 func _investigate_item(target):
 	if target is HidingPlace and target.is_occupied:
 		# Guard found a hiding player!
-		# TODO: Pull player from HidingPlace
-		get_tree().change_scene_to(load("res://src/menus/MainMenu.tscn"))
+		player_caught.emit()
 	elif target is Interactable:
 		# Reset it then search the area
 		target.interact(self)
@@ -239,6 +239,12 @@ func _enter_state_patrol():
 # Guard enters ALERT state, moves more quickly until cooldown timer expires
 func _enter_state_alert():
 	print("Entering alert state...")
+	# If coming from an investigate or search state, decrement the music
+	# manager's suspicious guard count
+	if state == GUARD_STATE.INVESTIGATE or state == GUARD_STATE.SEARCHING:
+		MusicManager.sub_guard_sus()
+	MusicManager.add_guard_alert()
+	
 	$TempLabel.show_label_temp(3, "!")
 	state = GUARD_STATE.ALERT
 	eyes_mesh.mesh.surface_set_material(0, eye_mat_red)
@@ -252,6 +258,7 @@ func _enter_state_investigate(target):
 	state = GUARD_STATE.INVESTIGATE
 	target_investigate = target
 	eyes_mesh.mesh.surface_set_material(0, eye_mat_yellow)
+	MusicManager.add_guard_sus()
 	if target is Vector3:
 		look_at(target)
 	else:
@@ -274,6 +281,7 @@ func _enter_state_search():
 		await search_cooldown.timeout
 	
 	# Go back to patrolling when finished
+	MusicManager.sub_guard_sus()
 	_enter_state_patrol()
 
 
@@ -281,6 +289,7 @@ func _enter_state_search():
 func _on_AlertCooldown_timeout():
 	if state == GUARD_STATE.ALERT:
 		print("Entering patrol state...")
+		MusicManager.sub_guard_alert()
 		_enter_state_patrol()
 
 
