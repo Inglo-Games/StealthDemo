@@ -2,9 +2,9 @@ extends Node
 
 # Audio files to play
 var audio_menu = preload("res://assets/bgm/StepLight.mp3")
-var audio_norm = preload("res://assets/bgm/StepLight_norm.mp3")
-var audio_sus = preload("res://assets/bgm/StepLight_sus_test.mp3")
-var audio_alert = preload("res://assets/bgm/StepLight_alert_test.mp3")
+var audio_norm = preload("res://assets/bgm/StepLight.mp3")
+var audio_sus = preload("res://assets/bgm/StepLight_sus.mp3")
+var audio_alert = preload("res://assets/bgm/StepLight_alert.mp3")
 
 var audio_player = AudioStreamPlayer.new()
 
