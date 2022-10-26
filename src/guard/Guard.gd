@@ -241,7 +241,7 @@ func _enter_state_alert():
 	print("Entering alert state...")
 	# If coming from an investigate or search state, decrement the music
 	# manager's suspicious guard count
-	if state == GUARD_STATE.INVESTIGATE or state == GUARD_STATE.SEARCHING:
+	if state == GUARD_STATE.INVESTIGATE or state == GUARD_STATE.SEARCH:
 		MusicManager.sub_guard_sus()
 	MusicManager.add_guard_alert()
 	
