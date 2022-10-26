@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://n131o6hbuf3i" path="res://src/level/brick_wall.material" id="5_7x2dl"]
 [ext_resource type="PackedScene" uid="uid://cf5061yye8rjx" path="res://src/level/LevelExitDoor.tscn" id="7_fkkkj"]
 [ext_resource type="PackedScene" uid="uid://bca31hpk1jdsd" path="res://src/player/Player.tscn" id="9_03ha7"]
-[ext_resource type="PackedScene" uid="uid://clof7yqajt3ui" path="res://src/level/TutorialRoom05.tscn" id="9_smmlg"]
+[ext_resource type="PackedScene" uid="uid://dr7ru2f00c82d" path="res://src/level/TutorialRoom05.tscn" id="9_smmlg"]
 [ext_resource type="Material" uid="uid://bflj44pi3270a" path="res://src/level/brick_wall_dithering.material" id="10_0016d"]
 [ext_resource type="PackedScene" uid="uid://b3ofo55hjbkv8" path="res://src/items/Snare.tscn" id="12_6uycc"]
 [ext_resource type="PackedScene" uid="uid://mmfutgnfpi68" path="res://src/items/Crate.tscn" id="13_a6ymn"]
@@ -130,10 +130,10 @@ transform = Transform3D(0.857158, 0, 0.515053, 0, 1, 0, -0.515053, 0, 0.857158, 
 [node name="RoomItems" type="Node3D" parent="."]
 
 [node name="SnareTrap01" parent="RoomItems" instance=ExtResource("12_6uycc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.559)
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 2.559)
 
 [node name="SnareTrap02" parent="RoomItems" instance=ExtResource("12_6uycc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.063)
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, -4.063)
 
 [node name="Guards" type="Node3D" parent="."]
 
