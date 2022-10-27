@@ -34,8 +34,9 @@ tracks/0/path = NodePath("TopCable:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"points": PackedFloat32Array(-0.470837, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -44,8 +45,9 @@ tracks/1/path = NodePath("TopCable:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(1.4885, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -54,8 +56,9 @@ tracks/2/path = NodePath("TopCable:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array(-0.349066, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -81,8 +84,9 @@ tracks/0/path = NodePath("TopCable:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"points": PackedFloat32Array(-0.470837, -0.25, 0, 0.25, 0, 1, -0.470837, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.06, 0.35, 0.45, 0.55, 0.63, 0.7, 0.73)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.470837, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.09, 0.34)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -91,8 +95,9 @@ tracks/1/path = NodePath("TopCable:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"points": PackedFloat32Array(1.4885, -0.25, 0, 0.25, 0, 1, 1.4885, -0.25, 0, 0.25, 0, 1, 3, -0.25, 0, 0.25, 0, 1, 3.3, -0.25, 0, 0.25, 0, 1, 3, -0.25, 0, 0.25, 0, 1, 3.21, -0.25, 0, 0.25, 0, 1, 3.05, -0.25, 0, 0.25, 0, 1, 3.15, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.06, 0.35, 0.45, 0.55, 0.63, 0.7, 0.73)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.4885, -0.25, 0, 0.25, 0, 3.15847, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.1, 0.34)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -101,8 +106,9 @@ tracks/2/path = NodePath("TopCable:rotation:z")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"points": PackedFloat32Array(-0.349066, -0.25, 0, 0.25, 0, 1, -0.349066, -0.25, 0, 0.25, 0, 1, 0, -0.25, 0, 0.25, 0, 1),
-"times": PackedFloat32Array(0, 0.06, 0.35)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.349066, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.09, 0.34)
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -143,7 +149,7 @@ transform = Transform3D(0.05, 0, 0, 0, 0.2, 0, 0, 0, 0.05, -1, 0.1, 0)
 shape = SubResource("ConvexPolygonShape3D_mopy4")
 
 [node name="TopCable" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, -0.470837, 1.4885, 0)
+transform = Transform3D(0.973004, 0.230789, 0, -0.230789, 0.973004, 0, 0, 0, 1, -0.314131, 2.01839, 0)
 mesh = SubResource("BoxMesh_ai63v")
 
 [node name="BottomCable" type="MeshInstance3D" parent="."]
