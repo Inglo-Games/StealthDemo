@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsod1ytrb4xj8"]
+
+[ext_resource type="Script" path="res://src/ui/RadialProgBar.gd" id="1_pmwhx"]
+[ext_resource type="Texture2D" uid="uid://cwsc0kcx7mxe0" path="res://assets/icons/radial_prog_bar.png" id="2_4ep2l"]
+
+[node name="RadialProgBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_pmwhx")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 350.0
+offset_bottom = 350.0
+scale = Vector2(0.25, 0.25)
+step = 0.0
+value = 50.0
+fill_mode = 4
+texture_progress = ExtResource("2_4ep2l")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

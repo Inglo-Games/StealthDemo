@@ -42,14 +42,14 @@ func _open_box():
 			PlayerInventory.remove_key_id(key_id)
 		else:
 			temp_label.show_label_temp(label_length, "Locked!")
-			action_started.emit()
+			action_started.emit(0)
 	
 	# Only open if not locked and not already opening
 	if not locked and open_timer.is_stopped():
 		if open_time > 0:
 			await _wait_for_timer(unlock_time, "Opening...")
 		else:
-			action_started.emit()
+			action_started.emit(0)
 		
 		if open_sound != null:
 			audio_player.stream = open_sound
@@ -105,7 +105,7 @@ func _give_items():
 func _wait_for_timer(time, label):
 	open_timer.start(time)
 	temp_label.show_label_temp(time, label)
-	action_started.emit(label, time)
+	action_started.emit(time)
 	await open_timer.timeout
 	open_timer.stop()
 
@@ -113,7 +113,7 @@ func _wait_for_timer(time, label):
 # Handle closing the box and setting interacted var to false
 func _close_box():
 	
-	action_started.emit("Closing...", 3)
+	action_started.emit(3)
 	
 	if close_sound != null:
 		audio_player.stream = close_sound

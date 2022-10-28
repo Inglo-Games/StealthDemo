@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bca31hpk1jdsd"]
+[gd_scene load_steps=26 format=3 uid="uid://bca31hpk1jdsd"]
 
 [ext_resource type="PackedScene" uid="uid://chdydyuf4mnuw" path="res://assets/models/fox.gltf" id="1_schyp"]
 [ext_resource type="Script" path="res://src/player/Player.gd" id="1_xq3hb"]
 [ext_resource type="PackedScene" uid="uid://0tesuxwlb2gv" path="res://src/menus/ItemMenu.tscn" id="2_lddin"]
 [ext_resource type="PackedScene" uid="uid://4hcqf577upoj" path="res://src/ui/ItemGUI.tscn" id="4_8nia2"]
 [ext_resource type="Script" path="res://src/player/PlayerCamera.gd" id="4_8njxe"]
+[ext_resource type="PackedScene" uid="uid://bsod1ytrb4xj8" path="res://src/ui/RadialProgBar.tscn" id="5_rs866"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_88i4w"]
 size = Vector3(2.60424, 1.97939, 2.07832)
@@ -4649,22 +4650,16 @@ script = ExtResource("1_xq3hb")
 layout_mode = 3
 anchors_preset = 1
 
-[node name="ActionProgBarContainer" type="VBoxContainer" parent="." index="2"]
-offset_right = 160.0
-offset_bottom = 57.0
-
-[node name="Label" type="Label" parent="ActionProgBarContainer" index="0"]
-offset_left = 34.0
-offset_right = 125.0
-offset_bottom = 26.0
-size_flags_horizontal = 4
-text = "Actioning...."
-
-[node name="ProgressBar" type="ProgressBar" parent="ActionProgBarContainer" index="1"]
-offset_top = 30.0
-offset_right = 160.0
-offset_bottom = 57.0
-value = 50.0
+[node name="RadialProgBar" parent="." index="2" instance=ExtResource("5_rs866")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -219.0
+offset_bottom = -219.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="InteractArea" type="Area3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1.21942, 0, 0, 0, 1, 0, 1.17546, 3.12959)

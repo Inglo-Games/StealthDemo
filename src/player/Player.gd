@@ -38,6 +38,9 @@ const STEP_MAGNITUDE_SCALE := 0.2
 # Animations for the player model
 @onready var anims = $AnimationPlayer
 
+# Floating progress bar for player actions
+@onready var radial_prog_bar = $RadialProgBar
+
 signal emit_noise
 signal interact
 signal pick_lock
@@ -61,17 +64,7 @@ func _init():
 
 func _ready():
 	# Initially hide all menus and progress bar
-	_clear_prog_bar()
 	$ItemMenu.visible = false
-
-
-func _process(delta):
-	
-	# Update progress bar if it's visible
-	if $ActionProgBarContainer.visible:
-		$ActionProgBarContainer/ProgressBar.value += delta
-		if $ActionProgBarContainer/ProgressBar.value >= $ActionProgBarContainer/ProgressBar.max_value:
-			_clear_prog_bar()
 
 
 func _input(event):
@@ -189,7 +182,7 @@ func _connect_body_interact_signal(body):
 	if body is Interactable:
 		interact.connect(body.interact)
 		pick_lock.connect(body.pick_lock)
-		body.action_started.connect(setup_prog_bar)
+		body.action_started.connect(radial_prog_bar.setup_prog_bar)
 		print("Connected player's interact signal to Interactable")
 	elif body is Trap:
 		break_trap.connect(body.clear_trap)
@@ -200,13 +193,13 @@ func _connect_body_interact_signal(body):
 func _disconnect_player_interact_signal(body):
 	if body is Interactable:
 		body.cancel_interaction()
-		body.action_started.disconnect(setup_prog_bar)
+		body.action_started.disconnect(radial_prog_bar.setup_prog_bar)
 		interact.disconnect(body.interact)
 		pick_lock.disconnect(body.pick_lock)
 	if body is Trap:
 		break_trap.disconnect(body.clear_trap)
 	print("Disconnected player's interact signal from object")
-	_clear_prog_bar()
+	radial_prog_bar.clear_prog_bar()
 
 
 # Transition to STILL state, if appropriate
@@ -234,21 +227,6 @@ func _enter_state_dashing():
 # Transition to TRAPPED state, called by Trap class
 func enter_state_trapped():
 	state = MOVE_STATE.TRAPPED
-
-
-# Reset action progress bar
-func _clear_prog_bar():
-	$ActionProgBarContainer.visible = false
-	$ActionProgBarContainer/ProgressBar.value = 0.0
-	$ActionProgBarContainer/Label.text = ""
-
-
-# Setup debugging progress bar to show action's time to completion
-func setup_prog_bar(label, time):
-	$ActionProgBarContainer.visible = true
-	$ActionProgBarContainer/Label.text = label
-	$ActionProgBarContainer/ProgressBar.value = 0.0
-	$ActionProgBarContainer/ProgressBar.max_value = time
 
 
 # Make player invisible and uncollidable upon entering a HidingPlace
