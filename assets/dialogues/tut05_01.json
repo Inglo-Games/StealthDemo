@@ -1,22 +1,27 @@
 {"lines": [
 	{
 		"name": "Emma",
-		"text": "Alright then, one final room to test your stuff!",
+		"text": "Alright then, one final test, to make sure you're ready for the real thing.",
 		"pic": "res://assets/portraits/emma_norm.png"
 	},
 	{
 		"name": "Terry",
-		"text": "And one final tool to help you accomplish your mission.",
+		"text": "And two final tools to help you accomplish your mission.",
+		"pic": "res://assets/portraits/terry_norm.png"
+	},
+	{
+		"name": "Frankie",
+		"text": "I do like playing with new toys.",
+		"pic": "res://assets/portraits/frankie_norm.png"
+	},
+	{
+		"name": "Terry",
+		"text": "First, I created these noisemakers to distract guards that are in your way.",
 		"pic": "res://assets/portraits/terry_norm.png"
 	},
 	{
 		"name": "Terry",
-		"text": "I created these noisemakers to distract guards that are in your way.",
-		"pic": "res://assets/portraits/terry_norm.png"
-	},
-	{
-		"name": "Terry",
-		"text": "Face where you want to set one down and [color=#44ddff]use an item[/color] (the R key) and select noisemaker to place it on the ground.",
+		"text": "Face where you want to set one down and [color=#44ddff]use an item[/color] (the T key) and select noisemaker to place it on the ground.",
 		"pic": "res://assets/portraits/terry_norm.png"
 	},
 	{
@@ -31,8 +36,13 @@
 	},
 	{
 		"name": "Benji",
-		"text": "Well, the [i]best[/i] part is the explosion, but whatever.",
+		"text": "Well, the [b]best[/b] part is the explosion, but whatever.",
 		"pic": "res://assets/portraits/benji_norm.png"
+	},
+	{
+		"name": "Emma",
+		"text": "[b]Anyway[/b], the other thing is a wardrobe.  Nothing special, except you can [color=#44ddff]hide inside them[/color] (the F key).",
+		"pic": "res://assets/portraits/emma_norm.png"
 	},
 	{
 		"name": "Benji",
