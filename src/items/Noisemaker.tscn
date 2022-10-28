@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd4vc2il6byjd"]
+[gd_scene load_steps=14 format=3 uid="uid://bd4vc2il6byjd"]
 
 [ext_resource type="Script" path="res://src/items/Noisemaker.gd" id="1_3uhjn"]
 
@@ -7,18 +7,77 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cv1yb"]
 points = PackedVector3Array(-0.214183, -0.948028, -0.451129, 0.0227317, 0.952146, 0.498887, 0.171488, 0.951995, 0.469018, -0.125934, 0.952684, -0.483291, 0.499663, -0.953674, -0.00688883, -0.387646, -0.93796, 0.315653, -0.483292, 0.952686, -0.12593, 0.375097, 0.940128, -0.329816, 0.171488, -0.951995, 0.469018, 0.140783, -0.945485, -0.479579, 0.469014, 0.952011, 0.171499, -0.387646, 0.93796, 0.315653, -0.483292, -0.952686, -0.12593, -0.183511, -0.943076, 0.464698, 0.407412, -0.946994, 0.288983, 0.375097, -0.940128, -0.329816, -0.395154, 0.955761, -0.305523, -0.479555, 0.945437, 0.14088, 0.464698, 0.943099, -0.183512, 0.140783, 0.945485, -0.479579, -0.243203, 0.945955, 0.436491, -0.479555, -0.945437, 0.14088, 0.288971, 0.946988, 0.407421, -0.395154, -0.955761, -0.305523, -0.0069906, -0.953641, 0.499658, 0.499663, 0.953674, -0.00688883, -0.271948, 0.943071, -0.419217, 0.464698, -0.943099, -0.183512, -0.125934, -0.952684, -0.483291, 0.315648, 0.937973, -0.387651, 0.469014, -0.952011, 0.171499, 0.407412, 0.946994, 0.288983)
 
+[sub_resource type="Gradient" id="Gradient_6sw7f"]
+colors = PackedColorArray(0.419608, 0.419608, 0.419608, 1, 0.419608, 0.419608, 0.419608, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qwrdd"]
+gradient = SubResource("Gradient_6sw7f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lol0r"]
+emission_shape = 2
+emission_sphere_radius = 0.2
+direction = Vector3(1, 1, 1)
+spread = 120.0
+gravity = Vector3(0, 0.55, 0)
+initial_velocity_max = 0.22
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+color = Color(0.419608, 0.419608, 0.419608, 1)
+color_ramp = SubResource("GradientTexture1D_qwrdd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bnifi"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_voo62"]
+material = SubResource("StandardMaterial3D_bnifi")
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 16
+
+[sub_resource type="Gradient" id="Gradient_tnm3g"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.012987, 0.688312, 1)
+colors = PackedColorArray(1, 0.953485, 0, 1, 1, 0.419745, 0, 1, 0.476563, 0, 0.067886, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4uqyl"]
+gradient = SubResource("Gradient_tnm3g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m6j0e"]
+lifetime_randomness = 0.67
+direction = Vector3(0, 1, 0)
+spread = 15.0
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+color = Color(1, 0.933333, 0, 1)
+color_ramp = SubResource("GradientTexture1D_4uqyl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osbon"]
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 6.9
+emission_operator = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_dpu4h"]
+material = SubResource("StandardMaterial3D_osbon")
+size = Vector3(0.02, 0.02, 0.02)
+
 [node name="Noisemaker" type="StaticBody3D"]
-script = ExtResource( "1_3uhjn" )
+script = ExtResource("1_3uhjn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0.100039, 0)
-mesh = SubResource( "CylinderMesh_dqdyq" )
+mesh = SubResource("CylinderMesh_dqdyq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0.100039, 0)
-shape = SubResource( "ConvexPolygonShape3D_cv1yb" )
+visible = false
+shape = SubResource("ConvexPolygonShape3D_cv1yb")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -27,3 +86,23 @@ modulate = Color(1, 0.317647, 0, 1)
 text = "5"
 font_size = 120
 outline_size = 10
+
+[node name="SmokeParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278717, 0)
+emitting = false
+amount = 128
+lifetime = 3.5
+one_shot = true
+explosiveness = 0.28
+randomness = 1.0
+visibility_aabb = AABB(-2, 0, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_lol0r")
+draw_pass_1 = SubResource("SphereMesh_voo62")
+
+[node name="SparkParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204971, 0)
+amount = 64
+lifetime = 0.65
+visibility_aabb = AABB(-1, -0.25, -1, 2, 1.294, 2)
+process_material = SubResource("ParticleProcessMaterial_m6j0e")
+draw_pass_1 = SubResource("BoxMesh_dpu4h")
