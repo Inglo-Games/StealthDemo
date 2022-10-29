@@ -20,10 +20,11 @@ func _physics_process(delta):
 
 # Setup the progress bar, show it, and set the timer
 func setup_prog_bar(time: float):
-	texture_bar.value = 0
-	texture_bar.max_value = time
-	visible = true
-	timer.start(time)
+	if time > 0:
+		texture_bar.value = 0
+		texture_bar.max_value = time
+		visible = true
+		timer.start(time)
 
 
 # Hide the progress bar
