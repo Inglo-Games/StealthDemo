@@ -24,7 +24,7 @@ func interact(player):
 # Handle Player entering the HidingPlace
 func _enter_hiding_spot(player):
 	open_timer.start(open_time * 2.0)
-	action_started.emit(open_time * 2.0)
+	action_started.emit(0.35)
 	# Set player state to trapped so enemies can still detect them but player
 	# can't move away and lock themselves in a wardrobe
 	player.state = player.MOVE_STATE.TRAPPED
@@ -36,7 +36,7 @@ func _enter_hiding_spot(player):
 # Handle Player leavign the HidingPlace
 func _exit_hiding_spot(player):
 	open_timer.start(open_time * 2.0)
-	action_started.emit(open_time * 2.0)
+	action_started.emit(0.8)
 	await _open_spot()
 	player.unhide_player()
 	is_occupied = false
