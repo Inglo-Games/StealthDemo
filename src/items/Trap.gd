@@ -40,7 +40,7 @@ func _on_body_entered(body):
 		body.get_node("AnimationPlayer").play("NewAnims/Snare")
 		# Connect player signals to interact with trap object
 		body.interact.connect(_on_player_escaping_trap)
-		self.action_started.connect(body.setup_prog_bar)
+		self.action_started.connect(body.radial_prog_bar.setup_prog_bar)
 		# Emit noise to alert guards
 		emit_noise.emit(global_transform.origin, SOUND_MAGNITUDE)
 
