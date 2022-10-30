@@ -28,6 +28,9 @@ func _on_noisemaker_explode():
 	# Emit a noise to alert guards
 	emit_noise.emit(position, sound_strength)
 	
+	# Play sfx for player to hear
+	$AudioStreamPlayer3D.play()
+	
 	# Emit smoke particles, stop spark particles, make noisemaker invisible
 	$SmokeParticles.emitting = true
 	$SparkParticles.emitting = false
