@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd87v6n8noo1g"]
+
+[ext_resource type="Theme" uid="uid://mulhwki2w787" path="res://assets/ui_themes/main_menu.tres" id="1_cmr20"]
+[ext_resource type="Script" path="res://src/menus/ThanksMenu.gd" id="2_ekpf7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_cmr20")
+script = ExtResource("2_ekpf7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 191.0
+offset_right = 1920.0
+offset_bottom = 405.0
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "[center]Thank you for playing!
+
+[/center]"
+fit_content_height = true
+scroll_active = false
+
+[node name="Message" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 417.0
+offset_right = 1920.0
+offset_bottom = 795.0
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
+text = "[center]If you have any feedback, please leave a comment on the itch.io page for this game, or send me a message on social media:
+
+Twitter: [url=https://twitter.com/IngloGamesDev]@IngloGamesDev[/url]
+Mastodon: [url=]@IngloGamesDev@mastodon.gamedev.place[/url]
+
+[/center]"
+fit_content_height = true
+scroll_active = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 807.0
+offset_right = 1920.0
+offset_bottom = 888.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ItchButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 687.0
+offset_right = 958.0
+offset_bottom = 81.0
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 64
+text = " Itch.io Page "
+
+[node name="MenuButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 988.0
+offset_right = 1232.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 64
+text = " Main Menu "
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ItchButton" to="." method="_on_itch_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
