@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dodkr3hmbdoyo"]
+[gd_scene load_steps=3 format=3 uid="uid://bcupket13mbbt"]
 
-[ext_resource type="PackedScene" uid="uid://cgq3exsq8bwe4" path="res://assets/models_src/cushion.blend" id="1_uejgl"]
+[ext_resource type="PackedScene" uid="uid://bwt5nb1bm34v7" path="res://assets/models/cushion.glb" id="1_uooxg"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_6244s"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7tjp1"]
+height = 0.583598
+radius = 0.596418
 
-[node name="Cushion" instance=ExtResource("1_uejgl")]
+[node name="cushion" instance=ExtResource("1_uooxg")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1.2, 0, 0, 0, 0.3, 0, 0, 0, 1.2, 0, 0.2, 0)
-shape = SubResource("CylinderShape3D_6244s")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.210717, 0)
+shape = SubResource("CylinderShape3D_7tjp1")

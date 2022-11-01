@@ -1,13 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cikbh2ycru6o2"]
+[gd_scene load_steps=3 format=3 uid="uid://djg46ic8suy5o"]
 
-[ext_resource type="PackedScene" uid="uid://45l7m3ks2kic" path="res://assets/models_src/table.blend" id="1_7yn8o"]
+[ext_resource type="PackedScene" uid="uid://cg6wo45lgvbjq" path="res://assets/models/table.glb" id="1_yl5i8"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pbn0l"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cjk1a"]
 points = PackedVector3Array(1, 1, 1, 1, 1, -1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1)
 
-[node name="Table" instance=ExtResource("1_7yn8o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226955, 0)
+[node name="table" instance=ExtResource("1_yl5i8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, -0.0343401, 0, 0, 0, 2.42872, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_pbn0l")
+shape = SubResource("ConvexPolygonShape3D_cjk1a")
