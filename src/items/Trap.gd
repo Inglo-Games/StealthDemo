@@ -49,7 +49,7 @@ func _on_body_entered(body):
 func _on_player_escaping_trap(player):
 	if timer.is_stopped():
 		timer.start(ESCAPE_TIME)
-		action_started.emit("Escaping...", ESCAPE_TIME)
+		action_started.emit(ESCAPE_TIME)
 		await timer.timeout
 		# After the timer finishes, free the player
 		player.get_node("AnimationPlayer").play("NewAnims/Release")
@@ -61,8 +61,8 @@ func _on_player_escaping_trap(player):
 
 # Called when a trapped player uses a "boltcutter" item to break free
 func _on_player_breaking_trap(player):
-	timer.start(ESCAPE_TIME)
-	action_started.emit("Escaping...", ESCAPE_TIME)
+	timer.start(BREAK_TIME)
+	action_started.emit(BREAK_TIME)
 	await timer.timeout
 	# After the timer finishes, free player and destroy this trap
 	player.get_node("AnimationPlayer").play("NewAnims/Release")
@@ -73,9 +73,15 @@ func _on_player_breaking_trap(player):
 	player_escaped.emit()
 
 
-# Called when player uses boltcutters *before* being caught
-func clear_trap(_player):
-	PlayerInventory.remove_item("boltcutter")
+# Called when player uses boltcutters 
+func clear_trap(player):
+	# If player is already trapped...
+	if player.state == player.MOVE_STATE.TRAPPED:
+		await _on_player_breaking_trap(player)
+	# else if player is using item *before* getting caught...
+	else:
+		PlayerInventory.remove_item("boltcutter")
+	
 	self.queue_free()
 
 
