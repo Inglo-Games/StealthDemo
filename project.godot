@@ -104,9 +104,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Stealth Demo"
+config/name="Den of Thieves (Prototype Demo)"
 run/main_scene="res://src/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.0")
+boot_splash/show_image=false
 config/icon="res://icon.png"
 
 [autoload]
