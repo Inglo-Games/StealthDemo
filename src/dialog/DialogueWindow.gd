@@ -66,11 +66,13 @@ func load_next_line():
 		
 		# Try to load the portrait file
 		var portrait_path = curr_line.get("pic")
-		if FileAccess.file_exists(portrait_path):
-			portrait.texture = load(portrait_path)
-		else:
+		portrait.texture = load(portrait_path)
+#		if FileAccess.file_exists(portrait_path):
+#			portrait.texture = load(portrait_path)
+#		else:
 			# If portrait path doesn't exist, default to Godot icon
-			portrait.texture = load("res://icon.png")
+#			print("Error: Image at given path does not exist!\nPath: %s" % portrait_path)
+#			portrait.texture = load("res://icon.png")
 		
 		dialogue_count += 1
 
